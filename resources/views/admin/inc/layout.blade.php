@@ -50,33 +50,6 @@
     <link rel="stylesheet" media="screen, print" href="/css/page-invoice.css">
     <link rel="stylesheet" media="screen, print" href="/css/theme-demo.css">
 
-    <script src="https://code.jquery.com/jquery-2.2.4.js"
-        integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
-
-    <!-- Google Font: Source Sans Pro -->
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://adminlte.io/themes/v3/plugins/fontawesome-free/css/all.min.css">
-
-    {{-- favicon --}}
-    <link rel="shortcut icon" href="/img/logo.ico" type="image/x-icon">
-
-    <!-- DataTables -->
-    <link rel="stylesheet"
-        href="https://adminlte.io/themes/v3/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
-    <link rel="stylesheet"
-        href="https://adminlte.io/themes/v3/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
-    <link rel="stylesheet"
-        href="https://adminlte.io/themes/v3/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
-
-    <!-- Ionicons -->
-    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-    <!-- Theme style -->
-    <link rel="stylesheet" href="https://adminlte.io/themes/v3/dist/css/adminlte.min.css?v=3.2.0">
-    <!-- overlayScrollbars -->
-    <link rel="stylesheet" href="https://adminlte.io/themes/v3/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
-
     {{-- SweetAlert2 --}}
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
@@ -269,55 +242,6 @@
         + waves.js (extension)
         + smartpanels.js (extension)
         + src/../jquery-snippets.js (core) -->
-    <!-- jQuery -->
-    <script src="https://adminlte.io/themes/v3/plugins/jquery/jquery.min.js"></script>
-    <!-- jQuery UI 1.11.4 -->
-    <script src="https://adminlte.io/themes/v3/plugins/jquery-ui/jquery-ui.min.js"></script>
-    <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-    <script>
-        $.widget.bridge('uibutton', $.ui.button)
-    </script>
-    <!-- Bootstrap 4 -->
-    <script src="https://adminlte.io/themes/v3/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-    <!-- DataTables -->
-    <script src="https://adminlte.io/themes/v3/plugins/datatables/jquery.dataTables.min.js"></script>
-    <script src="https://adminlte.io/themes/v3/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-    <script src="https://adminlte.io/themes/v3/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
-    <script src="https://adminlte.io/themes/v3/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
-    <script src="https://adminlte.io/themes/v3/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
-    <script src="https://adminlte.io/themes/v3/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
-    <script src="https://adminlte.io/themes/v3/plugins/jszip/jszip.min.js"></script>
-    <script src="https://adminlte.io/themes/v3/plugins/pdfmake/pdfmake.min.js"></script>
-    <script src="https://adminlte.io/themes/v3/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
-    <script src="https://adminlte.io/themes/v3/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
-    <script>
-        $(function() {
-                    $("#datatab").DataTable({
-                        "responsive": true,
-                        "lengthChange": false,
-                        "autoWidth": false,
-                        // "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-                        "buttons": ["excel", "pdf", "colvis"]
-                    }).buttons().container().appendTo('#datatab_wrapper .col-md-6:eq(0)');
-                });
-    </script>
-
-    <!-- ChartJS -->
-    <script src="https://adminlte.io/themes/v3/plugins/chart.js/Chart.min.js"></script>
-    <!-- Sparkline -->
-    <script src="https://adminlte.io/themes/v3/plugins/sparklines/sparkline.js"></script>
-    <!-- JQVMap -->
-    <script src="https://adminlte.io/themes/v3/plugins/jqvmap/jquery.vmap.min.js"></script>
-    <script src="https://adminlte.io/themes/v3/plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
-    <!-- jQuery Knob Chart -->
-    <script src="https://adminlte.io/themes/v3/plugins/jquery-knob/jquery.knob.min.js"></script>
-    <!-- daterangepicker -->
-    <script src="https://adminlte.io/themes/v3/plugins/moment/moment.min.js"></script>
-    <script src="https://adminlte.io/themes/v3/plugins/daterangepicker/daterangepicker.js"></script>
-    <script src="https://adminlte.io/themes/v3/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
-    <!-- AdminLTE App -->
-    <script src="https://adminlte.io/themes/v3/dist/js/adminlte.js?v=3.2.0"></script>
 
     <script src="/js/vendors.bundle.js"></script>
     <script src="/js/app.bundle.js"></script>
