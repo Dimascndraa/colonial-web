@@ -7,11 +7,11 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## Clone Code
+# Clone Code
 
 Jika Anda ingin menambahkan projek ini di komputer Anda sendiri, Anda bisa melakukan instalasi dengan mengikuti cara dibawah ini.
 
-# Klon repositori ini
+## Klon repositori ini
 ```
 git clone https://github.com/Dimascndraa/colonial-web.git
 ```
@@ -21,14 +21,14 @@ Setelah itu, buka repository dengan mengetikan perintah:
 cd colonial-web
 ```
 
-# Install Depedency
+## Install Depedency
 
 Depedensi adalah sekumpulan library yang dibutuhkan oleh aplikasi laravel kita, termasuk framework Laravel itu sendiri. List depedensi dapat dilihat pada berkas `composer.json` . Untuk menginstall semua depedensi, gunakan perintah `composer install` dan composer akan melakukan penelusuran depedensi apa saja yang dibutuhkan aplikasi, lalu mengunduhnya kedalam folder vendor . Sekali lagi, saya asumsikan disini sudah terinstall composer di mesin masing masing.
 ```
 composer install
 ```
 
-# Setup Environment Variable
+## Setup Environment Variable
 
 Setelah `composer install` selesai, kemudian kita butuh membuat file `.env` di folder aplikasi kita. Namun, biasanya sudah ada file sampelnya. Kita cukup menyalin file itu saja (atau mengikuti README masing masing project).
 ```
@@ -41,22 +41,20 @@ Tidak kalah penting, jika dalam sampel `.env` tadi masih belum memiliki `APP_KEY
 php artisan key:generate
 ```
 
-# Migrate & Seed 
+## Migrate & Seed 
 Langkah selanjutnya adalah melakukan migrate & seed dengan menjalankan perintah berikut ini:
 ```
 php artisan migrate --seed
 ```
 
-# Instal Node JS
+## Instal Node JS
 Langkah selanjutnya adalah menginstal NodeJs  dengan menjalankan perintah berikut ini:
 ```
 npm install && npm run dev
 ```
 
-# Run Local Dev Server
+## Run Local Dev Server
 Setelah semua sudah berhasil, langkah selanjutnya jalankan local server dengan perintah:
 ```
 php artisan serve
 ```
-
-
