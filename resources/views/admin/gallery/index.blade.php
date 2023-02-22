@@ -90,7 +90,7 @@
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $gallery->image }}</td>
-                                    <td>{{ $gallery->caption }}</td>
+                                    <td>{!! $gallery->caption !!}</td>
                                     <td>
                                         <a href="/dashboard/dokter/{{ $gallery->id }}" class="badge mx-1 bg-info p-2">
                                             <i class="fas fa-eye"></i>

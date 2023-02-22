@@ -91,33 +91,33 @@
     </style>
     <!-- BEGIN Body -->
     <!-- Possible Classes
-    
-    * 'header-function-fixed'         - header is in a fixed at all times
-    * 'nav-function-fixed'            - left panel is fixed
-    * 'nav-function-minify'			  - skew nav to maximize space
-    * 'nav-function-hidden'           - roll mouse on edge to reveal
-    * 'nav-function-top'              - relocate left pane to top
-    * 'mod-main-boxed'                - encapsulates to a container
-    * 'nav-mobile-push'               - content pushed on menu reveal
-    * 'nav-mobile-no-overlay'         - removes mesh on menu reveal
-    * 'nav-mobile-slide-out'          - content overlaps menu
-    * 'mod-bigger-font'               - content fonts are bigger for readability
-    * 'mod-high-contrast'             - 4.5:1 text contrast ratio
-    * 'mod-color-blind'               - color vision deficiency
-    * 'mod-pace-custom'               - preloader will be inside content
-    * 'mod-clean-page-bg'             - adds more whitespace
-    * 'mod-hide-nav-icons'            - invisible navigation icons
-    * 'mod-disable-animation'         - disables css based animations
-    * 'mod-hide-info-card'            - hides info card from left panel
-    * 'mod-lean-subheader'            - distinguished page header
-    * 'mod-nav-link'                  - clear breakdown of nav links
-    
-    >>> more settings are described inside documentation page >>>
-    -->
+        
+        * 'header-function-fixed'         - header is in a fixed at all times
+        * 'nav-function-fixed'            - left panel is fixed
+        * 'nav-function-minify'			  - skew nav to maximize space
+        * 'nav-function-hidden'           - roll mouse on edge to reveal
+        * 'nav-function-top'              - relocate left pane to top
+        * 'mod-main-boxed'                - encapsulates to a container
+        * 'nav-mobile-push'               - content pushed on menu reveal
+        * 'nav-mobile-no-overlay'         - removes mesh on menu reveal
+        * 'nav-mobile-slide-out'          - content overlaps menu
+        * 'mod-bigger-font'               - content fonts are bigger for readability
+        * 'mod-high-contrast'             - 4.5:1 text contrast ratio
+        * 'mod-color-blind'               - color vision deficiency
+        * 'mod-pace-custom'               - preloader will be inside content
+        * 'mod-clean-page-bg'             - adds more whitespace
+        * 'mod-hide-nav-icons'            - invisible navigation icons
+        * 'mod-disable-animation'         - disables css based animations
+        * 'mod-hide-info-card'            - hides info card from left panel
+        * 'mod-lean-subheader'            - distinguished page header
+        * 'mod-nav-link'                  - clear breakdown of nav links
+        
+        >>> more settings are described inside documentation page >>>
+        -->
 </head>
 
 <body class="mod-bg-1 mod-nav-link header-function-fixed nav-function-fixed @yield('tmp_body')">
-    <!-- DOC: script to save and load page settings -->
+    !-- DOC: script to save and load page settings -->
     <script>
         /**
              *	This script should be placed right after the body tag for fast execution 
@@ -257,18 +257,18 @@
     @include('admin.inc.setting')
     <!-- END Page Settings -->
     <!-- base vendor bundle: 
-    DOC: if you remove pace.js from core please note on Internet Explorer some CSS animations may execute before a page is fully loaded, resulting 'jump' animations 
-    + pace.js (recommended)
-    + jquery.js (core)
-    + jquery-ui-cust.js (core)
-    + popper.js (core)
-    + bootstrap.js (core)
-    + slimscroll.js (extension)
-    + app.navigation.js (core)
-    + ba-throttle-debounce.js (core)
-    + waves.js (extension)
-    + smartpanels.js (extension)
-    + src/../jquery-snippets.js (core) -->
+        DOC: if you remove pace.js from core please note on Internet Explorer some CSS animations may execute before a page is fully loaded, resulting 'jump' animations 
+        + pace.js (recommended)
+        + jquery.js (core)
+        + jquery-ui-cust.js (core)
+        + popper.js (core)
+        + bootstrap.js (core)
+        + slimscroll.js (extension)
+        + app.navigation.js (core)
+        + ba-throttle-debounce.js (core)
+        + waves.js (extension)
+        + smartpanels.js (extension)
+        + src/../jquery-snippets.js (core) -->
     <!-- jQuery -->
     <script src="https://adminlte.io/themes/v3/plugins/jquery/jquery.min.js"></script>
     <!-- jQuery UI 1.11.4 -->
@@ -293,14 +293,14 @@
     <script src="https://adminlte.io/themes/v3/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
     <script>
         $(function() {
-                $("#datatab").DataTable({
-                    "responsive": true,
-                    "lengthChange": false,
-                    "autoWidth": false,
-                    // "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-                    "buttons": ["excel", "pdf", "colvis"]
-                }).buttons().container().appendTo('#datatab_wrapper .col-md-6:eq(0)');
-            });
+                    $("#datatab").DataTable({
+                        "responsive": true,
+                        "lengthChange": false,
+                        "autoWidth": false,
+                        // "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+                        "buttons": ["excel", "pdf", "colvis"]
+                    }).buttons().container().appendTo('#datatab_wrapper .col-md-6:eq(0)');
+                });
     </script>
 
     <!-- ChartJS -->
@@ -323,11 +323,10 @@
     <script src="/js/app.bundle.js"></script>
     <script type="text/javascript">
         /* Activate smart panels */
-    	$('#js-page-content').smartPanel();
+        	$('#js-page-content').smartPanel();
     </script>
 
     @yield('plugin')
-
 
 </body>
 
