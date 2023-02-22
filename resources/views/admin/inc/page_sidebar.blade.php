@@ -46,25 +46,6 @@
                     <span class="nav-link-text" data-i18n="nav.pages">Pages</span>
                 </a>
             </li>
-
-             <li class="@yield('menuabout')">
-                <a href="javascript:Void(0)" title="About" data-filter-tags="about">
-                    <i class="fal fa-info-circle"></i>
-                    <span class="nav-link-text" data-i18n="nav.about">About</span>
-                </a>
-                <ul>
-                    <li class="@yield('identitas')">
-                        <a href="/dashboard/identitas" title="Identitas" data-filter-tags="about identitas">
-                            <span class="nav-link-text" data-i18n="nav.about_identitas">Identitas</span>
-                        </a>
-                    </li>
-                    <li class="@yield('sosial-media')">
-                        <a href="/dashboard/sosial-media" title="Sosial Media" data-filter-tags="about sosial media">
-                            <span class="nav-link-text" data-i18n="nav.about_sosial_media">Sosial Media</span>
-                        </a>
-                    </li>
-                </ul>
-            </li>
             
             <li class="@yield('menuintel')">
                 <a href="#" title="Application Intel" data-filter-tags="application intel">

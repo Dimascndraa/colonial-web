@@ -28,49 +28,43 @@
                      </ul>
                   </div>
                   <div class="bscol-md-6 item text">
-                     <h3>The Glory Hotels</h3>
-                     <p>Over the last 25 years, the Glory Hotels organisation has been known for dependably providing the best Indian hospitality experience with more than 50 hotels and resorts worldwide.</p>
+                     <h3>{{ $about->name }}</h3>
+                     <p>Over the last 25 years, {{ $about->name }} organisation has been known for dependably providing the best Indian hospitality experience with more than 50 hotels and resorts worldwide.</p>
                   </div>
                   <div class="social_links">
-                     <a href="https://www.instagram.com/">
+                     <a href="{{ $socialMedia->instagram }}">
                      <span class="fa-stack fa-lg ig combo">
                         <i class="fa fa-circle fa-stack-2x circle"></i>
                         <i class="fa fa-instagram fa-stack-1x fa-inverse icon"></i>
                      </span>
                      </a>
-                     <a href="https://www.facebook.com/">
+                     <a href="{{ $socialMedia->facebook }}">
                      <span class="fa-stack fa-lg fb combo">
                         <i class="fa fa-circle fa-stack-2x circle"></i>
                         <i class="fa fa-facebook fa-stack-1x fa-inverse icon"></i>
                      </span>
                      </a>
-                     <a href="https://www.youtube.com/">
+                     <a href="{{ $socialMedia->youtube }}">
                      <span class="fa-stack fa-lg yt combo">
                         <i class="fa fa-circle fa-stack-2x circle"></i>
                         <i class="fa fa-youtube-play fa-stack-1x fa-inverse icon"></i>
                      </span>
                      </a>
-                     <a href="https://www.twitter.com/">
+                     <a href="{{ $socialMedia->twitter }}">
                      <span class="fa-stack fa-lg tw combo">
                         <i class="fa fa-circle fa-stack-2x circle"></i>
                         <i class="fa fa-twitter fa-stack-1x fa-inverse icon"></i>
                      </span>
                      </a>
-                     <a href="https://codepen.io">
-                     <span class="fa-stack fa-lg gt combo">
+                     <a href="{{ $socialMedia->whatsapp }}">
+                     <span class="fa-stack fa-lg wa combo">
                         <i class="fa fa-circle fa-stack-2x circle"></i>
-                        <i class="fa fa-codepen fa-stack-1x fa-inverse icon"></i>
-                     </span>
-                     </a>
-                     <a href="https://www.linkedin.com/">
-                     <span class="fa-stack fa-lg tw combo">
-                        <i class="fa fa-circle fa-stack-2x circle"></i>
-                        <i class="fa fa-linkedin fa-stack-1x fa-inverse icon"></i>
+                        <i class="fa fa-whatsapp fa-stack-1x fa-inverse icon"></i>
                      </span>
                      </a>
                   </div>
                </div>
-               <p class="copyright">The Glory Hotels © 2021</p>
+               <p class="copyright">{{ $about->name }} © 2021</p>
             </div>
          </footer>
       </div>

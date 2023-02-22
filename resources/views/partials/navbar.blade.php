@@ -1,14 +1,14 @@
 <!-- Navigation Bar -->
       <header class="header" id="header" style="font-family: 'Inter'; background: rgb(255, 255, 255);">
          <nav class="nav container">
-            <b><a href="/" class="nav__logo" style="font-family: 'Product Sans Bold'; letter-spacing: -.5px; font-size: 1.5rem;"> The Glory Hotels </a></b>
+            <b><a href="/" class="nav__logo" style="font-family: 'Product Sans Bold'; letter-spacing: -.5px; font-size: 1.5rem;"> {{ $about->name }} </a></b>
             <div class="nav__menu" id="nav-menu">
                <ul class="nav__list">
                   <li class="nav__item">
                      <a href="/" class="nav__link font-medium leading-6 text-black-600 transition duration-150 ease-out hover:text-gray-600">Home</a> 
                   </li>
                   <li class="nav__item">
-                     <a href="#about" class="nav__link font-medium leading-6 text-black-600 transition duration-150 ease-out hover:text-gray-600">About</a> 
+                     <a href="/#about" class="nav__link font-medium leading-6 text-black-600 transition duration-150 ease-out hover:text-gray-600">About</a> 
                   </li>
                   <li class="nav__item">
                      <a href="/pages/map" class="nav__link font-medium leading-6 text-black-600 transition duration-150 ease-out hover:text-gray-600">Hotels</a>
@@ -40,7 +40,7 @@
                     @auth
                         <a href="{{ url('/dashboard') }}" class="button button__header focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">Dashboard</a>
                      @else
-                        <a href="{{ route('login') }}" class="button button__header focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">Sign Up</a>
+                        <a href="{{ route('login') }}" class="button button__header focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">Sign In</a>
                     @endauth
                 {{-- </div> --}}
             @endif

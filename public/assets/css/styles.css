@@ -589,6 +589,11 @@ body.dark-theme {
 	color: #2196f3;
 }
 
+.wa:hover,
+.wa:hover .circle {
+	color: #00c803;
+}
+
 .gt:hover,
 .gt:hover .circle {
 	color: #1f1f1f;

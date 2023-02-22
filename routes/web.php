@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\DashboardAboutController;
 use App\Http\Controllers\DashboardSocialMediaController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PagesController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,70 +17,24 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('home', [
-        'title' => 'The Glory Hotels',
-        'name' => ''
-    ]);
-});
+Route::get('/', [HomeController::class, 'index']);
+
+// Route::get('/', function () {
+//     return view('home', [
+//         'title' => 'The Glory Hotels',
+//         'name' => ''
+//     ]);
+// });
 
 // ====================================== Pages
-Route::get('/pages/book', function () {
-    return view('pages.book', [
-        'title' => 'Book Now',
-        'name' => 'The Glory Hotels'
-    ]);
-});
-
-Route::get('/pages/covid', function () {
-    return view('pages.covid', [
-        'title' => 'COVID Protocols',
-        'name' => 'The Glory Hotels'
-    ]);
-});
-
-Route::get('/pages/dining', function () {
-    return view('pages.dining', [
-        'title' => 'Dining',
-        'name' => 'The Glory Hotels'
-    ]);
-});
-
-Route::get('/pages/donate', function () {
-    return view('pages.donate', [
-        'title' => 'Donate Now',
-        'name' => 'The Glory Hotels'
-    ]);
-});
-
-Route::get('/pages/map', function () {
-    return view('pages.map', [
-        'title' => 'Our Hotels',
-        'name' => 'The Glory Hotels'
-    ]);
-});
-
-Route::get('/pages/membership', function () {
-    return view('pages.membership', [
-        'title' => 'Be a Member',
-        'name' => 'The Glory Hotels'
-    ]);
-});
-
-Route::get('/pages/news', function () {
-    return view('pages.news', [
-        'title' => 'Latest News',
-        'name' => 'The Glory Hotels'
-    ]);
-});
-
-Route::get('/pages/team', function () {
-    return view('pages.team', [
-        'title' => 'Our Team',
-        'name' => 'The Glory Hotels'
-    ]);
-});
-
+Route::get('/pages/book', [PagesController::class, 'book']);
+Route::get('/pages/covid', [PagesController::class, 'covid']);
+Route::get('/pages/dining', [PagesController::class, 'dining']);
+Route::get('/pages/donate', [PagesController::class, 'donate']);
+Route::get('/pages/map', [PagesController::class, 'map']);
+Route::get('/pages/membership', [PagesController::class, 'membership']);
+Route::get('/pages/news', [PagesController::class, 'news']);
+Route::get('/pages/team', [PagesController::class, 'team']);
 
 
 // ====================================== Authorizatiom
