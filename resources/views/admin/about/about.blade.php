@@ -32,6 +32,7 @@
                                         @csrf
                                         <div class="form-group mb-3">
                                             <label class="form-label">Logo Primary</label>
+                                            <input type="hidden" name="oldImage" value="{{ $about->logo_primary }}">
                                             @if ($about->logo_primary)
                                                 <img src="{{ asset('storage/' . $about->logo_primary) }}" class="logo-primary img-fluid mb-3 col-sm-5 d-block">
                                             @else
@@ -57,6 +58,7 @@
                                     @csrf
                                         <div class="form-group mb-3">
                                             <label class="form-label">Logo Secondary</label>
+                                            <input type="hidden" name="oldImage" value="{{ $about->logo_secondary }}">
                                             @if ($about->logo_secondary)
                                                 <img src="{{ asset('storage/' . $about->logo_secondary) }}" class="logo-secondary img-fluid mb-3 col-sm-5 d-block">
                                             @else
@@ -94,6 +96,7 @@
                                     <div class="col-xl-12">
                                         <div class="form-group mb-3">
                                             <label class="form-label">Icon</label>
+                                            <input type="hidden" name="oldImage" value="{{ $about->icon }}">
                                             @if ($about->icon)
                                                 <img src="{{ asset('storage/' . $about->icon) }}" class="icon-preview img-fluid mb-3 col-sm-5 d-block">
                                             @else
@@ -113,6 +116,72 @@
                                     </div>
                                 </div>
                             </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xl-12">
+                <div id="panel-2" class="panel">
+                    <div class="panel-hdr">
+                        <h2>About</h2>
+                    </div>
+                    <div class="panel-container show">
+                        <div class="panel-content">
+                            <div class="row">
+                                <div class="col-xl-6">
+                                    <form method="post" enctype="multipart/form-data" action="/dashboard/about/1" autocomplete="off" class="d-inline">
+                                    @method('put')
+                                    @csrf
+                                        <div class="form-group mb-3">
+                                            <label class="form-label">Header Image</label>
+                                            <input type="hidden" name="oldImage" value="{{ $about->header_img }}">
+                                            @if ($about->header_img)
+                                                <img src="{{ asset('storage/' . $about->header_img) }}" class="header-img img-fluid mb-3 col-sm-5 d-block">
+                                            @else
+                                                <img class="header-img img-fluid mb-3 col-sm-5 d-block">
+                                            @endif
+                                            <div class="custom-file">
+                                                <input type="file" class="custom-file-input" id="header_img" name="header_img" onchange="headerImg()">
+                                                <label class="custom-file-label" for="header_img">Pilih gambar Header</label>
+                                            </div>
+                                            @error('header_img')
+                                                <p class="text-danger">{{ $message }}</p>
+                                            @enderror
+                                        </div>
+                                        <div class="form-group">
+                                            <button type="submit" class="btn btn-success btn-lg">Ubah</button>
+                                        </div>
+                                    </form>
+                                </div>
+                                
+                                <div class="col-xl-6">
+                                    <form method="post" action="/dashboard/about/1" enctype="multipart/form-data" autocomplete="off" class="d-inline">
+                                        @method('put')
+                                        @csrf
+                                        <div class="form-group mb-3">
+                                            <label class="form-label">About Image</label>
+                                            <input type="hidden" name="oldImage" value="{{ $about->about_img }}">
+                                            @if ($about->about_img)
+                                                <img src="{{ asset('storage/' . $about->about_img) }}" class="about-img img-fluid mb-3 col-sm-5 d-block">
+                                            @else
+                                                <img class="about-img img-fluid mb-3 col-sm-5 d-block">
+                                            @endif
+                                            <div class="custom-file">
+                                                <input type="file" class="custom-file-input" id="about_img" name="about_img" onchange="aboutImg()">
+                                                <label class="custom-file-label" for="about_img">Pilih Gambar About</label>
+                                            </div>
+                                            @error('about_img')
+                                                <p class="text-danger">{{ $message }}</p>
+                                            @enderror
+                                        </div>
+                                        <div class="form-group">
+                                            <button type="submit" class="btn btn-success btn-lg">Ubah</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -288,6 +357,34 @@
     function iconPreview() {
         const image = document.querySelector('#icon');
         const imgPreview = document.querySelector('.icon-preview')
+
+        imgPreview.style.display = 'block';
+
+        const oFReader = new FileReader();
+        oFReader.readAsDataURL(image.files[0])
+
+        oFReader.onload = function(oFREvent) {
+            imgPreview.src = oFREvent.target.result;
+        }
+    }
+
+    function headerImg() {
+        const image = document.querySelector('#header_img');
+        const imgPreview = document.querySelector('.header-img')
+
+        imgPreview.style.display = 'block';
+
+        const oFReader = new FileReader();
+        oFReader.readAsDataURL(image.files[0])
+
+        oFReader.onload = function(oFREvent) {
+            imgPreview.src = oFREvent.target.result;
+        }
+    }
+
+    function aboutImg() {
+        const image = document.querySelector('#about_img');
+        const imgPreview = document.querySelector('.about-img')
 
         imgPreview.style.display = 'block';
 

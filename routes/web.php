@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DashboardAboutController;
+use App\Http\Controllers\DashboardGalleryController;
 use App\Http\Controllers\DashboardSocialMediaController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PagesController;
@@ -50,10 +51,9 @@ require __DIR__ . '/auth.php';
 Route::get('/dashboard', function () {
     return view('admin.intel_analytics_dashboard');
 });
-
-Route::resource('/dashboard/socialMedia', DashboardSocialMediaController::class);
-
 Route::resource('/dashboard/about', DashboardAboutController::class);
+Route::resource('/dashboard/gallery', DashboardGalleryController::class);
+
 
 Route::get('/intel_marketing_dashboard', function () {
     return view('admin.intel_marketing_dashboard');

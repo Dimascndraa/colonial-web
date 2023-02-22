@@ -14,6 +14,16 @@
       <link rel="stylesheet" href="/assets/css/membership.css">
       <link rel="stylesheet" href="/assets/css/styles.css">
 
+         <style>
+            .banner{
+              /* background-image: url("{{ asset('storage/' . $about->header_img); }}"), rgba(0,0,0,0.8); */
+              background-image: linear-gradient(to right, rgba(0, 0, 0, .5), rgba(0, 0, 0, .5)), url("{{ asset('storage/' . $about->header_img); }}");
+              background-attachment: fixed;
+              background-size: cover;
+              background-position: center;
+            }
+        </style>
+      
       <!-- jQuery Owl Carousel -->
       <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>

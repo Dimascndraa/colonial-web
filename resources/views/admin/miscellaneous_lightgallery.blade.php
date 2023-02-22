@@ -254,7 +254,7 @@
 		+ lg-pager.js (extension)
 		+ lg-thumbnail.js (extension)
 		+ lg-zoom.js (extension) -->
-        <script src="js/miscellaneous/lightgallery/lightgallery.bundle.js"></script>
+        <script src="/js/miscellaneous/lightgallery/lightgallery.bundle.js"></script>
         <script>
             $(document).ready(function()
             {

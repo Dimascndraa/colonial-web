@@ -82,6 +82,7 @@ class DashboardAboutController extends Controller
             'logo_primary' => 'image|file|max:5120',
             'logo_secondaary' => 'image|file|max:5120',
             'icon' => 'image|file|max:5120',
+            'about_img' => 'image|file|max:5120',
             'address' => 'max:255',
             'google_maps' => '',
             'email' => 'max:255',
@@ -90,27 +91,57 @@ class DashboardAboutController extends Controller
 
         $validatedData = $request->validate($rules);
 
+        // if ($request->file('logo_primary')) {
+        //     if ($request->oldImage) {
+        //         Storage::delete($request->oldImage);
+        //     }
+        //     $validatedData['logo_primary'] = $request->file('logo_primary')->store('logo');
+        // }
+
         if ($request->file('logo_primary')) {
-            if ($request->oldImage) {
+            if ($request->file('logo_primary')) {
                 Storage::delete($request->oldImage);
+                $validatedData['logo_primary'] = $request->file('logo_primary')->store('logo');
+            } else {
+                $validatedData['logo_primary'] = $request->file('logo_primary')->store('logo');
             }
-            $validatedData['logo_primary'] = $request->file('logo_primary')->store('logo');
         }
 
         if ($request->file('logo_secondary')) {
-            if ($request->oldImage) {
+            if ($request->file('logo_secondary')) {
                 Storage::delete($request->oldImage);
+                $validatedData['logo_secondary'] = $request->file('logo_secondary')->store('logo');
+            } else {
+                $validatedData['logo_secondary'] = $request->file('logo_secondary')->store('logo');
             }
-            $validatedData['logo_secondary'] = $request->file('logo_secondary')->store('logo');
         }
 
         if ($request->file('icon')) {
-            if ($request->oldImage) {
+            if ($request->file('icon')) {
                 Storage::delete($request->oldImage);
+                $validatedData['icon'] = $request->file('icon')->store('logo/icon');
+            } else {
+                $validatedData['icon'] = $request->file('icon')->store('logo/icon');
             }
-            $validatedData['icon'] = $request->file('icon')->store('logo/icon');
         }
 
+        if ($request->file('header_img')) {
+            if ($request->file('header_img')) {
+                Storage::delete($request->oldImage);
+                $validatedData['header_img'] = $request->file('header_img')->store('header-img');
+            } else {
+                $validatedData['header_img'] = $request->file('header_img')->store('header-img');
+            }
+        }
+
+        if ($request->file('about_img')) {
+            if ($request->file('about_img')) {
+                Storage::delete($request->oldImage);
+                $validatedData['about_img'] = $request->file('about_img')->store('about-img');
+            } else {
+                $validatedData['about_img'] = $request->file('about_img')->store('about-img');
+            }
+        }
 
         // return $validatedData;
 

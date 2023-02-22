@@ -7,7 +7,7 @@
             <div class="title">{{ $title }}</div>
             <div class="top-subtitle subtitle">Best Memories Start Here</div>
          </div>
-         <div class="search-box">
+         <div class="search-box" style="z-index: 1000;">
             {{-- <div class="input-box">
                <p>Location</p>
                <input type="text" name="" id="" placeholder="Delhi">
@@ -39,7 +39,7 @@
       <section class="text-gray-600 body-font" id="about" style="font-family: 'Inter'; margin-top: 12%;">
          <div class="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center" style="margin: auto; width: 70%;">
             <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 mb-10 md:mb-0">
-               <img class="object-cover object-center rounded" alt="hero" src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8bHV4dXJ5JTIwcmVzb3J0fGVufDB8fDB8fA%3D%3D&w=1000&q=80">
+               <img class="object-cover object-center rounded" alt="hero" src="{{ asset('storage/' . $about->header_img) }}">
             </div>
             <div class="lg:flex-grow md:w-1/2 lg:pl-24 md:pl-16 flex flex-col md:items-start md:text-left items-center text-center">
                <h1 class="sec-head">About Us

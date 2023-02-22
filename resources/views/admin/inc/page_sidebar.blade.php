@@ -40,6 +40,12 @@
                     <span class="nav-link-text" data-i18n="nav.about">About</span>
                 </a>
             </li>
+            <li class="@yield('gallery-dashboard')">
+                <a href="/dashboard/gallery" title="Gallery" data-filter-tags="gallery">
+                    <i class="fal fa-images"></i>
+                    <span class="nav-link-text" data-i18n="nav.gallery">Galeri</span>
+                </a>
+            </li>
             <li class="@yield('pages')">
                 <a href="/" title="Analytics Dashboard" data-filter-tags="Pages">
                     <i class="fal fa-window"></i>

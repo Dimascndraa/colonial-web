@@ -19,6 +19,8 @@ class CreateAboutsTable extends Migration
             $table->string('alias')->nullable();
             $table->string('logo_primary')->nullable();
             $table->string('logo_secondary')->nullable();
+            $table->string('header_img')->nullable();
+            $table->string('about_img')->nullable();
             $table->string('icon')->nullable();
             $table->text('address')->nullable();
             $table->text('google_maps')->nullable();
