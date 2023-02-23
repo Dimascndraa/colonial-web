@@ -1,7 +1,8 @@
 <!-- BEGIN Left Aside -->
 <aside class="page-sidebar">
     <div class="page-logo">
-        <a href="#" class="page-logo-link press-scale-down d-flex align-items-center position-relative" data-toggle="modal" data-target="#modal-shortcut">
+        <a href="#" class="page-logo-link press-scale-down d-flex align-items-center position-relative"
+            data-toggle="modal" data-target="#modal-shortcut">
             <img src="/img/logo.png" alt="SmartAdmin WebApp" aria-roledescription="logo">
             <span class="page-logo-text mr-1">SmartAdmin WebApp</span>
             <span class="position-absolute text-white opacity-50 small pos-top pos-right mr-2 mt-n2"></span>
@@ -13,7 +14,8 @@
         <div class="nav-filter">
             <div class="position-relative">
                 <input type="text" id="nav_filter_input" placeholder="Filter menu" class="form-control" tabindex="0">
-                <a href="#" onclick="return false;" class="btn-primary btn-search-close js-waves-off" data-action="toggle" data-class="list-filter-active" data-target=".page-sidebar">
+                <a href="#" onclick="return false;" class="btn-primary btn-search-close js-waves-off"
+                    data-action="toggle" data-class="list-filter-active" data-target=".page-sidebar">
                     <i class="fal fa-chevron-up"></i>
                 </a>
             </div>
@@ -29,7 +31,8 @@
                 <span class="d-inline-block text-truncate text-truncate-sm">Toronto, Canada</span>
             </div>
             <img src="/img/card-backgrounds/cover-2-lg.png" class="cover" alt="cover">
-            <a href="#" onclick="return false;" class="pull-trigger-btn" data-action="toggle" data-class="list-filter-active" data-target=".page-sidebar" data-focus="nav_filter_input">
+            <a href="#" onclick="return false;" class="pull-trigger-btn" data-action="toggle"
+                data-class="list-filter-active" data-target=".page-sidebar" data-focus="nav_filter_input">
                 <i class="fal fa-angle-down"></i>
             </a>
         </div>
@@ -46,13 +49,19 @@
                     <span class="nav-link-text" data-i18n="nav.gallery">Galeri</span>
                 </a>
             </li>
+            <li class="@yield('contact-dashboard')">
+                <a href="/dashboard/contact" title="Contact" data-filter-tags="contact">
+                    <i class="fal fa-id-card"></i>
+                    <span class="nav-link-text" data-i18n="nav.contact-">Contact</span>
+                </a>
+            </li>
             <li class="@yield('pages')">
                 <a href="/" title="Analytics Dashboard" data-filter-tags="Pages">
                     <i class="fal fa-window"></i>
                     <span class="nav-link-text" data-i18n="nav.pages">Pages</span>
                 </a>
             </li>
-            
+
             <li class="@yield('menuintel')">
                 <a href="#" title="Application Intel" data-filter-tags="application intel">
                     <i class="fal fa-info-circle"></i>
@@ -60,18 +69,24 @@
                 </a>
                 <ul>
                     <li class="@yield('menuanalysticsashboard')">
-                        <a href="/" title="Analytics Dashboard" data-filter-tags="application intel analytics dashboard">
-                            <span class="nav-link-text" data-i18n="nav.application_intel_analytics_dashboard">Analytics Dashboard</span>
+                        <a href="/" title="Analytics Dashboard"
+                            data-filter-tags="application intel analytics dashboard">
+                            <span class="nav-link-text" data-i18n="nav.application_intel_analytics_dashboard">Analytics
+                                Dashboard</span>
                         </a>
                     </li>
                     <li class="@yield('menuintel_marketing_dashboard')">
-                        <a href="/intel_marketing_dashboard" title="Marketing Dashboard" data-filter-tags="application intel marketing dashboard">
-                            <span class="nav-link-text" data-i18n="nav.application_intel_marketing_dashboard">Marketing Dashboard</span>
+                        <a href="/intel_marketing_dashboard" title="Marketing Dashboard"
+                            data-filter-tags="application intel marketing dashboard">
+                            <span class="nav-link-text" data-i18n="nav.application_intel_marketing_dashboard">Marketing
+                                Dashboard</span>
                         </a>
                     </li>
                     <li class="@yield('menuintel_introduction')">
-                        <a href="/intel_introduction" title="Introduction" data-filter-tags="application intel introduction">
-                            <span class="nav-link-text" data-i18n="nav.application_intel_introduction">Introduction</span>
+                        <a href="/intel_introduction" title="Introduction"
+                            data-filter-tags="application intel introduction">
+                            <span class="nav-link-text"
+                                data-i18n="nav.application_intel_introduction">Introduction</span>
                         </a>
                     </li>
                     <li class="@yield('menuintel_privacy')">
@@ -80,7 +95,8 @@
                         </a>
                     </li>
                     <li class="@yield('menuintel_build_notes')">
-                        <a href="/intel_build_notes" title="Build Notes" data-filter-tags="application intel build notes">
+                        <a href="/intel_build_notes" title="Build Notes"
+                            data-filter-tags="application intel build notes">
                             <span class="nav-link-text" data-i18n="nav.application_intel_build_notes">Build Notes</span>
                             <span class="">v4.0.1</span>
                         </a>
@@ -94,23 +110,29 @@
                 </a>
                 <ul>
                     <li class="@yield('menusettings_how_it_works')">
-                        <a href="/settings_how_it_works" title="How it works" data-filter-tags="theme settings how it works">
+                        <a href="/settings_how_it_works" title="How it works"
+                            data-filter-tags="theme settings how it works">
                             <span class="nav-link-text" data-i18n="nav.theme_settings_how_it_works">How it works</span>
                         </a>
                     </li>
                     <li class="@yield('menusettings_layout_options')">
-                        <a href="/settings_layout_options" title="Layout Options" data-filter-tags="theme settings layout options">
-                            <span class="nav-link-text" data-i18n="nav.theme_settings_layout_options">Layout Options</span>
+                        <a href="/settings_layout_options" title="Layout Options"
+                            data-filter-tags="theme settings layout options">
+                            <span class="nav-link-text" data-i18n="nav.theme_settings_layout_options">Layout
+                                Options</span>
                         </a>
                     </li>
                     <li class="@yield('menusettings_skin_options')">
-                        <a href="/settings_skin_options" title="Skin Options" data-filter-tags="theme settings skin options">
+                        <a href="/settings_skin_options" title="Skin Options"
+                            data-filter-tags="theme settings skin options">
                             <span class="nav-link-text" data-i18n="nav.theme_settings_skin_options">Skin Options</span>
                         </a>
                     </li>
                     <li class="@yield('menusettings_saving_db')">
-                        <a href="/settings_saving_db" title="Saving to Database" data-filter-tags="theme settings saving to database">
-                            <span class="nav-link-text" data-i18n="nav.theme_settings_saving_to_database">Saving to Database</span>
+                        <a href="/settings_saving_db" title="Saving to Database"
+                            data-filter-tags="theme settings saving to database">
+                            <span class="nav-link-text" data-i18n="nav.theme_settings_saving_to_database">Saving to
+                                Database</span>
                         </a>
                     </li>
                 </ul>
@@ -126,14 +148,18 @@
                             <span class="nav-link-text" data-i18n="nav.package_info_documentation">Documentation</span>
                         </a>
                     </li>
-                        <li class="@yield('menuinfo_app_licensing')">
-                        <a href="/info_app_licensing" title="Product Licensing" data-filter-tags="package info product licensing">
-                            <span class="nav-link-text" data-i18n="nav.package_info_product_licensing">Product Licensing</span>
+                    <li class="@yield('menuinfo_app_licensing')">
+                        <a href="/info_app_licensing" title="Product Licensing"
+                            data-filter-tags="package info product licensing">
+                            <span class="nav-link-text" data-i18n="nav.package_info_product_licensing">Product
+                                Licensing</span>
                         </a>
                     </li>
-                        <li class="@yield('menuinfo_app_flavors')">
-                        <a href="/info_app_flavors" title="Different Flavors" data-filter-tags="package info different flavors">
-                            <span class="nav-link-text" data-i18n="nav.package_info_different_flavors">Different Flavors</span>
+                    <li class="@yield('menuinfo_app_flavors')">
+                        <a href="/info_app_flavors" title="Different Flavors"
+                            data-filter-tags="package info different flavors">
+                            <span class="nav-link-text" data-i18n="nav.package_info_different_flavors">Different
+                                Flavors</span>
                         </a>
                     </li>
                 </ul>
@@ -226,7 +252,8 @@
                         </a>
                     </li>
                     <li class="@yield('menuui_progress_bars')">
-                        <a href="/ui_progress_bars" title="Progress Bars" data-filter-tags="ui components progress bars">
+                        <a href="/ui_progress_bars" title="Progress Bars"
+                            data-filter-tags="ui components progress bars">
                             <span class="nav-link-text" data-i18n="nav.ui_components_progress_bars">Progress Bars</span>
                         </a>
                     </li>
@@ -268,63 +295,68 @@
                     <span class="nav-link-text" data-i18n="nav.utilities">Utilities</span>
                 </a>
                 <ul>
-                        <li class="@yield('menuutilities_borders')">
+                    <li class="@yield('menuutilities_borders')">
                         <a href="/utilities_borders" title="Borders" data-filter-tags="utilities borders">
                             <span class="nav-link-text" data-i18n="nav.utilities_borders">Borders</span>
                         </a>
                     </li>
-                        <li class="@yield('menuutilities_clearfix')">
+                    <li class="@yield('menuutilities_clearfix')">
                         <a href="/utilities_clearfix" title="Clearfix" data-filter-tags="utilities clearfix">
                             <span class="nav-link-text" data-i18n="nav.utilities_clearfix">Clearfix</span>
                         </a>
                     </li>
-                        <li class="@yield('menuutilities_color_pallet')">
-                        <a href="/utilities_color_pallet" title="Color Pallet" data-filter-tags="utilities color pallet">
+                    <li class="@yield('menuutilities_color_pallet')">
+                        <a href="/utilities_color_pallet" title="Color Pallet"
+                            data-filter-tags="utilities color pallet">
                             <span class="nav-link-text" data-i18n="nav.utilities_color_pallet">Color Pallet</span>
                         </a>
                     </li>
-                        <li class="@yield('menuutilities_display_property')">
-                        <a href="/utilities_display_property" title="Display Property" data-filter-tags="utilities display property">
-                            <span class="nav-link-text" data-i18n="nav.utilities_display_property">Display Property</span>
+                    <li class="@yield('menuutilities_display_property')">
+                        <a href="/utilities_display_property" title="Display Property"
+                            data-filter-tags="utilities display property">
+                            <span class="nav-link-text" data-i18n="nav.utilities_display_property">Display
+                                Property</span>
                         </a>
                     </li>
-                        <li class="@yield('menuutilities_fonts')">
+                    <li class="@yield('menuutilities_fonts')">
                         <a href="/utilities_fonts" title="Fonts" data-filter-tags="utilities fonts">
                             <span class="nav-link-text" data-i18n="nav.utilities_fonts">Fonts</span>
                         </a>
                     </li>
-                        <li class="@yield('menuutilities_flexbox')">
+                    <li class="@yield('menuutilities_flexbox')">
                         <a href="/utilities_flexbox" title="Flexbox" data-filter-tags="utilities flexbox">
                             <span class="nav-link-text" data-i18n="nav.utilities_flexbox">Flexbox</span>
                         </a>
                     </li>
-                        <li class="@yield('menuutilities_helpers')">
+                    <li class="@yield('menuutilities_helpers')">
                         <a href="/utilities_helpers" title="Helpers" data-filter-tags="utilities helpers">
                             <span class="nav-link-text" data-i18n="nav.utilities_helpers">Helpers</span>
                         </a>
                     </li>
-                        <li class="@yield('menuutilities_position')">
+                    <li class="@yield('menuutilities_position')">
                         <a href="/utilities_position" title="Position" data-filter-tags="utilities position">
                             <span class="nav-link-text" data-i18n="nav.utilities_position">Position</span>
                         </a>
                     </li>
-                        <li class="@yield('menuutilities_responsive_grid')">
-                        <a href="/utilities_responsive_grid" title="Responsive Grid" data-filter-tags="utilities responsive grid">
+                    <li class="@yield('menuutilities_responsive_grid')">
+                        <a href="/utilities_responsive_grid" title="Responsive Grid"
+                            data-filter-tags="utilities responsive grid">
                             <span class="nav-link-text" data-i18n="nav.utilities_responsive_grid">Responsive Grid</span>
                         </a>
                     </li>
-                        <li class="@yield('menuutilities_sizing')">
+                    <li class="@yield('menuutilities_sizing')">
                         <a href="/utilities_sizing" title="Sizing" data-filter-tags="utilities sizing">
                             <span class="nav-link-text" data-i18n="nav.utilities_sizing">Sizing</span>
                         </a>
                     </li>
-                        <li class="@yield('menuutilities_spacing')">
+                    <li class="@yield('menuutilities_spacing')">
                         <a href="/utilities_spacing" title="Spacing" data-filter-tags="utilities spacing">
                             <span class="nav-link-text" data-i18n="nav.utilities_spacing">Spacing</span>
                         </a>
                     </li>
-                        <li class="@yield('menuutilities_typography')">
-                        <a href="/utilities_typography" title="Typography" data-filter-tags="utilities typography fonts headings bold lead colors sizes link text states list styles truncate alignment">
+                    <li class="@yield('menuutilities_typography')">
+                        <a href="/utilities_typography" title="Typography"
+                            data-filter-tags="utilities typography fonts headings bold lead colors sizes link text states list styles truncate alignment">
                             <span class="nav-link-text" data-i18n="nav.utilities_typography">Typography</span>
                         </a>
                     </li>
@@ -334,13 +366,17 @@
                         </a>
                         <ul>
                             <li>
-                                <a href="javascript:void(0);" title="Sublevel Item" data-filter-tags="utilities menu child sublevel item">
-                                    <span class="nav-link-text" data-i18n="nav.utilities_menu_child_sublevel_item">Sublevel Item</span>
+                                <a href="javascript:void(0);" title="Sublevel Item"
+                                    data-filter-tags="utilities menu child sublevel item">
+                                    <span class="nav-link-text"
+                                        data-i18n="nav.utilities_menu_child_sublevel_item">Sublevel Item</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="javascript:void(0);" title="Another Item" data-filter-tags="utilities menu child another item">
-                                    <span class="nav-link-text" data-i18n="nav.utilities_menu_child_another_item">Another Item</span>
+                                <a href="javascript:void(0);" title="Another Item"
+                                    data-filter-tags="utilities menu child another item">
+                                    <span class="nav-link-text"
+                                        data-i18n="nav.utilities_menu_child_another_item">Another Item</span>
                                 </a>
                             </li>
                         </ul>
@@ -365,23 +401,31 @@
                         </a>
                         <ul>
                             <li class="@yield('menuicons_fontawesome_light')">
-                                <a href="/icons_fontawesome_light" title="Light" data-filter-tags="font icons fontawesome light">
-                                    <span class="nav-link-text" data-i18n="nav.font_icons_fontawesome_light">Light</span>
+                                <a href="/icons_fontawesome_light" title="Light"
+                                    data-filter-tags="font icons fontawesome light">
+                                    <span class="nav-link-text"
+                                        data-i18n="nav.font_icons_fontawesome_light">Light</span>
                                 </a>
                             </li>
                             <li class="@yield('menuicons_fontawesome_regular')">
-                                <a href="/icons_fontawesome_regular" title="Regular" data-filter-tags="font icons fontawesome regular">
-                                    <span class="nav-link-text" data-i18n="nav.font_icons_fontawesome_regular">Regular</span>
+                                <a href="/icons_fontawesome_regular" title="Regular"
+                                    data-filter-tags="font icons fontawesome regular">
+                                    <span class="nav-link-text"
+                                        data-i18n="nav.font_icons_fontawesome_regular">Regular</span>
                                 </a>
                             </li>
                             <li class="@yield('menuicons_fontawesome_solid')">
-                                <a href="/icons_fontawesome_solid" title="Solid" data-filter-tags="font icons fontawesome solid">
-                                    <span class="nav-link-text" data-i18n="nav.font_icons_fontawesome_solid">Solid</span>
+                                <a href="/icons_fontawesome_solid" title="Solid"
+                                    data-filter-tags="font icons fontawesome solid">
+                                    <span class="nav-link-text"
+                                        data-i18n="nav.font_icons_fontawesome_solid">Solid</span>
                                 </a>
                             </li>
                             <li class="@yield('menuicons_fontawesome_brand')">
-                                <a href="/icons_fontawesome_brand" title="Brand" data-filter-tags="font icons fontawesome brand">
-                                    <span class="nav-link-text" data-i18n="nav.font_icons_fontawesome_brand">Brand</span>
+                                <a href="/icons_fontawesome_brand" title="Brand"
+                                    data-filter-tags="font icons fontawesome brand">
+                                    <span class="nav-link-text"
+                                        data-i18n="nav.font_icons_fontawesome_brand">Brand</span>
                                 </a>
                             </li>
                         </ul>
@@ -392,13 +436,17 @@
                         </a>
                         <ul>
                             <li class="@yield('menuicons_nextgen_general')">
-                                <a href="/icons_nextgen_general" title="General" data-filter-tags="font icons nextgen icons general">
-                                    <span class="nav-link-text" data-i18n="nav.font_icons_nextgen_icons_general">General</span>
+                                <a href="/icons_nextgen_general" title="General"
+                                    data-filter-tags="font icons nextgen icons general">
+                                    <span class="nav-link-text"
+                                        data-i18n="nav.font_icons_nextgen_icons_general">General</span>
                                 </a>
                             </li>
                             <li class="@yield('menuicons_nextgen_base')">
-                                <a href="/icons_nextgen_base" title="Base" data-filter-tags="font icons nextgen icons base">
-                                    <span class="nav-link-text" data-i18n="nav.font_icons_nextgen_icons_base">Base</span>
+                                <a href="/icons_nextgen_base" title="Base"
+                                    data-filter-tags="font icons nextgen icons base">
+                                    <span class="nav-link-text"
+                                        data-i18n="nav.font_icons_nextgen_icons_base">Base</span>
                                 </a>
                             </li>
                         </ul>
@@ -409,13 +457,17 @@
                         </a>
                         <ul>
                             <li class="@yield('menuicons_stack_showcase')">
-                                <a href="/icons_stack_showcase" title="Showcase" data-filter-tags="font icons stack icons showcase">
-                                    <span class="nav-link-text" data-i18n="nav.font_icons_stack_icons_showcase">Showcase</span>
+                                <a href="/icons_stack_showcase" title="Showcase"
+                                    data-filter-tags="font icons stack icons showcase">
+                                    <span class="nav-link-text"
+                                        data-i18n="nav.font_icons_stack_icons_showcase">Showcase</span>
                                 </a>
                             </li>
                             <li class="@yield('menuicons_stack_generate')">
-                                <a href="/icons_stack_generate?layers=3" title="Generate Stack" data-filter-tags="font icons stack icons generate stack">
-                                    <span class="nav-link-text" data-i18n="nav.font_icons_stack_icons_generate_stack">Generate Stack</span>
+                                <a href="/icons_stack_generate?layers=3" title="Generate Stack"
+                                    data-filter-tags="font icons stack icons generate stack">
+                                    <span class="nav-link-text"
+                                        data-i18n="nav.font_icons_stack_icons_generate_stack">Generate Stack</span>
                                 </a>
                             </li>
                         </ul>
@@ -434,8 +486,10 @@
                         </a>
                     </li>
                     <li class="@yield('menutables_generate_style')">
-                        <a href="/tables_generate_style" title="Generate Table Style" data-filter-tags="tables generate table style">
-                            <span class="nav-link-text" data-i18n="nav.tables_generate_table_style">Generate Table Style</span>
+                        <a href="/tables_generate_style" title="Generate Table Style"
+                            data-filter-tags="tables generate table style">
+                            <span class="nav-link-text" data-i18n="nav.tables_generate_table_style">Generate Table
+                                Style</span>
                         </a>
                     </li>
                 </ul>
@@ -452,8 +506,10 @@
                         </a>
                     </li>
                     <li class="@yield('menuform_checkbox_radio')">
-                        <a href="/form_checkbox_radio" title="Checkbox & Radio" data-filter-tags="form stuff checkbox & radio">
-                            <span class="nav-link-text" data-i18n="nav.form_stuff_checkbox_&_radio">Checkbox & Radio</span>
+                        <a href="/form_checkbox_radio" title="Checkbox & Radio"
+                            data-filter-tags="form stuff checkbox & radio">
+                            <span class="nav-link-text" data-i18n="nav.form_stuff_checkbox_&_radio">Checkbox &
+                                Radio</span>
                         </a>
                     </li>
                     <li class="@yield('menuform_input_groups')">
@@ -470,12 +526,12 @@
                         <a href="/form_elements" title="Elements" data-filter-tags="form stuff elements">
                             <span class="nav-link-text" data-i18n="nav.form_stuff_elements">Elements</span>
                         </a>
-                    </li>  
+                    </li>
                     <li class="@yield('menuform_samples')">
                         <a href="/form_samples" title="Elements" data-filter-tags="form stuff samples">
                             <span class="nav-link-text" data-i18n="nav.form_stuff_samples">Samples</span>
                         </a>
-                    </li>                                                                        
+                    </li>
                 </ul>
             </li>
             <li class="nav-title">Plugins & Addons</li>
@@ -569,27 +625,32 @@
                         </a>
                     </li>
                     <li class="@yield('menudatatables_export')">
-                        <a href="/datatables_export" title="Export" data-filter-tags="datatables datagrid export tables pdf excel print csv">
+                        <a href="/datatables_export" title="Export"
+                            data-filter-tags="datatables datagrid export tables pdf excel print csv">
                             <span class="nav-link-text" data-i18n="nav.datatables_export">Export</span>
                         </a>
                     </li>
                     <li class="@yield('menudatatables_colreorder')">
-                        <a href="/datatables_colreorder" title="ColReorder" data-filter-tags="datatables datagrid colreorder">
+                        <a href="/datatables_colreorder" title="ColReorder"
+                            data-filter-tags="datatables datagrid colreorder">
                             <span class="nav-link-text" data-i18n="nav.datatables_colreorder">ColReorder</span>
                         </a>
                     </li>
                     <li class="@yield('menudatatables_columnfilter')">
-                        <a href="/datatables_columnfilter" title="ColumnFilter" data-filter-tags="datatables datagrid columnfilter">
+                        <a href="/datatables_columnfilter" title="ColumnFilter"
+                            data-filter-tags="datatables datagrid columnfilter">
                             <span class="nav-link-text" data-i18n="nav.datatables_columnfilter">ColumnFilter</span>
                         </a>
                     </li>
                     <li class="@yield('menudatatables_fixedcolumns')">
-                        <a href="/datatables_fixedcolumns" title="FixedColumns" data-filter-tags="datatables datagrid fixedcolumns">
+                        <a href="/datatables_fixedcolumns" title="FixedColumns"
+                            data-filter-tags="datatables datagrid fixedcolumns">
                             <span class="nav-link-text" data-i18n="nav.datatables_fixedcolumns">FixedColumns</span>
                         </a>
                     </li>
                     <li class="@yield('menudatatables_fixedheader')">
-                        <a href="/datatables_fixedheader" title="FixedHeader" data-filter-tags="datatables datagrid fixedheader">
+                        <a href="/datatables_fixedheader" title="FixedHeader"
+                            data-filter-tags="datatables datagrid fixedheader">
                             <span class="nav-link-text" data-i18n="nav.datatables_fixedheader">FixedHeader</span>
                         </a>
                     </li>
@@ -599,12 +660,14 @@
                         </a>
                     </li>
                     <li class="@yield('menudatatables_responsive')">
-                        <a href="/datatables_responsive" title="Responsive" data-filter-tags="datatables datagrid responsive">
+                        <a href="/datatables_responsive" title="Responsive"
+                            data-filter-tags="datatables datagrid responsive">
                             <span class="nav-link-text" data-i18n="nav.datatables_responsive">Responsive</span>
                         </a>
                     </li>
                     <li class="@yield('menudatatables_responsive_alt')">
-                        <a href="/datatables_responsive_alt" title="Responsive Alt" data-filter-tags="datatables datagrid responsive alt">
+                        <a href="/datatables_responsive_alt" title="Responsive Alt"
+                            data-filter-tags="datatables datagrid responsive alt">
                             <span class="nav-link-text" data-i18n="nav.datatables_responsive_alt">Responsive Alt</span>
                         </a>
                     </li>
@@ -614,7 +677,8 @@
                         </a>
                     </li>
                     <li class="@yield('menudatatables_rowreorder')">
-                        <a href="/datatables_rowreorder" title="RowReorder" data-filter-tags="datatables datagrid rowreorder">
+                        <a href="/datatables_rowreorder" title="RowReorder"
+                            data-filter-tags="datatables datagrid rowreorder">
                             <span class="nav-link-text" data-i18n="nav.datatables_rowreorder">RowReorder</span>
                         </a>
                     </li>
@@ -629,7 +693,8 @@
                         </a>
                     </li>
                     <li class="@yield('menudatatables_alteditor')">
-                        <a href="/datatables_alteditor" title="AltEditor" data-filter-tags="datatables datagrid alteditor">
+                        <a href="/datatables_alteditor" title="AltEditor"
+                            data-filter-tags="datatables datagrid alteditor">
                             <span class="nav-link-text" data-i18n="nav.datatables_alteditor">AltEditor</span>
                         </a>
                     </li>
@@ -648,13 +713,15 @@
                         </a>
                     </li>
                     <li class="@yield('menustatistics_chartjs')">
-                        <a href="/statistics_chartjs" title="Chart.js" data-filter-tags="statistics chart graphs chart.js bar pie">
+                        <a href="/statistics_chartjs" title="Chart.js"
+                            data-filter-tags="statistics chart graphs chart.js bar pie">
                             <span class="nav-link-text" data-i18n="nav.statistics_chart.js">Chart.js</span>
                             <span class="dl-ref label bg-primary-500 ml-2">205 KB</span>
                         </a>
                     </li>
                     <li class="@yield('menustatistics_chartist')">
-                        <a href="/statistics_chartist" title="Chartist.js" data-filter-tags="statistics chart graphs chartist.js">
+                        <a href="/statistics_chartist" title="Chartist.js"
+                            data-filter-tags="statistics chart graphs chartist.js">
                             <span class="nav-link-text" data-i18n="nav.statistics_chartist.js">Chartist.js</span>
                             <span class="dl-ref label bg-primary-600 ml-2">39 KB</span>
                         </a>
@@ -666,25 +733,29 @@
                         </a>
                     </li>
                     <li class="@yield('menustatistics_peity')">
-                        <a href="/statistics_peity" title="Peity" data-filter-tags="statistics chart graphs peity small">
+                        <a href="/statistics_peity" title="Peity"
+                            data-filter-tags="statistics chart graphs peity small">
                             <span class="nav-link-text" data-i18n="nav.statistics_peity">Peity</span>
                             <span class="dl-ref label bg-primary-700 ml-2">4 KB</span>
                         </a>
                     </li>
                     <li class="@yield('menustatistics_sparkline')">
-                        <a href="/statistics_sparkline" title="Sparkline" data-filter-tags="statistics chart graphs sparkline small tiny">
+                        <a href="/statistics_sparkline" title="Sparkline"
+                            data-filter-tags="statistics chart graphs sparkline small tiny">
                             <span class="nav-link-text" data-i18n="nav.statistics_sparkline">Sparkline</span>
                             <span class="dl-ref label bg-primary-700 ml-2">42 KB</span>
                         </a>
                     </li>
                     <li class="@yield('menustatistics_easypiechart')">
-                        <a href="/statistics_easypiechart" title="Easy Pie Chart" data-filter-tags="statistics chart graphs easy pie chart">
+                        <a href="/statistics_easypiechart" title="Easy Pie Chart"
+                            data-filter-tags="statistics chart graphs easy pie chart">
                             <span class="nav-link-text" data-i18n="nav.statistics_easy_pie_chart">Easy Pie Chart</span>
                             <span class="dl-ref label bg-primary-700 ml-2">4 KB</span>
                         </a>
                     </li>
                     <li class="@yield('menustatistics_dygraph')">
-                        <a href="/statistics_dygraph" title="Dygraph" data-filter-tags="statistics chart graphs dygraph complex">
+                        <a href="/statistics_dygraph" title="Dygraph"
+                            data-filter-tags="statistics chart graphs dygraph complex">
                             <span class="nav-link-text" data-i18n="nav.statistics_dygraph">Dygraph</span>
                             <span class="dl-ref label bg-primary-700 ml-2">120 KB</span>
                         </a>
@@ -698,7 +769,8 @@
                 </a>
                 <ul>
                     <li class="@yield('menunotifications_sweetalert2')">
-                        <a href="/notifications_sweetalert2" title="SweetAlert2" data-filter-tags="notifications sweetalert2">
+                        <a href="/notifications_sweetalert2" title="SweetAlert2"
+                            data-filter-tags="notifications sweetalert2">
                             <span class="nav-link-text" data-i18n="nav.notifications_sweetalert2">SweetAlert2</span>
                             <span class="dl-ref label bg-primary-500 ml-2">40 KB</span>
                         </a>
@@ -718,18 +790,22 @@
                 </a>
                 <ul>
                     <li class="@yield('menuform_plugins_colorpicker')">
-                        <a href="/form_plugins_colorpicker" title="Color Picker" data-filter-tags="form plugins color picker">
+                        <a href="/form_plugins_colorpicker" title="Color Picker"
+                            data-filter-tags="form plugins color picker">
                             <span class="nav-link-text" data-i18n="nav.form_plugins_color_picker">Color Picker</span>
                         </a>
                     </li>
                     <li class="@yield('menuform_plugins_datepicker')">
-                        <a href="/form_plugins_datepicker" title="Date Picker" data-filter-tags="form plugins date picker">
+                        <a href="/form_plugins_datepicker" title="Date Picker"
+                            data-filter-tags="form plugins date picker">
                             <span class="nav-link-text" data-i18n="nav.form_plugins_date_picker">Date Picker</span>
                         </a>
                     </li>
                     <li class="@yield('menuform_plugins_daterange_picker')">
-                        <a href="/form_plugins_daterange_picker" title="Date Range Picker" data-filter-tags="form plugins date range picker">
-                            <span class="nav-link-text" data-i18n="nav.form_plugins_date_range_picker">Date Range Picker</span>
+                        <a href="/form_plugins_daterange_picker" title="Date Range Picker"
+                            data-filter-tags="form plugins date range picker">
+                            <span class="nav-link-text" data-i18n="nav.form_plugins_date_range_picker">Date Range
+                                Picker</span>
                         </a>
                     </li>
                     <li class="@yield('menuform_plugins_dropzone')">
@@ -738,8 +814,10 @@
                         </a>
                     </li>
                     <li class="@yield('menuform_plugins_ionrangeslider')">
-                        <a href="/form_plugins_ionrangeslider" title="Ion.RangeSlider" data-filter-tags="form plugins ion.rangeslider">
-                            <span class="nav-link-text" data-i18n="nav.form_plugins_ion.rangeslider">Ion.RangeSlider</span>
+                        <a href="/form_plugins_ionrangeslider" title="Ion.RangeSlider"
+                            data-filter-tags="form plugins ion.rangeslider">
+                            <span class="nav-link-text"
+                                data-i18n="nav.form_plugins_ion.rangeslider">Ion.RangeSlider</span>
                         </a>
                     </li>
                     <li class="@yield('menuform_plugins_inputmask')">
@@ -748,7 +826,8 @@
                         </a>
                     </li>
                     <li class="@yield('menuform_plugin_imagecropper')">
-                        <a href="/form_plugin_imagecropper" title="Image Cropper" data-filter-tags="form plugins image cropper">
+                        <a href="/form_plugin_imagecropper" title="Image Cropper"
+                            data-filter-tags="form plugins image cropper">
                             <span class="nav-link-text" data-i18n="nav.form_plugins_image_cropper">Image Cropper</span>
                         </a>
                     </li>
@@ -758,7 +837,8 @@
                         </a>
                     </li>
                     <li class="@yield('menuform_plugin_summernote')">
-                        <a href="/form_plugin_summernote" title="Summernote" data-filter-tags="form plugins summernote texteditor editor">
+                        <a href="/form_plugin_summernote" title="Summernote"
+                            data-filter-tags="form plugins summernote texteditor editor">
                             <span class="nav-link-text" data-i18n="nav.form_plugins_summernote">Summernote</span>
                         </a>
                     </li>
@@ -771,12 +851,14 @@
                 </a>
                 <ul>
                     <li class="@yield('menumiscellaneous_fullcalendar')">
-                        <a href="/miscellaneous_fullcalendar" title="FullCalendar" data-filter-tags="miscellaneous fullcalendar">
+                        <a href="/miscellaneous_fullcalendar" title="FullCalendar"
+                            data-filter-tags="miscellaneous fullcalendar">
                             <span class="nav-link-text" data-i18n="nav.miscellaneous_fullcalendar">FullCalendar</span>
                         </a>
                     </li>
                     <li class="@yield('menumiscellaneous_lightgallery')">
-                        <a href="/miscellaneous_lightgallery" title="Light Gallery" data-filter-tags="miscellaneous light gallery">
+                        <a href="/miscellaneous_lightgallery" title="Light Gallery"
+                            data-filter-tags="miscellaneous light gallery">
                             <span class="nav-link-text" data-i18n="nav.miscellaneous_light_gallery">Light Gallery</span>
                             <span class="dl-ref label bg-primary-500 ml-2">61 KB</span>
                         </a>
@@ -816,7 +898,8 @@
                                 </a>
                             </li>
                             <li class="@yield('menupage_forum_discussion')">
-                                <a href="/page_forum_discussion" title="Discussion" data-filter-tags="pages forum discussion">
+                                <a href="/page_forum_discussion" title="Discussion"
+                                    data-filter-tags="pages forum discussion">
                                     <span class="nav-link-text" data-i18n="nav.pages_forum_discussion">Discussion</span>
                                 </a>
                             </li>
@@ -845,8 +928,10 @@
                         </ul>
                     </li>
                     <li class="@yield('menupage_invoice')">
-                        <a href="/page_invoice" title="Invoice (printable)" data-filter-tags="pages invoice (printable)">
-                            <span class="nav-link-text" data-i18n="nav.pages_invoice_(printable)">Invoice (printable)</span>
+                        <a href="/page_invoice" title="Invoice (printable)"
+                            data-filter-tags="pages invoice (printable)">
+                            <span class="nav-link-text" data-i18n="nav.pages_invoice_(printable)">Invoice
+                                (printable)</span>
                         </a>
                     </li>
                     <li class="@yield('menupages_authentication')">
@@ -855,13 +940,17 @@
                         </a>
                         <ul>
                             <li class="@yield('menupage_forget')">
-                                <a href="/page_forget" title="Forget Password" data-filter-tags="pages authentication forget password">
-                                    <span class="nav-link-text" data-i18n="nav.pages_authentication_forget_password">Forget Password</span>
+                                <a href="/page_forget" title="Forget Password"
+                                    data-filter-tags="pages authentication forget password">
+                                    <span class="nav-link-text"
+                                        data-i18n="nav.pages_authentication_forget_password">Forget Password</span>
                                 </a>
                             </li>
                             <li class="@yield('menupage_locked')">
-                                <a href="/page_locked" title="Locked Screen" data-filter-tags="pages authentication locked screen">
-                                    <span class="nav-link-text" data-i18n="nav.pages_authentication_locked_screen">Locked Screen</span>
+                                <a href="/page_locked" title="Locked Screen"
+                                    data-filter-tags="pages authentication locked screen">
+                                    <span class="nav-link-text"
+                                        data-i18n="nav.pages_authentication_locked_screen">Locked Screen</span>
                                 </a>
                             </li>
                             <li class="@yield('menupage_login')">
@@ -870,18 +959,24 @@
                                 </a>
                             </li>
                             <li class="@yield('menupage_login-alt')">
-                                <a href="/page_login-alt" title="Login Alt" data-filter-tags="pages authentication login alt">
-                                    <span class="nav-link-text" data-i18n="nav.pages_authentication_login_alt">Login Alt</span>
+                                <a href="/page_login-alt" title="Login Alt"
+                                    data-filter-tags="pages authentication login alt">
+                                    <span class="nav-link-text" data-i18n="nav.pages_authentication_login_alt">Login
+                                        Alt</span>
                                 </a>
                             </li>
                             <li class="@yield('menupage_register')">
-                                <a href="/page_register" title="Register" data-filter-tags="pages authentication register">
-                                    <span class="nav-link-text" data-i18n="nav.pages_authentication_register">Register</span>
+                                <a href="/page_register" title="Register"
+                                    data-filter-tags="pages authentication register">
+                                    <span class="nav-link-text"
+                                        data-i18n="nav.pages_authentication_register">Register</span>
                                 </a>
                             </li>
                             <li class="@yield('menupage_confirmation')">
-                                <a href="/page_confirmation" title="Confirmation" data-filter-tags="pages authentication confirmation">
-                                    <span class="nav-link-text" data-i18n="nav.pages_authentication_confirmation">Confirmation</span>
+                                <a href="/page_confirmation" title="Confirmation"
+                                    data-filter-tags="pages authentication confirmation">
+                                    <span class="nav-link-text"
+                                        data-i18n="nav.pages_authentication_confirmation">Confirmation</span>
                                 </a>
                             </li>
                         </ul>
@@ -892,18 +987,24 @@
                         </a>
                         <ul>
                             <li class="@yield('menupage_error')">
-                                <a href="/page_error" title="General Error" data-filter-tags="pages error pages general error">
-                                    <span class="nav-link-text" data-i18n="nav.pages_error_pages_general_error">General Error</span>
+                                <a href="/page_error" title="General Error"
+                                    data-filter-tags="pages error pages general error">
+                                    <span class="nav-link-text" data-i18n="nav.pages_error_pages_general_error">General
+                                        Error</span>
                                 </a>
                             </li>
                             <li class="@yield('menupage_error_404')">
-                                <a href="/page_error_404" title="Server Error" data-filter-tags="pages error pages server error">
-                                    <span class="nav-link-text" data-i18n="nav.pages_error_pages_server_error">Server Error</span>
+                                <a href="/page_error_404" title="Server Error"
+                                    data-filter-tags="pages error pages server error">
+                                    <span class="nav-link-text" data-i18n="nav.pages_error_pages_server_error">Server
+                                        Error</span>
                                 </a>
                             </li>
                             <li class="@yield('menupage_error_announced')">
-                                <a href="/page_error_announced" title="Announced Error" data-filter-tags="pages error pages announced error">
-                                    <span class="nav-link-text" data-i18n="nav.pages_error_pages_announced_error">Announced Error</span>
+                                <a href="/page_error_announced" title="Announced Error"
+                                    data-filter-tags="pages error pages announced error">
+                                    <span class="nav-link-text"
+                                        data-i18n="nav.pages_error_pages_announced_error">Announced Error</span>
                                 </a>
                             </li>
                         </ul>
@@ -931,7 +1032,8 @@
     <!-- END PRIMARY NAVIGATION -->
     <!-- NAV FOOTER -->
     <div class="nav-footer shadow-top">
-        <a href="#" onclick="return false;" data-action="toggle" data-class="nav-function-minify" class="hidden-md-down">
+        <a href="#" onclick="return false;" data-action="toggle" data-class="nav-function-minify"
+            class="hidden-md-down">
             <i class="ni ni-chevron-right"></i>
             <i class="ni ni-chevron-right"></i>
         </a>
