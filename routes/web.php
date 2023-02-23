@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DashboardAboutController;
+use App\Http\Controllers\DashboardAnnouncementController;
 use App\Http\Controllers\DashboardContactController;
 use App\Http\Controllers\DashboardGalleryController;
 use App\Http\Controllers\DashboardSocialMediaController;
@@ -55,6 +56,7 @@ Route::get('/dashboard', function () {
 Route::resource('/dashboard/about', DashboardAboutController::class);
 Route::resource('/dashboard/gallery', DashboardGalleryController::class);
 Route::resource('/dashboard/contact', DashboardContactController::class);
+Route::resource('/dashboard/announcement', DashboardAnnouncementController::class);
 
 
 Route::get('/intel_marketing_dashboard', function () {

@@ -17,6 +17,8 @@ class CreateAboutsTable extends Migration
             $table->id();
             $table->string('name')->nullable();
             $table->string('alias')->nullable();
+            $table->text('short_descript')->nullable();
+            $table->text('motto')->nullable();
             $table->string('logo_primary')->nullable();
             $table->string('logo_secondary')->nullable();
             $table->string('header_img')->nullable();

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\About;
 use App\Models\SocialMedia;
+use Faker\Provider\Lorem;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -79,6 +80,8 @@ class DashboardAboutController extends Controller
         $rules = [
             'name' => 'max:255',
             'alias' => 'max:255',
+            'short_descript' => '',
+            'motto' => 'max:255',
             'logo_primary' => 'image|file|max:5120',
             'logo_secondaary' => 'image|file|max:5120',
             'icon' => 'image|file|max:5120',

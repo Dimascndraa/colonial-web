@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\About;
+use App\Models\Announcement;
 use App\Models\SocialMedia;
 use Illuminate\Database\Seeder;
 
@@ -35,6 +36,12 @@ class DatabaseSeeder extends Seeder
             "whatsapp" => "whatsapp",
             "twitter" => "twitter",
             "youtube" => "youtube",
+        ]);
+
+        Announcement::create([
+            'title' => 'Pengumuman',
+            'body' => 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reiciendis eos optio vel nam consectetur ullam sit maiores necessitatibus commodi neque cupiditate alias sint consequatur ab, et provident quia error ad.',
+            'status' => 'aktif'
         ]);
     }
 }

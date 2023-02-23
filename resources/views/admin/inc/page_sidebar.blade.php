@@ -55,6 +55,12 @@
                     <span class="nav-link-text" data-i18n="nav.contact-">Contact</span>
                 </a>
             </li>
+            <li class="@yield('announcement-dashboard')">
+                <a href="/dashboard/announcement" title="Announcement" data-filter-tags="announcement">
+                    <i class="fal fa-bullhorn"></i>
+                    <span class="nav-link-text" data-i18n="nav.announcement">Announcement</span>
+                </a>
+            </li>
             <li class="@yield('pages')">
                 <a href="/" title="Analytics Dashboard" data-filter-tags="Pages">
                     <i class="fal fa-window"></i>

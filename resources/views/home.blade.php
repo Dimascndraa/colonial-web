@@ -5,7 +5,7 @@
 <section class="banner">
    <div class="content">
       <div class="title">{{ $title }}</div>
-      <div class="top-subtitle subtitle">Best Memories Start Here</div>
+      <div class="top-subtitle subtitle">{{ $about->motto }}</div>
    </div>
    <div class="search-box" style="z-index: 1000;">
       {{-- <div class="input-box">
@@ -46,11 +46,7 @@
          class="lg:flex-grow md:w-1/2 lg:pl-24 md:pl-16 flex flex-col md:items-start md:text-left items-center text-center">
          <h1 class="sec-head">About Us
          </h1>
-         <p class="mb-8 leading-relaxed" style="width: auto;">Over the last 25 years, {{ $title }} organisation has been
-            known for dependably providing the best Indian hospitality experience. It combines modern style and comfort
-            with the warmth of Old World hospitality. With more than 50 hotels and resorts across the world, it is one
-            of the world's largest hotel chains. We believe in the values of Indian hospitality, and our crew is our
-            most valuable asset, providing passionate and memorable hospitality to everyone we meet.</p>
+         <div class="mb-8 leading-relaxed" style="width: auto;">{!! $about->short_descript !!}</div>
          <div class="flex justify-center">
             <span class="inline-flex rounded-md shadow-sm">
                <a href="pages/team"
@@ -61,6 +57,20 @@
       </div>
    </div>
 </section>
+
+<!-- Annoucment Section -->
+@if ($announcement->status === "aktif")
+<div class='vision'>
+   <div class='row'>
+      <div class='column'>
+         <div class='vision-column'>
+            <h1 class=" sec-head">{{ $announcement->title }}</h1>
+            <p>{!! $announcement->body !!}</p>
+         </div>
+      </div>
+   </div>
+</div>
+@endif
 
 <!-- Hotels Section -->
 <section class="hotels" id="hotels">
@@ -76,23 +86,6 @@
       </div>
       @endforeach
 
-   </div>
-</div>
-
-<!-- Vision Section -->
-<div class='vision'>
-   <div class='row'>
-      <div class='column'>
-         <div class='vision-column'>
-            <h1 class=" sec-head">Our Vision</h1>
-            <p>{{ $title }} shall be the world's largest and best hotel and resort chain, with upscale, mid-scale, and
-               budget properties.
-               We will be dedicated to ensuring the well-being and self-worth of our coworkers, who are vital to our
-               success. Making a difference in our community and in India as a whole. Our fundamental reason for being
-               is to delight our guests, whose comfort, safety, security, and well-being are our primary concerns.
-            </p>
-         </div>
-      </div>
    </div>
 </div>
 
