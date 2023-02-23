@@ -838,54 +838,6 @@ body.dark-theme {
 	height: 400px;
 }
 
-.carousel .card-1 {
-	background-image: url(../img/h1.jpg);
-	background-size: cover;
-	background-position: center;
-}
-
-.carousel .card-2 {
-	background-image: url(../img/h2.jpg);
-	background-size: cover;
-	background-position: center;
-}
-
-.carousel .card-3 {
-	background-image: url(../img/h3.jpg);
-	background-size: cover;
-	background-position: center;
-}
-
-.carousel .card-4 {
-	background-image: url(../img/h4.jpg);
-	background-size: cover;
-	background-position: center;
-}
-
-.carousel .card-5 {
-	background-image: url(../img/h5.jpg);
-	background-size: cover;
-	background-position: center;
-}
-
-.carousel .card-6 {
-	background-image: url(../img/h6.jpg);
-	background-size: cover;
-	background-position: center;
-}
-
-.carousel .card-7 {
-	background-image: url(../img/h7.jpg);
-	background-size: cover;
-	background-position: center;
-}
-
-.carousel .card-8 {
-	background-image: url(../img/h8.jpg);
-	background-size: cover;
-	background-position: center;
-}
-
 .owl-dots {
 	text-align: center;
 	margin-top: 40px;

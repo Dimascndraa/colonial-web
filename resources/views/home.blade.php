@@ -64,26 +64,18 @@
 
 <!-- Hotels Section -->
 <section class="hotels" id="hotels">
-   <h1 class="sec-head" id="hotels-head">Our Hotels</h1>
+   <h1 class="sec-head" id="hotels-head">Gallery</h1>
 </section>
 <div class="wrapper">
    <div class="carousel owl-carousel">
-      <div class="card card-1">
+
+
+      @foreach($galleries as $gallery)
+      <div class="card card-gallery"
+         style="background-image: url({{ asset('storage/' . $gallery->image) }}); background-size: cover; background-position: center;">
       </div>
-      <div class="card card-2">
-      </div>
-      <div class="card card-3">
-      </div>
-      <div class="card card-4">
-      </div>
-      <div class="card card-5">
-      </div>
-      <div class="card card-6">
-      </div>
-      <div class="card card-7">
-      </div>
-      <div class="card card-8">
-      </div>
+      @endforeach
+
    </div>
 </div>
 
@@ -92,7 +84,7 @@
    <div class='row'>
       <div class='column'>
          <div class='vision-column'>
-            <h1 class="sec-head">Our Vision</h1>
+            <h1 class=" sec-head">Our Vision</h1>
             <p>{{ $title }} shall be the world's largest and best hotel and resort chain, with upscale, mid-scale, and
                budget properties.
                We will be dedicated to ensuring the well-being and self-worth of our coworkers, who are vital to our

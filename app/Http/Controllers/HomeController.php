@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\About;
+use App\Models\Gallery;
 use App\Models\SocialMedia;
 use Illuminate\Http\Request;
 
@@ -16,6 +17,7 @@ class HomeController extends Controller
             'title' => "$about->name",
             'about' => $about,
             'socialMedia' => $socialMedia,
+            'galleries' => Gallery::all(),
         ]);
     }
 }
