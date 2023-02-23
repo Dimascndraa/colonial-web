@@ -90,7 +90,6 @@
 </head>
 
 <body class="mod-bg-1 mod-nav-link header-function-fixed nav-function-fixed @yield('tmp_body')">
-    !-- DOC: script to save and load page settings -->
     <script>
         /**
              *	This script should be placed right after the body tag for fast execution 
