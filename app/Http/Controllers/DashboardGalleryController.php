@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Gallery;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class DashboardGalleryController extends Controller
 {
@@ -71,7 +72,10 @@ class DashboardGalleryController extends Controller
      */
     public function edit(Gallery $gallery)
     {
-        //
+        return view('admin.gallery.edit', [
+            'title' => 'Ubah Gallery',
+            'gallery' => $gallery
+        ]);
     }
 
     /**
@@ -83,7 +87,24 @@ class DashboardGalleryController extends Controller
      */
     public function update(Request $request, Gallery $gallery)
     {
-        //
+        $rules = [
+            'image' => 'image|file|max:5120',
+            'caption' => 'required|max:255',
+        ];
+
+        $validatedData = $request->validate($rules);
+
+        if ($request->file('image')) {
+            if ($request->file('image')) {
+                Storage::delete($request->oldImage);
+                $validatedData['image'] = $request->file('image')->store('gallery');
+            } else {
+                $validatedData['image'] = $request->file('image')->store('gallery');
+            }
+        }
+
+        Gallery::where('id', $gallery->id)->update($validatedData);
+        return redirect('/dashboard/gallery')->with('success', 'Gallery Berhasil Diperbarui!');
     }
 
     /**
@@ -94,6 +115,7 @@ class DashboardGalleryController extends Controller
      */
     public function destroy(Gallery $gallery)
     {
-        //
+        Gallery::destroy($gallery->id);
+        return redirect('/dashboard/gallery')->with('success', 'Gallery berhasil dihapus!');
     }
 }

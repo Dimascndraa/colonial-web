@@ -30,18 +30,26 @@
             <div id="panel-1" class="panel">
                 <div class="panel-hdr">
                     <h2>
-                        Tambah <span class="fw-300"><i>Gallery</i></span>
+                        Ubah <span class="fw-300"><i>Gallery</i></span>
                     </h2>
                 </div>
                 <div class="panel-container show">
                     <div class="panel-content">
-                        <form action="/dashboard/gallery" method="post" enctype="multipart/form-data">
+                        <form action="/dashboard/gallery/{{ $gallery->id }}" method="post"
+                            enctype="multipart/form-data">
+                            @method('put')
                             @csrf
                             <div class="row justify-content-center">
                                 <div class="col-lg-8">
                                     <div class="form-group mb-3">
-                                        <label class="form-label">Gambar</label>
-                                        <img class="image-preview img-fluid mb-3 col-sm-5 d-block">
+                                        <label class="form-label d-block">Gambar</label>
+                                        <input type="hidden" name="oldImage" value="{{ $gallery->image }}">
+                                        @if ($gallery->image)
+                                        <img src="{{ asset('storage/' . $gallery->image) }}"
+                                            class="preview-img img-fluid mb-3 col-sm-5 d-block">
+                                        @else
+                                        <img class="preview-img img-fluid mb-3 col-sm-5 d-block">
+                                        @endif
                                         <div class="custom-file">
                                             <input type="file" class="custom-file-input" id="image" name="image"
                                                 onchange="previewImage()">
@@ -55,15 +63,15 @@
                                     <div class="mb-3">
                                         <label for="caption" class="form-label">Caption</label>
                                         <input id="caption" type="hidden" name="caption">
-                                        <trix-editor input="caption"></trix-editor>
+                                        <trix-editor input="caption">{!! $gallery->caption !!}</trix-editor>
                                         @error('caption')
                                         <p class="text-danger">{{ $message }}</p>
                                         @enderror
                                     </div>
 
                                     <div class="form-group">
-                                        <button type="submit" class="btn btn-success btn-lg"><i
-                                                class="fal fa-plus-circle"></i> Tambah</button>
+                                        <button type="submit" class="btn btn-success btn-lg"><i class="fal fa-edit"></i>
+                                            Ubah</button>
                                     </div>
                                 </div>
                             </div>
@@ -222,7 +230,7 @@
 <script>
     function previewImage() {
         const image = document.querySelector('#image');
-        const imgPreview = document.querySelector('.image-preview')
+        const imgPreview = document.querySelector('.preview-img')
 
         imgPreview.style.display = 'block';
 
