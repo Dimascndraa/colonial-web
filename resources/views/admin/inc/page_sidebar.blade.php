@@ -92,7 +92,7 @@
                             data-filter-tags="application intel marketing dashboard">
                             <span class="nav-link-text" data-i18n="nav.application_intel_marketing_dashboard">Marketing
                                 Dashboard</span>
-                        </a>
+                        </a>    
                     </li>
                     <li class="@yield('menuintel_introduction')">
                         <a href="/intel_introduction" title="Introduction"
