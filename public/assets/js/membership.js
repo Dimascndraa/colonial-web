@@ -25,7 +25,7 @@ console.log("loaded");
 	var j = 0;
 	window.setInterval(function () {
 		j++;
-		document.getElementsByClassName("moving-image-bg")[0].style.backgroundPosition = j + "px 0px"
+		// document.getElementsByClassName("moving-image-bg")[0].style.backgroundPosition = j + "px 0px"
 	}, 18);
 	f(document).ready(function () {
 		f(".case-study-name:nth-child(1)").on("mouseenter", function () {

@@ -111,4 +111,17 @@ class PagesController extends Controller
             'about' => $about
         ]);
     }
+
+    public function review()
+    {
+        $about = About::all()->first();
+        $socialMedia = SocialMedia::all()->first();
+
+        return view('pages.review', [
+            'title' => "Review Us",
+            'socialMedia' => $socialMedia,
+            'name' => "$about->name",
+            'about' => $about
+        ]);
+    }
 }

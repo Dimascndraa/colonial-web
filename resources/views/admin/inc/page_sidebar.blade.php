@@ -61,6 +61,12 @@
                     <span class="nav-link-text" data-i18n="nav.announcement">Announcement</span>
                 </a>
             </li>
+            <li class="@yield('review-dashboard')">
+                <a href="/dashboard/review" title="Review" data-filter-tags="review">
+                    <i class="fal fa-star"></i>
+                    <span class="nav-link-text" data-i18n="nav.review">Review</span>
+                </a>
+            </li>
             <li class="@yield('pages')">
                 <a href="/" title="Analytics Dashboard" data-filter-tags="Pages">
                     <i class="fal fa-window"></i>

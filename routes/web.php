@@ -4,6 +4,7 @@ use App\Http\Controllers\DashboardAboutController;
 use App\Http\Controllers\DashboardAnnouncementController;
 use App\Http\Controllers\DashboardContactController;
 use App\Http\Controllers\DashboardGalleryController;
+use App\Http\Controllers\DashboardReviewController;
 use App\Http\Controllers\DashboardSocialMediaController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PagesController;
@@ -38,6 +39,7 @@ Route::get('/pages/map', [PagesController::class, 'map']);
 Route::get('/pages/membership', [PagesController::class, 'membership']);
 Route::get('/pages/news', [PagesController::class, 'news']);
 Route::get('/pages/team', [PagesController::class, 'team']);
+Route::get('/pages/review', [PagesController::class, 'review']);
 
 
 // ====================================== Authorizatiom
@@ -57,6 +59,7 @@ Route::resource('/dashboard/about', DashboardAboutController::class);
 Route::resource('/dashboard/gallery', DashboardGalleryController::class);
 Route::resource('/dashboard/contact', DashboardContactController::class);
 Route::resource('/dashboard/announcement', DashboardAnnouncementController::class);
+Route::resource('/dashboard/review', DashboardReviewController::class);
 
 
 Route::get('/intel_marketing_dashboard', function () {

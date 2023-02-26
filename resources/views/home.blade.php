@@ -1,6 +1,16 @@
 @extends('layouts.main')
 
 @section('container')
+<style>
+   .wrapper-rev .box {
+      height: 20rem;
+      border: 1px solid #c3c3c3a4;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+   }
+</style>
+
 <!-- Banner Section -->
 <section class="banner">
    <div class="content">
@@ -78,8 +88,6 @@
 </section>
 <div class="wrapper">
    <div class="carousel owl-carousel">
-
-
       @foreach($galleries as $gallery)
       <div class="card card-gallery"
          style="background-image: url({{ asset('storage/' . $gallery->image) }}); background-size: cover; background-position: center;">
@@ -92,71 +100,33 @@
 <!-- Testimonials Section -->
 <h1 class="sec-head" style="text-align: center; margin: 40px; margin-top: 100px;">Testimonials</h1>
 <div class="wrapper-rev">
-   <div class="box">
-      <i class='bx bxs-quote-left quote'></i>
-      <p>Beyond 5 stars! Stayed last week at this wonderful hotel. Everything exceeds ones wildest dream of a hotel. On
-         top they have the most wonderful staff, extremely kind and helpful with every wish.</p>
-      <div class="content">
-         <div class="info">
-            <div class="name">Oshane Smith</div>
-            <div class="stars">
-               <i class='bx bxs-star'></i>
-               <i class='bx bxs-star'></i>
-               <i class='bx bxs-star'></i>
-               <i class='bx bxs-star'></i>
-               <i class='bx bxs-star'></i>
+   <div class="carousel owl-carousel">
+      @foreach($reviews as $review)
+      <div class="box">
+         {{-- <i class='bx bxs-quote-left quote'></i> --}}
+         <p>
+            <i class='bx bxs-quote-left quote'></i>
+            {{ $review->body }}
+         </p>
+         <div class="content">
+            <div class="info">
+               <div class="name">{{ $review->name }}</div>
+               <div class="stars">
+                  <i class='bx bxs-star'></i>
+                  <i class='bx bxs-star'></i>
+                  <i class='bx bxs-star'></i>
+                  <i class='bx bxs-star'></i>
+                  <i class='bx bxs-star-half'></i>
+               </div>
+            </div>
+            <div class="image">
+               <img
+                  src="https://png.pngtree.com/png-vector/20190930/ourlarge/pngtree-hooded-computer-hacker-with-laptop-icon-png-image_1762179.jpg"
+                  alt="">
             </div>
          </div>
-         <div class="image">
-            <img
-               src="https://png.pngtree.com/png-vector/20190930/ourlarge/pngtree-hooded-computer-hacker-with-laptop-icon-png-image_1762179.jpg"
-               alt="">
-         </div>
       </div>
-   </div>
-   <div class="box">
-      <i class='bx bxs-quote-left quote'></i>
-      <p>This is indeed a place you do not want to leave, and when you do it is with one hope to come back. Everything
-         was great, staff was very helpful and we were extremely happy with the meeting!</p>
-      <div class="content">
-         <div class="info">
-            <div class="name">Rajesh Singh</div>
-            <div class="stars">
-               <i class='bx bxs-star'></i>
-               <i class='bx bxs-star'></i>
-               <i class='bx bxs-star'></i>
-               <i class='bx bxs-star'></i>
-               <i class='bx bx-star'></i>
-            </div>
-         </div>
-         <div class="image">
-            <img
-               src="https://png.pngtree.com/png-vector/20190930/ourlarge/pngtree-hooded-computer-hacker-with-laptop-icon-png-image_1762179.jpg"
-               alt="">
-         </div>
-      </div>
-   </div>
-   <div class="box">
-      <i class='bx bxs-quote-left quote'></i>
-      <p>The service here has just been fantastic; whatever we needed was brought to us right away. The food was so
-         delicious; the entire experience was really great. A must stay hotel for everyone.</p>
-      <div class="content">
-         <div class="info">
-            <div class="name">Khushi Mittal</div>
-            <div class="stars">
-               <i class='bx bxs-star'></i>
-               <i class='bx bxs-star'></i>
-               <i class='bx bxs-star'></i>
-               <i class='bx bxs-star'></i>
-               <i class='bx bxs-star-half'></i>
-            </div>
-         </div>
-         <div class="image">
-            <img
-               src="https://png.pngtree.com/png-vector/20190930/ourlarge/pngtree-hooded-computer-hacker-with-laptop-icon-png-image_1762179.jpg"
-               alt="">
-         </div>
-      </div>
+      @endforeach
    </div>
 </div>
 

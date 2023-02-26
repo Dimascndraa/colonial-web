@@ -924,7 +924,7 @@ body.dark-theme {
 }
 
 .wrapper-rev {
-	max-width: 1200px;
+	/* max-width: 1200px; */
 	margin: auto;
 	padding: 0 20px;
 	display: flex;
@@ -936,7 +936,8 @@ body.dark-theme {
 
 .wrapper-rev .box {
 	background: #fff;
-	width: calc(33% - 10px);
+	/* width: calc(33% - 10px); */
+	width: 100%;
 	padding: 25px;
 	border-radius: 10px;
 	border: 1px solid #c3c3c3a4;

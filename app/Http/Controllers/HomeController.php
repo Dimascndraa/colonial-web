@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\About;
 use App\Models\Announcement;
 use App\Models\Gallery;
+use App\Models\Review;
 use App\Models\SocialMedia;
 use Illuminate\Http\Request;
 
@@ -21,6 +22,7 @@ class HomeController extends Controller
             'socialMedia' => $socialMedia,
             'announcement' => $announcement,
             'galleries' => Gallery::all(),
+            'reviews' => Review::all(),
         ]);
     }
 }
