@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\About;
 use App\Models\Contact;
 use Illuminate\Http\Request;
 
@@ -16,6 +17,7 @@ class DashboardContactController extends Controller
     {
         return view('admin.contact.index', [
             'title' => "Contact",
+            'about' => About::all()->first(),
             'contacts' => Contact::all()
         ]);
     }

@@ -3,8 +3,8 @@
     <div class="page-logo">
         <a href="#" class="page-logo-link press-scale-down d-flex align-items-center position-relative"
             data-toggle="modal" data-target="#modal-shortcut">
-            <img src="/img/logo.png" alt="SmartAdmin WebApp" aria-roledescription="logo">
-            <span class="page-logo-text mr-1">SmartAdmin WebApp</span>
+            <img src="/img/logo.png" alt="{{ $about->name }}" aria-roledescription="logo">
+            <span class="page-logo-text mr-1">{{ $about->name }}</span>
             <span class="position-absolute text-white opacity-50 small pos-top pos-right mr-2 mt-n2"></span>
             <i class="fal fa-angle-down d-inline-block ml-1 fs-lg color-primary-300"></i>
         </a>
@@ -25,7 +25,7 @@
             <div class="info-card-text">
                 <a href="#" class="d-flex align-items-center text-white">
                     <span class="text-truncate text-truncate-sm d-inline-block">
-                        Dr. Codex Lantern
+                        {{ auth()->user()->name }}
                     </span>
                 </a>
                 <span class="d-inline-block text-truncate text-truncate-sm">Toronto, Canada</span>
@@ -38,37 +38,37 @@
         </div>
         <ul id="js-nav-menu" class="nav-menu">
             <li class="@yield('about-dashboard')">
-                <a href="/dashboard/about/1/edit" title="About" data-filter-tags="about">
+                <a href="{{ url('/dashboard/about/1/edit') }}" title="About" data-filter-tags="about">
                     <i class="fal fa-info-circle"></i>
                     <span class="nav-link-text" data-i18n="nav.about">About</span>
                 </a>
             </li>
             <li class="@yield('gallery-dashboard')">
-                <a href="/dashboard/gallery" title="Gallery" data-filter-tags="gallery">
+                <a href="{{ route('dashboardGallery') }}" title="Gallery" data-filter-tags="gallery">
                     <i class="fal fa-images"></i>
                     <span class="nav-link-text" data-i18n="nav.gallery">Galeri</span>
                 </a>
             </li>
             <li class="@yield('contact-dashboard')">
-                <a href="/dashboard/contact" title="Contact" data-filter-tags="contact">
+                <a href="{{ route('dashboardContact') }}" title="Contact" data-filter-tags="contact">
                     <i class="fal fa-id-card"></i>
                     <span class="nav-link-text" data-i18n="nav.contact-">Contact</span>
                 </a>
             </li>
             <li class="@yield('announcement-dashboard')">
-                <a href="/dashboard/announcement" title="Announcement" data-filter-tags="announcement">
+                <a href="{{ route('dashboardAnnouncement') }}" title="Announcement" data-filter-tags="announcement">
                     <i class="fal fa-bullhorn"></i>
                     <span class="nav-link-text" data-i18n="nav.announcement">Announcement</span>
                 </a>
             </li>
             <li class="@yield('review-dashboard')">
-                <a href="/dashboard/review" title="Review" data-filter-tags="review">
+                <a href="{{ route('dashboardReview') }}" title="Review" data-filter-tags="review">
                     <i class="fal fa-star"></i>
                     <span class="nav-link-text" data-i18n="nav.review">Review</span>
                 </a>
             </li>
             <li class="@yield('pages')">
-                <a href="/" title="Analytics Dashboard" data-filter-tags="Pages">
+                <a href="{{ route('beranda') }}" title="Analytics Dashboard" data-filter-tags="Pages">
                     <i class="fal fa-window"></i>
                     <span class="nav-link-text" data-i18n="nav.pages">Pages</span>
                 </a>

@@ -749,6 +749,9 @@ select {
 .m-2 {
   margin: 0.5rem;
 }
+.m-3 {
+  margin: 0.75rem;
+}
 .m-auto {
   margin: auto;
 }
@@ -801,9 +804,6 @@ select {
 }
 .mb-10 {
   margin-bottom: 2.5rem;
-}
-.mb-16 {
-  margin-bottom: 4rem;
 }
 .mb-2 {
   margin-bottom: 0.5rem;
@@ -994,9 +994,6 @@ select {
 .max-w-7xl {
   max-width: 80rem;
 }
-.max-w-screen-lg {
-  max-width: 1024px;
-}
 .max-w-screen-xl {
   max-width: 1280px;
 }
@@ -1105,9 +1102,6 @@ select {
 }
 .grid-cols-1 {
   grid-template-columns: repeat(1, minmax(0, 1fr));
-}
-.grid-cols-3 {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 .flex-row {
   flex-direction: row;
@@ -1715,9 +1709,6 @@ select {
 .duration-300 {
   transition-duration: 300ms;
 }
-.duration-500 {
-  transition-duration: 500ms;
-}
 .duration-75 {
   transition-duration: 75ms;
 }
@@ -1777,10 +1768,6 @@ select {
 .hover\:text-gray-900:hover {
   --tw-text-opacity: 1;
   color: rgb(17 24 39 / var(--tw-text-opacity));
-}
-.hover\:text-indigo-500:hover {
-  --tw-text-opacity: 1;
-  color: rgb(99 102 241 / var(--tw-text-opacity));
 }
 .focus\:z-10:focus {
   z-index: 10;

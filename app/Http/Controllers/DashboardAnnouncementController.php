@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\About;
 use App\Models\Announcement;
 use Illuminate\Http\Request;
 
@@ -16,6 +17,7 @@ class DashboardAnnouncementController extends Controller
     {
         return view('admin.announcement.index', [
             'title' => 'Pengumuman',
+            'about' => About::all()->first(),
             'announcements' => Announcement::all(),
         ]);
     }
@@ -62,6 +64,7 @@ class DashboardAnnouncementController extends Controller
     {
         return view('admin.announcement.edit', [
             'title' => "Pengumuman",
+            'about' => About::all()->first(),
             'announcement' => $announcement
         ]);
     }

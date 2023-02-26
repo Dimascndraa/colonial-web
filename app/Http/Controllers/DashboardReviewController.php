@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\About;
 use App\Models\Review;
 use Illuminate\Http\Request;
 
@@ -16,6 +17,7 @@ class DashboardReviewController extends Controller
     {
         return view('admin.review.index', [
             'title' => "Reviews",
+            'about' => About::all()->first(),
             'reviews' => Review::all()
         ]);
     }

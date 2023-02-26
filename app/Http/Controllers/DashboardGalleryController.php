@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\About;
 use App\Models\Gallery;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -17,6 +18,7 @@ class DashboardGalleryController extends Controller
     {
         return view('admin.gallery.index', [
             'title' => "Gallery",
+            'about' => About::all()->first(),
             'galleries' => Gallery::all()
         ]);
     }
@@ -29,7 +31,8 @@ class DashboardGalleryController extends Controller
     public function create()
     {
         return view('admin.gallery.create', [
-            "title" => "Tambah Gallery"
+            "title" => "Tambah Gallery",
+            'about' => About::all()->first(),
         ]);
     }
 
@@ -74,6 +77,7 @@ class DashboardGalleryController extends Controller
     {
         return view('admin.gallery.edit', [
             'title' => 'Ubah Gallery',
+            'about' => About::all()->first(),
             'gallery' => $gallery
         ]);
     }

@@ -8,6 +8,7 @@ use App\Http\Controllers\DashboardReviewController;
 use App\Http\Controllers\DashboardSocialMediaController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PagesController;
+use App\Models\About;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,25 +22,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [HomeController::class, 'index']);
-
-// Route::get('/', function () {
-//     return view('home', [
-//         'title' => 'The Glory Hotels',
-//         'name' => ''
-//     ]);
-// });
+Route::get('/', [HomeController::class, 'index'])->name('beranda');
 
 // ====================================== Pages
-Route::get('/pages/book', [PagesController::class, 'book']);
-Route::get('/pages/covid', [PagesController::class, 'covid']);
-Route::get('/pages/dining', [PagesController::class, 'dining']);
-Route::get('/pages/donate', [PagesController::class, 'donate']);
-Route::get('/pages/map', [PagesController::class, 'map']);
-Route::get('/pages/membership', [PagesController::class, 'membership']);
-Route::get('/pages/news', [PagesController::class, 'news']);
-Route::get('/pages/team', [PagesController::class, 'team']);
-Route::get('/pages/review', [PagesController::class, 'review']);
+Route::get('/pages/book', [PagesController::class, 'book'])->name('booking');
+Route::get('/pages/covid', [PagesController::class, 'covid'])->name('covid');
+Route::get('/pages/dining', [PagesController::class, 'dining'])->name('dinning');
+Route::get('/pages/donate', [PagesController::class, 'donate'])->name('donate');
+Route::get('/pages/map', [PagesController::class, 'map'])->name('map');
+Route::get('/pages/membership', [PagesController::class, 'membership'])->name('membership');
+Route::get('/pages/news', [PagesController::class, 'news'])->name('news');
+Route::get('/pages/team', [PagesController::class, 'team'])->name('team');
+Route::get('/pages/review', [PagesController::class, 'review'])->name('review');
 
 
 // ====================================== Authorizatiom
@@ -53,13 +47,17 @@ require __DIR__ . '/auth.php';
 
 // INTEL
 Route::get('/dashboard', function () {
-    return view('admin.intel_analytics_dashboard');
-});
-Route::resource('/dashboard/about', DashboardAboutController::class);
-Route::resource('/dashboard/gallery', DashboardGalleryController::class);
-Route::resource('/dashboard/contact', DashboardContactController::class);
-Route::resource('/dashboard/announcement', DashboardAnnouncementController::class);
-Route::resource('/dashboard/review', DashboardReviewController::class);
+    $about = About::all()->first();
+    return view('admin.intel_analytics_dashboard', [
+        'title' => 'Dashboard',
+        'about' => $about
+    ]);
+})->name('dashboard');
+Route::resource('/dashboard/about', DashboardAboutController::class)->name('edit', 'dashboardAbout');
+Route::resource('/dashboard/gallery', DashboardGalleryController::class)->name('index', 'dashboardGallery');
+Route::resource('/dashboard/contact', DashboardContactController::class)->name('index', 'dashboardContact');
+Route::resource('/dashboard/announcement', DashboardAnnouncementController::class)->name('index', 'dashboardAnnouncement');
+Route::resource('/dashboard/review', DashboardReviewController::class)->name('index', 'dashboardReview');
 
 
 Route::get('/intel_marketing_dashboard', function () {
