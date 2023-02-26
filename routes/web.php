@@ -46,7 +46,7 @@ require __DIR__ . '/auth.php';
 // ======================================= Admin
 
 // INTEL
-Route::group(['middleware' => ['auth']], function () {
+Route::group(['middleware' => ['auth', 'CekLevel:admin']], function () {
     Route::get('/dashboard', function () {
         $about = About::all()->first();
         return view('admin.intel_analytics_dashboard', [
