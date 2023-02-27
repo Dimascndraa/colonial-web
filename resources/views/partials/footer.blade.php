@@ -12,18 +12,18 @@
             <div class="bscol-md-2 item">
                <h3>Pages</h3>
                <ul>
-                  <li><a href="index.html">Home</a></li>
-                  <li><a href="pages/map.html">Hotels</a></li>
-                  <li><a href="pages/login.html">Login</a></li>
-                  <li><a href="pages/book.html">Book Hotel</a></li>
+                  <li><a href="index">Home</a></li>
+                  <li><a href="pages/map">Hotels</a></li>
+                  <li><a href="/login">Login</a></li>
+                  <li><a href="pages/book">Book Hotel</a></li>
                </ul>
             </div>
             <div class="bscol-md-2 item">
                <h3>Know More</h3>
                <ul>
-                  <li><a href="pages/membership.html">Membership</a></li>
-                  <li><a href="pages/team.html">Our Team</a></li>
-                  <li><a href="pages/news.html">News</a></li>
+                  <li><a href="pages/facility">Facility</a></li>
+                  <li><a href="pages/team">Our Team</a></li>
+                  <li><a href="pages/news">News</a></li>
                </ul>
             </div>
             <div class="bscol-md-2 item">

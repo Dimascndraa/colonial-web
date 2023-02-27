@@ -1,3 +1,4 @@
+{{-- @dd($about) --}}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,6 +11,8 @@
   <!-- Icons -->
   <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  {{--
+  <link rel="shortcut icon" href="{{ asset('/storage/' . $about->icon ) }}" type="image/x-icon"> --}}
 
 
   <!-- CSS -->

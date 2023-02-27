@@ -8,6 +8,8 @@ use App\Http\Controllers\DashboardReviewController;
 use App\Http\Controllers\DashboardSocialMediaController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PagesController;
+use App\Http\Middleware\CekLevel;
+use App\Http\Kernel;
 use App\Models\About;
 use Illuminate\Support\Facades\Route;
 
@@ -30,7 +32,7 @@ Route::get('/pages/covid', [PagesController::class, 'covid'])->name('covid');
 Route::get('/pages/dining', [PagesController::class, 'dining'])->name('dinning');
 Route::get('/pages/donate', [PagesController::class, 'donate'])->name('donate');
 Route::get('/pages/map', [PagesController::class, 'map'])->name('map');
-Route::get('/pages/membership', [PagesController::class, 'membership'])->name('membership');
+Route::get('/pages/facility', [PagesController::class, 'facility'])->name('facility');
 Route::get('/pages/news', [PagesController::class, 'news'])->name('news');
 Route::get('/pages/team', [PagesController::class, 'team'])->name('team');
 Route::get('/pages/review', [PagesController::class, 'review'])->name('review');
@@ -39,14 +41,14 @@ Route::get('/pages/review', [PagesController::class, 'review'])->name('review');
 // ====================================== Authorizatiom
 Route::get('/dashboard', function () {
     return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+})->middleware(['auth', 'CekLevel:admin'])->name('dashboard');
 
 require __DIR__ . '/auth.php';
 
 // ======================================= Admin
 
 // INTEL
-Route::group(['middleware' => ['auth', 'CekLevel:admin']], function () {
+Route::group(['middleware' => ['auth', 'ceklevel:admin']], function () {
     Route::get('/dashboard', function () {
         $about = About::all()->first();
         return view('admin.intel_analytics_dashboard', [
@@ -59,6 +61,7 @@ Route::group(['middleware' => ['auth', 'CekLevel:admin']], function () {
     Route::resource('/dashboard/contact', DashboardContactController::class)->name('index', 'dashboardContact');
     Route::resource('/dashboard/announcement', DashboardAnnouncementController::class)->name('index', 'dashboardAnnouncement');
     Route::resource('/dashboard/review', DashboardReviewController::class)->name('index', 'dashboardReview');
+    Route::resource('/dashboard/admin', DashboardReviewController::class)->name('index', 'dashboardReview');
 
     Route::get('/intel_marketing_dashboard', function () {
         return view('admin.intel_marketing_dashboard');

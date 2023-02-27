@@ -73,13 +73,13 @@ class PagesController extends Controller
         ]);
     }
 
-    public function membership()
+    public function facility()
     {
         $about = About::all()->first();
         $socialMedia = SocialMedia::all()->first();
 
-        return view('pages.membership', [
-            'title' => "Be a Member",
+        return view('pages.facility', [
+            'title' => "Our Facility",
             'socialMedia' => $socialMedia,
             'name' => "$about->name",
             'about' => $about
