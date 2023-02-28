@@ -39,7 +39,11 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->intended(RouteServiceProvider::HOME)->with('success', 'Gallery telah ditambahkan!');
+        if (auth()->user()->level === "admin") {
+            return redirect()->intended(RouteServiceProvider::DASHBOARD);
+        } else if (auth()->user()->level === "user") {
+            return redirect()->intended(RouteServiceProvider::HOME);
+        }
     }
 
     /**
@@ -56,6 +60,6 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect('/')->with('success', 'Gallery telah ditambahkan!');
+        return redirect('/');
     }
 }

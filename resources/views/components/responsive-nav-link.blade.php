@@ -8,7 +8,7 @@ ease-in-out'
 hover:bg-gray-50 hover:border-gray-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-gray-300
 transition duration-150 ease-in-out';
 @endphp --}}
-<a {{ $attributes->merge(['class' => 'button button__header focus:outline-none focus:ring-2 focus:ring-offset-2
-    focus:ring-blue-500']) }}>
+<a {{ $attributes->merge(['class' => 'nav__link font-medium leading-6 text-black-600 transition duration-150 ease-out
+    hover:text-gray-600 link']) }} style="display: inline-block; width: 300%;">
     {{ $slot }}
 </a>

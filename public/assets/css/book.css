@@ -87,7 +87,7 @@ h3.sub-heading-agileits {
 .booking-form-w3layouts input[type="email"],
 .booking-form-w3layouts textarea,
 select.form-control,
-input#datepicker {
+input#checkin, input#checkout {
 	width: 100%;
 	font-weight: 300;
 	color: #000;

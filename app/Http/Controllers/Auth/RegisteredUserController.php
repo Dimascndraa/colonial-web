@@ -45,6 +45,8 @@ class RegisteredUserController extends Controller
         $validatedData['level'] = 'user';
         $validatedData['password'] = bcrypt($request->password);
 
+        // return $validatedData;
+
         $user = User::create($validatedData);
 
         event(new Registered($user));

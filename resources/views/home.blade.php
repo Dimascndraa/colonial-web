@@ -35,7 +35,7 @@
          <input type="number" name="" id="" placeholder="100">
       </div>
       <div class="input-box">
-         <br>
+         <p>&nbsp;</p>
          <span class="inline-flex rounded-md shadow-sm">
             <a href="pages/book" style="padding: 12px 15px 12px 15px; font-size: 17px; font-family: Inter;"
                class="inline-flex items-center justify-center px-4 py-2 text-base font-medium leading-6 text-white whitespace-no-wrap bg-blue-600 border rounded-md shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
@@ -103,7 +103,6 @@
    <div class="carousel owl-carousel">
       @foreach($reviews as $review)
       <div class="box">
-         {{-- <i class='bx bxs-quote-left quote'></i> --}}
          <p>
             <i class='bx bxs-quote-left quote'></i>
             {{ $review->body }}
