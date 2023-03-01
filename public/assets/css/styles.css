@@ -736,7 +736,7 @@ body.dark-theme {
     font-family: Inter;
     font-style: normal;
     font-weight: 500;
-    font-size: 30px;
+    font-size: 16px;
     line-height: 140.62%;
     letter-spacing: -0.04em;
     color: #fff;
@@ -746,28 +746,11 @@ body.dark-theme {
     font-family: Product Sans Bold;
     margin-top: 83px;
     font-weight: 700;
-    font-size: 110px;
-    line-height: 105px;
+    font-size: 50px;
+    line-height: 60px;
     letter-spacing: -0.04em;
     color: #fff;
 }
-
-/* Mobile */
-@media only screen and (max-width: 600px) {
-    .content .title {
-        line-height: 60px;
-        font-size: 50px;
-    }
-}
-
-/* Tablet */
-@media only screen and (max-width: 922px) {
-    .content .title {
-        line-height: 85px;
-        font-size: 90px;
-    }
-}
-
 
 .banner-subtitle {
     margin-top: 13px;
@@ -783,6 +766,9 @@ body.dark-theme {
     width: 80%;
     border-radius: 15px;
     display: block;
+    /* justify-content: center;
+    align-items: center;
+    flex-wrap: wrap; */
     background: #fff;
     padding: 30px 50px;
     min-height: 200px;
@@ -828,7 +814,7 @@ body.dark-theme {
 
 .sec-head {
     font-family: Product Sans Bold;
-    font-size: 60px;
+    font-size: 30px;
     letter-spacing: -0.04em;
 }
 
@@ -1041,12 +1027,4 @@ body.dark-theme {
 
 .link:hover {
     border: none !important;
-}
-@media only screen and (min-width: 922px) {
-	.search-box {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		flex-wrap: wrap;
-	}
 }

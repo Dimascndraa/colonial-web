@@ -1,0 +1,36 @@
+/* Tablet */
+@media only screen and (min-width: 600px) {
+    .content .title {
+        line-height: 80px;
+        font-size: 80px;
+    }
+
+    .sec-head {
+        font-family: Product Sans Bold;
+        font-size: 40px;
+        letter-spacing: -0.04em;
+    }
+}
+
+/* Desktop */
+@media only screen and (min-width: 922px) {
+    .content .title {
+        line-height: 85px;
+        font-size: 100px;
+    }
+
+    .search-box {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    .guest {
+        width: 143px;
+    }
+
+    #about {
+        margin-top: 10rem;
+    }
+}

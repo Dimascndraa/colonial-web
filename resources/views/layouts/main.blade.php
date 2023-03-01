@@ -18,6 +18,7 @@
   <!-- CSS -->
   <link rel="stylesheet" href="/assets/css/membership.css">
   <link rel="stylesheet" href="/assets/css/styles.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
 
   <style>
     .banner {

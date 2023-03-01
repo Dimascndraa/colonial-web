@@ -15,13 +15,9 @@
 <section class="banner">
    <div class="content">
       <div class="title">{{ $title }}</div>
-      <div class="top-subtitle subtitle">{{ $about->motto }}</div>
+      <div class="top-subtitle subtitle px-3">{{ $about->motto }}</div>
    </div>
    <div class="search-box" style="z-index: 1000;">
-      {{-- <div class="input-box">
-         <p>Location</p>
-         <input type="text" name="" id="" placeholder="Delhi">
-      </div> --}}
       <div class="input-box">
          <p>Check-In Date</p>
          <input type="date" name="" id="" placeholder="01/01/2021">
@@ -30,7 +26,7 @@
          <p>Check-Out Date</p>
          <input type="date" name="" id="" placeholder="01/01/2021">
       </div>
-      <div class="input-box">
+      <div class="input-box guest">
          <p>Guests</p>
          <input type="number" name="" id="" placeholder="100">
       </div>
@@ -48,12 +44,11 @@
 
 <!-- About Section -->
 <section class="text-gray-600 body-font" id="about" style="font-family: 'Inter'; margin-top: 12%;">
-   <div class="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center" style="margin: auto; width: 70%;">
-      <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 mb-10 md:mb-0">
+   <div class="container mx-auto flex py-24 lg:flex-row flex-col items-center" style="margin: auto; width: 70%;">
+      <div class="lg:w-1/2 pr-4 pl-4">
          <img class="object-cover object-center rounded" alt="hero" src="{{ asset('storage/' . $about->about_img) }}">
       </div>
-      <div
-         class="lg:flex-grow md:w-1/2 lg:pl-24 md:pl-16 flex flex-col md:items-start md:text-left items-center text-center">
+      <div class="lg:w-1/2 pr-4 pl-4">
          <h1 class="sec-head">About Us
          </h1>
          <div class="mb-8 leading-relaxed" style="width: auto;">{!! $about->short_descript !!}</div>
