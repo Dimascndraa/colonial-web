@@ -67,6 +67,12 @@
                     <span class="nav-link-text" data-i18n="nav.review">Review</span>
                 </a>
             </li>
+            <li class="@yield('news-dashboard')">
+                <a href="{{ route('dashboardPosts') }}" title="News" data-filter-tags="news">
+                    <i class="fal fa-newspaper"></i>
+                    <span class="nav-link-text" data-i18n="nav.news">News</span>
+                </a>
+            </li>
             <li class="@yield('pages')">
                 <a href="{{ route('beranda') }}" title="Analytics Dashboard" data-filter-tags="Pages">
                     <i class="fal fa-window"></i>
@@ -92,7 +98,7 @@
                             data-filter-tags="application intel marketing dashboard">
                             <span class="nav-link-text" data-i18n="nav.application_intel_marketing_dashboard">Marketing
                                 Dashboard</span>
-                        </a>    
+                        </a>
                     </li>
                     <li class="@yield('menuintel_introduction')">
                         <a href="/intel_introduction" title="Introduction"

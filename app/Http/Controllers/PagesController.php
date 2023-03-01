@@ -86,19 +86,6 @@ class PagesController extends Controller
         ]);
     }
 
-    public function news()
-    {
-        $about = About::all()->first();
-        $socialMedia = SocialMedia::all()->first();
-
-        return view('pages.news', [
-            'title' => "Latest News",
-            'socialMedia' => $socialMedia,
-            'name' => "$about->name",
-            'about' => $about
-        ]);
-    }
-
     public function team()
     {
         $about = About::all()->first();

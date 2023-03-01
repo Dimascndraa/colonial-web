@@ -5,7 +5,7 @@
 <!-- Membership Programmes -->
 <h1 class="sec-head" style="text-align: center; margin-top: 100px;">Let's see our facilities!</h1>
 <div class=" py-6 md:py-12" style="font-family: Inter;">
-   <div class="container mx-auto" style="padding-right: 100px; padding-left: 100px;">
+   <div class="container mx-auto">
       <div class=" lg:flex lg:-mx-4 mt-6 md:mt-12" style="margin: auto;">
          <div class=" lg:w-1/3 my-4 md:my-6 ">
             <div style="border: 1px solid rgba(200, 200, 200, 0.712); border-radius: 9px;"

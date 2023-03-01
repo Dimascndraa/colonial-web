@@ -26,6 +26,17 @@
                     @enderror
                 </div>
             </div>
+            <div class="form-group row">
+                <label class="col-xl-12 form-label" for="fname">username</label>
+                <div class="col-12 pr-1">
+                    <input type="text" name="username" value="{{ old('username') }}" required autofocus
+                        class="form-control" placeholder="Full username" required>
+                    <div class="invalid-feedback">No, you missed this one.</div>
+                    @error('username')
+                    <div class="text-danger ms-3">{{ $message }}</div>
+                    @enderror
+                </div>
+            </div>
             <div class="form-group">
                 <label class="form-label" for="email">Your Email</label>
                 <input id="email" class="form-control" type="email" name="email" value="{{ old('email') }}" required

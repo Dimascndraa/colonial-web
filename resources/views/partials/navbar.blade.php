@@ -23,7 +23,7 @@
                   class="nav__link font-medium leading-6 text-black-600 transition duration-150 ease-out hover:text-gray-600">Facility</a>
             </li>
             <li class="nav__item">
-               <a href="{{ route('news') }}"
+               <a href="{{ route('posts') }}"
                   class="nav__link font-medium leading-6 text-black-600 transition duration-150 ease-out hover:text-gray-600">News</a>
             </li>
 

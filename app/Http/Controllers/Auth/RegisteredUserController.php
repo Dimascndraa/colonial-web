@@ -39,10 +39,11 @@ class RegisteredUserController extends Controller
     {
         $validatedData = $request->validate([
             'name' => ['required', 'string', 'max:255'],
+            'username' => ['required', 'string', 'max:255', 'unique:users'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
-        $validatedData['level'] = 'user';
+        $validatedData['level'] = 'admin';
         $validatedData['password'] = bcrypt($request->password);
 
         // return $validatedData;
@@ -53,6 +54,6 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        return redirect(RouteServiceProvider::HOME);
+        return redirect(RouteServiceProvider::LOGIN);
     }
 }

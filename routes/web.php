@@ -4,13 +4,17 @@ use App\Http\Controllers\DashboardAboutController;
 use App\Http\Controllers\DashboardAnnouncementController;
 use App\Http\Controllers\DashboardContactController;
 use App\Http\Controllers\DashboardGalleryController;
+use App\Http\Controllers\DashboardNewsController;
+use App\Http\Controllers\DashboardPostController;
 use App\Http\Controllers\DashboardReviewController;
 use App\Http\Controllers\DashboardSocialMediaController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PagesController;
-use App\Http\Middleware\CekLevel;
-use App\Http\Kernel;
+use App\Http\Controllers\PostController;
 use App\Models\About;
+use App\Models\Category;
+use App\Models\Post;
+use App\Models\SocialMedia;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,9 +37,41 @@ Route::get('/pages/dining', [PagesController::class, 'dining'])->name('dinning')
 Route::get('/pages/donate', [PagesController::class, 'donate'])->name('donate');
 Route::get('/pages/map', [PagesController::class, 'map'])->name('map');
 Route::get('/pages/facility', [PagesController::class, 'facility'])->name('facility');
-Route::get('/pages/news', [PagesController::class, 'news'])->name('news');
 Route::get('/pages/team', [PagesController::class, 'team'])->name('team');
 Route::get('/pages/review', [PagesController::class, 'review'])->name('review');
+Route::get('/pages/posts', [PostController::class, 'index'])->name('posts');
+Route::get('/pages/posts/{post:slug}', [PostController::class, 'showPost'])->name('detail_posts');
+
+// Route::get('/pages/categories/{category:slug}', function (Category $category) {
+//     $about = About::all()->first();
+//     $socialMedia = SocialMedia::all()->first();
+
+//     return view('pages.category', [
+//         'title' => "Latest News",
+//         'socialMedia' => $socialMedia,
+//         'name' => "$about->name",
+//         'about' => $about,
+//         'category' => Category::all()
+//     ]);
+// });
+
+// Route::get('/pages/authors/{user:username}', function (User $user) {
+//     $about = About::all()->first();
+//     $socialMedia = SocialMedia::all()->first();
+
+//     return view('pages.posts', [
+//         'title' => "Latest News",
+//         'socialMedia' => $socialMedia,
+//         'name' => "$about->name",
+//         'about' => $about,
+//         'posts' => $user->posts
+//     ]);
+// });
+
+
+Route::get('/admin', function () {
+    return view('auth.register');
+});
 
 
 // ====================================== Authorizatiom
@@ -62,6 +98,7 @@ Route::group(['middleware' => ['auth', 'ceklevel:admin']], function () {
     Route::resource('/dashboard/announcement', DashboardAnnouncementController::class)->name('index', 'dashboardAnnouncement');
     Route::resource('/dashboard/review', DashboardReviewController::class)->name('index', 'dashboardReview');
     Route::resource('/dashboard/admin', DashboardReviewController::class)->name('index', 'dashboardReview');
+    Route::resource('/dashboard/posts', DashboardPostController::class)->name('index', 'dashboardPosts');
 
     Route::get('/intel_marketing_dashboard', function () {
         return view('admin.intel_marketing_dashboard');
