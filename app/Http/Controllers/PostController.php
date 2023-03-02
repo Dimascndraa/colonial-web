@@ -30,7 +30,7 @@ class PostController extends Controller
         $about = About::all()->first();
         $socialMedia = SocialMedia::all()->first();
 
-        return view('pages.posts', [
+        return view('pages.post', [
             'title' => "Latest News",
             'socialMedia' => $socialMedia,
             'name' => "$about->name",

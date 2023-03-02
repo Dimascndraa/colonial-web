@@ -63,6 +63,7 @@ class DashboardAboutController extends Controller
         $socialMedia = SocialMedia::all()->first();
         // return $socialMedia;
         return view('admin.about.about', [
+            'title' => 'Identitas',
             'about' => $about,
             'socialMedia' => $socialMedia
         ]);

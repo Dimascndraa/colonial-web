@@ -1,19 +1,18 @@
 @extends('admin.inc.layout')
 @section('title','Announcement')
-@section('announcement-dashboard','active')
-{{-- @section('menuform_samples','active') --}}
+@section('dashboardAnnouncement','active')
 @section('content')
 <main id="js-page-content" role="main" class="page-content">
     <ol class="breadcrumb page-breadcrumb">
-        <li class="breadcrumb-item"><a href="javascript:void(0);">SmartAdmin</a></li>
-        <li class="breadcrumb-item active">Announcement</li>
+        <li class="breadcrumb-item"><a href="javascript:void(0);">{{ $about->name }}</a></li>
+        <li class="breadcrumb-item active">Pengumuman</li>
         <li class="position-absolute pos-top pos-right d-none d-sm-block"><span class="js-get-date"></span></li>
     </ol>
     <div class="subheader">
         <h1 class="subheader-title">
-            Announcement
+            <i class="fal fa-bullhorn"></i> Pengumuman
             <small>
-                Default input elements for forms
+                Menu Pengumuman
             </small>
         </h1>
     </div>
@@ -23,7 +22,7 @@
             <div id="panel-1" class="panel">
                 <div class="panel-hdr">
                     <h2>
-                        Announcement
+                        Pengumuman
                     </h2>
                 </div>
                 <div class="panel-container show">

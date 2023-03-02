@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\About;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,11 @@ class DashboardAdminController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.users.index', [
+            'title' => 'Admin',
+            'about' => About::all()->first(),
+            'users' => User::all()
+        ]);
     }
 
     /**

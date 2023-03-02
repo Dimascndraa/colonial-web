@@ -40,8 +40,8 @@
             @csrf
             <div class="form-group">
                 <label class="form-label" for="username">Email</label>
-                <input type="email" name="email" :value="old('email')" required autofocus
-                    class="form-control form-control-lg" placeholder="your id or email" required>
+                <input type="text" name="username" :value="old('text')" required autofocus
+                    class="form-control form-control-lg" placeholder="your username" required>
                 <div class="invalid-feedback">No, you missed this one.</div>
                 <div class="help-block">Your unique username to app</div>
             </div>

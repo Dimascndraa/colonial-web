@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\About;
 use App\Models\Announcement;
 use App\Models\SocialMedia;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -42,6 +43,17 @@ class DatabaseSeeder extends Seeder
             'title' => 'Pengumuman',
             'body' => 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reiciendis eos optio vel nam consectetur ullam sit maiores necessitatibus commodi neque cupiditate alias sint consequatur ab, et provident quia error ad.',
             'status' => 'aktif'
+        ]);
+
+        User::create([
+            'name' => "Dimas Candra Pebriyanto",
+            'username' => "d.candra",
+            'email' => "dimascndraa18@gmail.com",
+            'address' => "Panyingkiran, Jatitujuh",
+            'hp' => "6283865284307",
+            'whatsapp' => true,
+            'password' => bcrypt('password'),
+            'level' => 'admin',
         ]);
     }
 }

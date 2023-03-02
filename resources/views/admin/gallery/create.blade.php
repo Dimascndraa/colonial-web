@@ -1,19 +1,20 @@
 @extends('admin.inc.layout')
-@section('title','Gallery')
-@section('gallery-dashboard','active')
-{{-- @section('menuform_samples','active') --}}
+@section('dashboardGallery','active open')
+@section('createGallery','active')
 @section('content')
+
 <main id="js-page-content" role="main" class="page-content">
     <ol class="breadcrumb page-breadcrumb">
-        <li class="breadcrumb-item"><a href="javascript:void(0);">SmartAdmin</a></li>
-        <li class="breadcrumb-item active">Gallery</li>
+        <li class="breadcrumb-item"><a href="javascript:void(0);">{{ $about->name }}</a></li>
+        <li class="breadcrumb-item"><a href="{{ url('dashboardGallery') }}">Galeri</a></li>
+        <li class="breadcrumb-item active"><a href="javascript:void(0);">Tambah</a></li>
         <li class="position-absolute pos-top pos-right d-none d-sm-block"><span class="js-get-date"></span></li>
     </ol>
     <div class="subheader">
         <h1 class="subheader-title">
-            Galleries
+            <i class="fal fa-plus-square"></i> Galeri
             <small>
-                Default input elements for forms
+                Menu Tambah Galeri
             </small>
         </h1>
     </div>
@@ -30,7 +31,7 @@
             <div id="panel-1" class="panel">
                 <div class="panel-hdr">
                     <h2>
-                        Tambah <span class="fw-300"><i>Gallery</i></span>
+                        Tambah <span class="fw-300"><i>Galeri</i></span>
                     </h2>
                 </div>
                 <div class="panel-container show">

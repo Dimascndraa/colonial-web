@@ -11,10 +11,6 @@
                   class="nav__link font-medium leading-6 text-black-600 transition duration-150 ease-out hover:text-gray-600">Home</a>
             </li>
             <li class="nav__item">
-               <a href="{{ url('/#about') }}"
-                  class="nav__link font-medium leading-6 text-black-600 transition duration-150 ease-out hover:text-gray-600">About</a>
-            </li>
-            <li class="nav__item">
                <a href="{{ route('map') }}"
                   class="nav__link font-medium leading-6 text-black-600 transition duration-150 ease-out hover:text-gray-600">Hotels</a>
             </li>

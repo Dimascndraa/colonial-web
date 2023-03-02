@@ -1,19 +1,18 @@
 @extends('admin.inc.layout')
-@section('title','Posts')
-@section('posts-dashboard','active')
-{{-- @section('menuform_samples','active') --}}
+@section('dashboardNews', 'active')
+@section('showNews','active')
 @section('content')
 <main id="js-page-content" role="main" class="page-content">
     <ol class="breadcrumb page-breadcrumb">
-        <li class="breadcrumb-item"><a href="javascript:void(0);">SmartAdmin</a></li>
-        <li class="breadcrumb-item active">Posts</li>
+        <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">{{ $about->name }}</a></li>
+        <li class="breadcrumb-item active">Berita</li>
         <li class="position-absolute pos-top pos-right d-none d-sm-block"><span class="js-get-date"></span></li>
     </ol>
     <div class="subheader">
         <h1 class="subheader-title">
-            Posts
+            <i class="fal fa-newspaper"></i> Berita
             <small>
-                Default input elements for forms
+                Menu Berita
             </small>
         </h1>
     </div>
@@ -23,7 +22,7 @@
             <div id="panel-1" class="panel">
                 <div class="panel-hdr">
                     <h2>
-                        Posts
+                        Berita
                     </h2>
                 </div>
                 <div class="panel-container show">
@@ -36,7 +35,8 @@
                     <div class="panel-content">
                         <!-- datatable start -->
                         <table id="dt-basic-example"
-                            class="table table-bordered table-hover table-striped w-100 align-items-center">
+                            class="table table-bordered table-hover table-striped w-100 align-items-center"
+                            style="word-wrap: break-word;">
                             <thead class="bg-primary-600">
                                 <tr>
                                     <th>#</th>
@@ -51,16 +51,27 @@
                                 @foreach($posts as $post)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $post->title }}</td>
+                                    <td style="white-space: nowrap;">{{ $post->title }}</td>
                                     <td>{{ $post->category->name }}</td>
                                     <td>{{ $post->user->name }}</td>
                                     <td>{!! $post->excerpt !!}</td>
-                                    <td>{{ $post->status }}</td>
-                                    <td>
-                                        <a href="/dashboard/announcement/{{ $post->id }}/edit"
+                                    <td style="white-space: nowrap;">
+                                        <a href="/dashboard/posts/{{ $post->slug }}/edit"
                                             class="badge mx-1 bg-warning p-2">
-                                            <i class="fas fa-edit"></i>
+                                            <i class="fas fa-edit text-white"></i>
                                         </a>
+                                        <a href="/dashboard/posts/{{ $post->slug }}/" class="badge mx-1 bg-primary p-2">
+                                            <i class="fas fa-eye text-white"></i>
+                                        </a>
+                                        <form action="/dashboard/posts/{{ $post->slug }}" method="POST"
+                                            class="d-inline">
+                                            @method('delete')
+                                            @csrf
+                                            <button class="badge mx-1 badge-danger p-2 border-0"
+                                                onclick="return confirm('Anda takin?')">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </form>
                                     </td>
                                 </tr>
                                 @endforeach

@@ -1,18 +1,18 @@
 @extends('admin.inc.layout')
-@section('dashboardContact','active')
-{{-- @section('menuform_samples','active') --}}
+@section('dashboardAdmin', 'active')
+@section('showAdmin','active')
 @section('content')
 <main id="js-page-content" role="main" class="page-content">
     <ol class="breadcrumb page-breadcrumb">
-        <li class="breadcrumb-item"><a href="javascript:void(0);">{{ $about->name }}</a></li>
-        <li class="breadcrumb-item active">Kontak</li>
+        <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">{{ $about->name }}</a></li>
+        <li class="breadcrumb-item active">Admin</li>
         <li class="position-absolute pos-top pos-right d-none d-sm-block"><span class="js-get-date"></span></li>
     </ol>
     <div class="subheader">
         <h1 class="subheader-title">
-            <i class="fal fa-id-card"></i> Kontak
+            <i class="fal fa-user"></i> Admin
             <small>
-                List Kontak dari Web
+                Menu Admin
             </small>
         </h1>
     </div>
@@ -22,36 +22,54 @@
             <div id="panel-1" class="panel">
                 <div class="panel-hdr">
                     <h2>
-                        Kontak <span class="fw-300"><i>Web</i></span>
+                        Admin
                     </h2>
                 </div>
                 <div class="panel-container show">
+                    <div class="row m-3">
+                        <a href="/dashboard/users/create" class="btn btn-lg btn-outline-primary">
+                            <span class="fal fa-plus-circle mr-1"></span>
+                            Tambah
+                        </a>
+                    </div>
                     <div class="panel-content">
                         <!-- datatable start -->
                         <table id="dt-basic-example"
-                            class="table table-bordered table-hover table-striped w-100 align-items-center">
+                            class="table table-bordered table-hover table-striped w-100 align-items-center"
+                            style="word-wrap: break-word;">
                             <thead class="bg-primary-600">
                                 <tr>
                                     <th>#</th>
-                                    <th>Name</th>
+                                    <th>Nama</th>
+                                    <th>Username</th>
                                     <th>Email</th>
-                                    <th>Message</th>
+                                    <th>Alamat</th>
+                                    <th>Role</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($contacts as $contact)
+                                @foreach($users as $user)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $contact->name }}</td>
-                                    <td>{{ $contact->email }}</td>
-                                    <td>{{ $contact->message }}</td>
-                                    <td>
-                                        <form action="/dashboard/contact/{{ $contact->id }}" method="POST"
+                                    <td>{{ $user->name }}</td>
+                                    <td>{{ $user->username }}</td>
+                                    <td>{{ $user->email }}</td>
+                                    <td>{{ $user->address }}</td>
+                                    <td>{{ ucfirst($user->level) }}</td>
+                                    <td style="white-space: nowrap;">
+                                        <a href="/dashboard/posts/{{ $user->username }}/edit"
+                                            class="badge mx-1 bg-warning p-2">
+                                            <i class="fas fa-edit text-white"></i>
+                                        </a>
+                                        <a href="/dashboard/posts/{{ $user->username }}/"
+                                            class="badge mx-1 bg-primary p-2">
+                                            <i class="fas fa-eye text-white"></i>
+                                        </a>
+                                        <form action="/dashboard/posts/{{ $user->username }}" method="POST"
                                             class="d-inline">
                                             @method('delete')
                                             @csrf
-                                            <input type="hidden" name="oldImage" value="{{ $contact->image }}">
                                             <button class="badge mx-1 badge-danger p-2 border-0"
                                                 onclick="return confirm('Anda takin?')">
                                                 <i class="fas fa-trash"></i>
@@ -64,9 +82,11 @@
                             <tfoot>
                                 <tr>
                                     <th>#</th>
-                                    <th>Name</th>
+                                    <th>Nama</th>
+                                    <th>Username</th>
                                     <th>Email</th>
-                                    <th>Message</th>
+                                    <th>Alamat</th>
+                                    <th>Role</th>
                                     <th>Action</th>
                                 </tr>
                             </tfoot>

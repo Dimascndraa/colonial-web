@@ -12,11 +12,21 @@
 </div>
 <div class="col-xl-6 ml-auto mr-auto">
     <div class="card p-4 rounded-plus bg-faded">
-        <form id="js-login" method="post" action="{{ route('register') }}">
+        <form id="js-login" method="post" enctype="multipart/form-data" action="{{ route('register') }}">
             @csrf
             <div class="form-group row">
-                <label class="col-xl-12 form-label" for="fname">Your first and last
-                    name</label>
+                <label class="col-xl-12 form-label" for="fname">Profile Picture</label>
+                <img class="image-preview img-fluid mb-3 col-sm-5 d-block">
+                <div class="custom-file mb-3">
+                    <input type="file" class="custom-file-input" id="image" name="image" onchange="previewImage()">
+                    <label class="custom-file-label" for="image">Choose file...</label>
+                    @error('image')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-12 form-label" for="fname">Your Full Name</label>
                 <div class="col-12 pr-1">
                     <input type="text" name="name" value="{{ old('name') }}" required autofocus class="form-control"
                         placeholder="Full Name" required>
@@ -27,10 +37,10 @@
                 </div>
             </div>
             <div class="form-group row">
-                <label class="col-xl-12 form-label" for="fname">username</label>
+                <label class="col-xl-12 form-label" for="fname">Username</label>
                 <div class="col-12 pr-1">
                     <input type="text" name="username" value="{{ old('username') }}" required autofocus
-                        class="form-control" placeholder="Full username" required>
+                        class="form-control" placeholder="Username" required>
                     <div class="invalid-feedback">No, you missed this one.</div>
                     @error('username')
                     <div class="text-danger ms-3">{{ $message }}</div>
@@ -44,6 +54,43 @@
                 @error('email')
                 <div class="text-danger ms-3">{{ $message }}</div>
                 @enderror
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="address">Your Address</label>
+                <input id="address" class="form-control" type="text" name="address" value="{{ old('address') }}"
+                    required placeholder="Address">
+                @error('address')
+                <div class="text-danger ms-3">{{ $message }}</div>
+                @enderror
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label class="form-label" for="hp">Your Phone Address</label>
+                        <div class="input-group has-validation">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><strong>+62</strong></span>
+                            </div>
+                            <input type="text" name="hp" id="hp" class="form-control" required
+                                placeholder="Phone Number">
+                            @error('hp')
+                            <div class="text-danger ms-3">{{ $message }}</div>
+                            @enderror
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label class="form-label" for="whatsapp">Whatsapp</label>
+                        <select name="whatsapp" id="whatsapp" class="form-control">
+                            <option value="1">Yes</option>
+                            <option value="0">No</option>
+                        </select>
+                        @error('address')
+                        <div class="text-danger ms-3">{{ $message }}</div>
+                        @enderror
+                    </div>
+                </div>
             </div>
             <div class="form-group">
                 <label class="form-label" for="userpassword">Pick a password: <br>Don't
@@ -85,3 +132,19 @@
     </div>
 </div>
 @endsection
+
+<script>
+    function previewImage() {
+        const image = document.querySelector('#image');
+        const imgPreview = document.querySelector('.image-preview')
+
+        imgPreview.style.display = 'block';
+
+        const oFReader = new FileReader();
+        oFReader.readAsDataURL(image.files[0])
+
+        oFReader.onload = function(oFREvent) {
+            imgPreview.src = oFREvent.target.result;
+        }
+    }
+</script>

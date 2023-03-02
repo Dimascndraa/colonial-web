@@ -8,9 +8,10 @@ use Cviebrock\EloquentSluggable\Sluggable;
 
 class Post extends Model
 {
-    protected $guarded = ['id'];
 
-    use Sluggable, HasFactory;
+    use HasFactory, Sluggable;
+
+    protected $guarded = ['id'];
 
     public function category()
     {

@@ -1,7 +1,6 @@
 @extends('admin.inc.layout')
-@section('title','Gallery')
-@section('gallery-dashboard','active')
-{{-- @section('menuform_samples','active') --}}
+@section('dashboardGallery','active open')
+@section('showGallery','active')
 @section('content')
 
 <style>
@@ -23,15 +22,15 @@
 
 <main id="js-page-content" role="main" class="page-content">
     <ol class="breadcrumb page-breadcrumb">
-        <li class="breadcrumb-item"><a href="javascript:void(0);">SmartAdmin</a></li>
-        <li class="breadcrumb-item active">Gallery</li>
+        <li class="breadcrumb-item"><a href="javascript:void(0);">{{ $about->name }}</a></li>
+        <li class="breadcrumb-item active">Galeri</li>
         <li class="position-absolute pos-top pos-right d-none d-sm-block"><span class="js-get-date"></span></li>
     </ol>
     <div class="subheader">
         <h1 class="subheader-title">
-            Galleries
+            <i class="fal fa-images"></i> Galeri
             <small>
-                Default input elements for forms
+                Menu Galeri
             </small>
         </h1>
     </div>

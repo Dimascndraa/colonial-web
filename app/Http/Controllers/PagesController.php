@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\About;
+use App\Models\Post;
 use App\Models\SocialMedia;
 use Illuminate\Http\Request;
 
@@ -17,7 +18,8 @@ class PagesController extends Controller
             'title' => "Book Now",
             'socialMedia' => $socialMedia,
             'name' => "$about->name",
-            'about' => $about
+            'about' => $about,
+            'posts' => Post::all()
         ]);
     }
 

@@ -12,7 +12,7 @@ License: You must have a valid license purchased only from wrapbootstrap.com (li
 <head>
     <meta charset="utf-8">
     <title>
-        Login - - SmartAdmin v4.0.1
+        {{ $title }} | {{ $about->name }}
     </title>
     <meta name="description" content="Login">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -28,7 +28,7 @@ License: You must have a valid license purchased only from wrapbootstrap.com (li
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- Place favicon.ico in the root directory -->
     <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('storage/'. $about->icon) }}">
     <link rel="mask-icon" href="/img/favicon/safari-pinned-tab.svg" color="#5bbad5">
     <!-- Optional: page related CSS-->
     <link rel="stylesheet" media="screen, print" href="/css/fa-brands.css">

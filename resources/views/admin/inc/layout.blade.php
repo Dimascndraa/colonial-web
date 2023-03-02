@@ -3,9 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>
-        @yield('title', 'My App') - @yield('mywebname', 'SmartAdmin')
-    </title>
+    <title>{{ $about->name }} | {{ $title }}</title>
     <meta name="description" content="Analytics Dashboard">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no, minimal-ui">
@@ -20,7 +18,7 @@
     <link id="myskins" rel="stylesheet" media="screen, print" href="/css/skins/skin-master.css">
     <!-- Place favicon.ico in the root directory -->
     <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('storage/' . $about->icon) }}">
     <link rel="mask-icon" href="/img/favicon/safari-pinned-tab.svg" color="#5bbad5">
     <link rel="stylesheet" media="screen, print" href="/css/miscellaneous/reactions/reactions.css">
     <link rel="stylesheet" media="screen, print" href="/css/miscellaneous/fullcalendar/fullcalendar.bundle.css">

@@ -1,7 +1,7 @@
 @extends('admin.inc.layout')
 @section('title', 'Posts')
-@section('dashboardNews', 'active')
-@section('createNews', 'active')
+@section('dashboardPosts', 'active open')
+@section('dashboardPosts_edit', 'active')
 @section('content')
 <style>
     trix-toolbar [data-trix-button-group="file-tools"] {
@@ -10,16 +10,16 @@
 </style>
 <main id="js-page-content" role="main" class="page-content">
     <ol class="breadcrumb page-breadcrumb">
-        <li class="breadcrumb-item"><a href={{ url("/dashboard") }}>{{ $about->name }}</a></li>
-        <li class="breadcrumb-item"><a href="{{ url("/dashboard/posts") }}">Berita</a></li>
-        <li class="breadcrumb-item active">Create</li>
+        <li class="breadcrumb-item"><a href="/dashboard">{{ $about->name }}</a></li>
+        <li class="breadcrumb-item"><a href="/dashboard/posts">Posts</a></li>
+        <li class="breadcrumb-item active">Edit</li>
         <li class="position-absolute pos-top pos-right d-none d-sm-block"><span class="js-get-date"></span></li>
     </ol>
     <div class="subheader">
         <h1 class="subheader-title">
-            <i class="fal fa-newspaper"></i> Berita
+            Posts
             <small>
-                Menu Tambah Berita
+                Default input elements for forms
             </small>
         </h1>
     </div>
@@ -36,18 +36,25 @@
             <div id="panel-1" class="panel">
                 <div class="panel-hdr">
                     <h2>
-                        Tambah <span class="fw-300"><i>Posts</i></span>
+                        Edit <span class="fw-300"><i>Posts</i></span>
                     </h2>
                 </div>
                 <div class="panel-container show">
                     <div class="panel-content">
-                        <form action="/dashboard/posts" method="post" enctype="multipart/form-data">
+                        <form action="/dashboard/posts/{{ $post->slug }}" method="post" enctype="multipart/form-data">
+                            @method('put')
                             @csrf
                             <div class="row justify-content-center">
                                 <div class="col-lg-8">
                                     <div class="form-group mb-3">
                                         <label class="form-label d-block">Gambar</label>
+                                        <input type="hidden" name="oldImage" value="{{ $post->image }}">
+                                        @if ($post->image)
+                                        <img src=" {{ asset('/storage/' . $post->image) }}"
+                                            class="preview-img img-fluid mb-3 col-sm-5 d-block">
+                                        @else
                                         <img class="preview-img img-fluid mb-3 col-sm-5 d-block">
+                                        @endif
                                         <div class="custom-file">
                                             <input type="file"
                                                 class="custom-file-input @error('image') is-invalid @enderror"
@@ -63,14 +70,14 @@
                                         <label for="title" class="form-label">Judul</label>
                                         <input id="title" type="text"
                                             class="form-control @error('title') is-invalid @enderror" name="title"
-                                            placeholder="Masukan Judul Berita" value="{{ old('title') }}">
+                                            placeholder="Masukan Judul Berita" value="{{ old('title', $post->title) }}">
                                     </div>
 
                                     <div class="mb-3">
                                         <label for="slug" class="form-label">Slug</label>
                                         <input type="text" class="form-control @error('slug') is-invalid @enderror"
                                             id="slug" name="slug" placeholder="Slug digenerate otomatis" readonly
-                                            value="{{ old('slug') }}">
+                                            value="{{ old('slug', $post->slug) }}">
                                     </div>
 
                                     <div class="mb-3">
@@ -79,7 +86,8 @@
                                             aria-label="Default select example" name="category_id">
                                             <option selected disabled>Kategori</option>
                                             @foreach ($categories as $category)
-                                            @if (old("category_id") == $category->id)
+                                            @if (old("category_id") == $category->id ||$post->category_id ==
+                                            $category->id)
                                             <option value="{{ $category->id }}" selected>{{ $category->name }}</option>
                                             @else
                                             <option value="{{ $category->id }}">{{ $category->name }}</option>
@@ -93,7 +101,8 @@
 
                                     <div class="mb-3">
                                         <label for="body" class="form-label">Isi Berita</label>
-                                        <input id="body" type="hidden" name="body" value="{{ old('body') }}">
+                                        <input id="body" type="hidden" name="body"
+                                            value="{{ old('body', $post->body) }}">
                                         <trix-editor input="body"></trix-editor>
                                         @error('body')
                                         <p class="text-danger">{{ $message }}</p>
@@ -101,9 +110,8 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <button type="submit" class="btn btn-success btn-lg"><i
-                                                class="fal fa-plus-circle"></i>
-                                            Tambah</button>
+                                        <button type="submit" class="btn btn-success btn-lg"><i class="fal fa-edit"></i>
+                                            Ubah</button>
                                     </div>
                                 </div>
                             </div>

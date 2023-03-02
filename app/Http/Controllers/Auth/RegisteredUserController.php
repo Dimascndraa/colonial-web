@@ -37,13 +37,24 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request)
     {
+        // return $request;
+
         $validatedData = $request->validate([
+            'image' => ['image', 'file', 'max:5120'],
             'name' => ['required', 'string', 'max:255'],
             'username' => ['required', 'string', 'max:255', 'unique:users'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'address' => ['required', 'string'],
+            'hp' => ['required', 'max:255'],
+            'whatsapp' => ['required', 'boolean'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
-        $validatedData['level'] = 'admin';
+        if ($request->image) {
+            $validatedData['image'] = $request->file('image')->store('profile-picture/' . $request->username);
+        }
+        $validatedData['hp'] = '62' . $request->hp;
+
+        $validatedData['level'] = 'user';
         $validatedData['password'] = bcrypt($request->password);
 
         // return $validatedData;
