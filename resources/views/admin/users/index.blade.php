@@ -58,15 +58,11 @@
                                     <td>{{ $user->address }}</td>
                                     <td>{{ ucfirst($user->level) }}</td>
                                     <td style="white-space: nowrap;">
-                                        <a href="/dashboard/posts/{{ $user->username }}/edit"
+                                        <a href="/dashboard/users/{{ $user->username }}/edit"
                                             class="badge mx-1 bg-warning p-2">
                                             <i class="fas fa-edit text-white"></i>
                                         </a>
-                                        <a href="/dashboard/posts/{{ $user->username }}/"
-                                            class="badge mx-1 bg-primary p-2">
-                                            <i class="fas fa-eye text-white"></i>
-                                        </a>
-                                        <form action="/dashboard/posts/{{ $user->username }}" method="POST"
+                                        <form action="/dashboard/users/{{ $user->username }}" method="POST"
                                             class="d-inline">
                                             @method('delete')
                                             @csrf

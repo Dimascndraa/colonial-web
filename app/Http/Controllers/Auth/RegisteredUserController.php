@@ -54,7 +54,12 @@ class RegisteredUserController extends Controller
         }
         $validatedData['hp'] = '62' . $request->hp;
 
-        $validatedData['level'] = 'user';
+        if (!$request->level) {
+            $validatedData['level'] = 'user';
+        } else {
+            $validatedData['level'] = $request->level;
+        }
+
         $validatedData['password'] = bcrypt($request->password);
 
         // return $validatedData;
@@ -65,6 +70,10 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        return redirect(RouteServiceProvider::LOGIN);
+        if (auth()->user()->level === "admin") {
+            return redirect(RouteServiceProvider::DASHBOARD);
+        } else {
+            return redirect(RouteServiceProvider::HOME);
+        }
     }
 }

@@ -48,7 +48,7 @@
                 </div>
             </div>
             <div class="form-group">
-                <label class="form-label" for="email">Your Email</label>
+                <label class="form-label" for="email">Email</label>
                 <input id="email" class="form-control" type="email" name="email" value="{{ old('email') }}" required
                     placeholder="Email Address">
                 @error('email')
@@ -56,7 +56,7 @@
                 @enderror
             </div>
             <div class="form-group">
-                <label class="form-label" for="address">Your Address</label>
+                <label class="form-label" for="address">Alamat</label>
                 <input id="address" class="form-control" type="text" name="address" value="{{ old('address') }}"
                     required placeholder="Address">
                 @error('address')
@@ -66,13 +66,13 @@
             <div class="row">
                 <div class="col-lg-6">
                     <div class="form-group">
-                        <label class="form-label" for="hp">Your Phone Address</label>
+                        <label class="form-label" for="hp">Nomor HP</label>
                         <div class="input-group has-validation">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><strong>+62</strong></span>
                             </div>
                             <input type="text" name="hp" id="hp" class="form-control" required
-                                placeholder="Phone Number">
+                                placeholder="Phone Number" value="{{ old('hp') }}">
                             @error('hp')
                             <div class="text-danger ms-3">{{ $message }}</div>
                             @enderror
@@ -98,15 +98,15 @@
                     app.</label>
                 <div class="row">
                     <div class="col-6">
-                        <input class="form-control" type="password" name="password" required value="{{ old('name') }}"
-                            autocomplete="new-password" placeholder="Input Your Password">
+                        <input class="form-control" type="password" name="password" required
+                            value="{{ old('password') }}" autocomplete="new-password" placeholder="Input Your Password">
                         @error('password')
                         <div class="text-danger ms-3">{{ $message }}</div>
                         @enderror
                     </div>
                     <div class="col-6">
                         <input id="password_confirmation" class="form-control" type="password"
-                            name="password_confirmation" value="{{ old('name') }}" required
+                            name="password_confirmation" value="{{ old('password_confirmation') }}" required
                             placeholder="Confirm Password" />
                         @error('password_confirmation')
                         <div class="text-danger ms-3">{{ $message }}</div>

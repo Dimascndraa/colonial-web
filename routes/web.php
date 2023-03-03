@@ -104,510 +104,903 @@ Route::group(['middleware' => ['auth', 'ceklevel:admin']], function () {
     Route::resource('/dashboard/posts', DashboardPostController::class)->name('index', 'dashboardPosts');
 
     Route::get('/intel_marketing_dashboard', function () {
-        return view('admin.intel_marketing_dashboard');
+        return view('admin.pages.intel_marketing_dashboard', [
+            'title' => 'Default Menu',
+            'about' => About::all()->first()
+        ]);
     });
     Route::get('/intel_introduction', function () {
-        return view('admin.intel_introduction');
+        return view('admin.pages.intel_introduction', [
+            'title' => 'Default Menu',
+            'about' => About::all()->first()
+        ]);
     });
     Route::get('/intel_privacy', function () {
-        return view('admin.intel_privacy');
+        return view('admin.pages.intel_privacy', [
+            'title' => 'Default Menu',
+            'about' => About::all()->first()
+        ]);
     });
     Route::get('/intel_build_notes', function () {
-        return view('admin.intel_build_notes');
+        return view('admin.pages.intel_build_notes', [
+            'title' => 'Default Menu',
+            'about' => About::all()->first()
+        ]);
     });
     // SETTING
     Route::get('/settings_how_it_works', function () {
-        return view('admin.settings_how_it_works');
+        return view('admin.pages.settings_how_it_works', [
+            'title' => 'Default Menu',
+            'about' => About::all()->first()
+        ]);
     });
     Route::get('/settings_layout_options', function () {
-        return view('admin.settings_layout_options');
+        return view('admin.pages.settings_layout_options', [
+            'title' => 'Default Menu',
+            'about' => About::all()->first()
+        ]);
     });
     Route::get('/settings_skin_options', function () {
-        return view('admin.settings_skin_options');
+        return view('admin.pages.settings_skin_options', [
+            'title' => 'Default Menu',
+            'about' => About::all()->first()
+        ]);
     });
     Route::get('/settings_saving_db', function () {
-        return view('admin.settings_saving_db');
+        return view('admin.pages.settings_saving_db', [
+            'title' => 'Default Menu',
+            'about' => About::all()->first()
+        ]);
     });
     // INFO
     Route::get('/info_app_docs', function () {
-        return view('admin.info_app_docs');
+        return view('admin.pages.info_app_docs', [
+            'title' => 'Default Menu',
+            'about' => About::all()->first()
+        ]);
     });
     Route::get('/info_app_licensing', function () {
-        return view('admin.info_app_licensing');
+        return view('admin.pages.info_app_licensing', [
+            'title' => 'Default Menu',
+            'about' => About::all()->first()
+        ]);
     });
     Route::get('/info_app_flavors', function () {
-        return view('admin.info_app_flavors');
+        return view('admin.pages.info_app_flavors', [
+            'title' => 'Default Menu',
+            'about' => About::all()->first()
+        ]);
     });
     // UI
     Route::get('/ui_alerts', function () {
-        return view('admin.ui_alerts');
+        return view('admin.pages.ui_alerts', [
+            'title' => 'Default Menu',
+            'about' => About::all()->first()
+        ]);
     });
     Route::get('/ui_accordion', function () {
-        return view('admin.ui_accordion');
+        return view('admin.pages.ui_accordion', [
+            'title' => 'Default Menu',
+            'about' => About::all()->first()
+        ]);
     });
     Route::get('/ui_badges', function () {
-        return view('admin.ui_badges');
+        return view('admin.pages.ui_badges', [
+            'title' => 'Default Menu',
+            'about' => About::all()->first()
+        ]);
     });
     Route::get('/ui_breadcrumbs', function () {
-        return view('admin.ui_breadcrumbs');
+        return view('admin.pages.ui_breadcrumbs', [
+            'title' => 'Default Menu',
+            'about' => About::all()->first()
+        ]);
     });
     Route::get('/ui_buttons', function () {
-        return view('admin.ui_buttons');
+        return view('admin.pages.ui_buttons', [
+            'title' => 'Default Menu',
+            'about' => About::all()->first()
+        ]);
     });
     Route::get('/ui_button_group', function () {
-        return view('admin.ui_button_group');
+        return view('admin.pages.ui_button_group', [
+            'title' => 'Default Menu',
+            'about' => About::all()->first()
+        ]);
     });
 
     Route::get('/ui_cards', function () {
-        return view('admin.ui_cards');
+        return view('admin.pages.ui_cards', [
+            'title' => 'Default Menu',
+            'about' => About::all()->first()
+        ]);
     });
 
     Route::get('/ui_carousel', function () {
-        return view('admin.ui_carousel');
+        return view('admin.pages.ui_carousel', [
+            'title' => 'Default Menu',
+            'about' => About::all()->first()
+        ]);
     });
 
     Route::get('/ui_collapse', function () {
-        return view('admin.ui_collapse');
+        return view('admin.pages.ui_collapse', [
+            'title' => 'Default Menu',
+            'about' => About::all()->first()
+        ]);
     });
 
     Route::get('/ui_dropdowns', function () {
-        return view('admin.ui_dropdowns');
+        return view('admin.pages.ui_dropdowns', [
+            'title' => 'Default Menu',
+            'about' => About::all()->first()
+        ]);
     });
 
     Route::get('/ui_list_filter', function () {
-        return view('admin.ui_list_filter');
+        return view('admin.pages.ui_list_filter', [
+            'title' => 'Default Menu',
+            'about' => About::all()->first()
+        ]);
     });
 
     Route::get('/ui_modal', function () {
-        return view('admin.ui_modal');
+        return view('admin.pages.ui_modal', [
+            'title' => 'Default Menu',
+            'about' => About::all()->first()
+        ]);
     });
 
     Route::get('/ui_navbars', function () {
-        return view('admin.ui_navbars');
+        return view('admin.pages.ui_navbars', [
+            'title' => 'Default Menu',
+            'about' => About::all()->first()
+        ]);
     });
 
     Route::get('/ui_panels', function () {
-        return view('admin.ui_panels');
+        return view('admin.pages.ui_panels', [
+            'title' => 'Default Menu',
+            'about' => About::all()->first()
+        ]);
     });
 
     Route::get('/ui_pagination', function () {
-        return view('admin.ui_pagination');
+        return view('admin.pages.ui_pagination', [
+            'title' => 'Default Menu',
+            'about' => About::all()->first()
+        ]);
     });
 
     Route::get('/ui_popovers', function () {
-        return view('admin.ui_popovers');
+        return view('admin.pages.ui_popovers', [
+            'title' => 'Default Menu',
+            'about' => About::all()->first()
+        ]);
     });
 
     Route::get('/ui_progress_bars', function () {
-        return view('admin.ui_progress_bars');
+        return view('admin.pages.ui_progress_bars', [
+            'title' => 'Default Menu',
+            'about' => About::all()->first()
+        ]);
     });
 
     Route::get('/ui_scrollspy', function () {
-        return view('admin.ui_scrollspy');
+        return view('admin.pages.ui_scrollspy', [
+            'title' => 'Default Menu',
+            'about' => About::all()->first()
+        ]);
     });
 
     Route::get('/ui_side_panel', function () {
-        return view('admin.ui_side_panel');
+        return view('admin.pages.ui_side_panel', [
+            'title' => 'Default Menu',
+            'about' => About::all()->first()
+        ]);
     });
 
     Route::get('/ui_spinners', function () {
-        return view('admin.ui_spinners');
+        return view('admin.pages.ui_spinners', [
+            'title' => 'Default Menu',
+            'about' => About::all()->first()
+        ]);
     });
 
     Route::get('/ui_tabs_pills', function () {
-        return view('admin.ui_tabs_pills');
+        return view('admin.pages.ui_tabs_pills', [
+            'title' => 'Default Menu',
+            'about' => About::all()->first()
+        ]);
     });
 
     Route::get('/ui_toasts', function () {
-        return view('admin.ui_toasts');
+        return view('admin.pages.ui_toasts', [
+            'title' => 'Default Menu',
+            'about' => About::all()->first()
+        ]);
     });
 
     Route::get('/ui_tooltips', function () {
-        return view('admin.ui_tooltips');
+        return view('admin.pages.ui_tooltips', [
+            'title' => 'Default Menu',
+            'about' => About::all()->first()
+        ]);
     });
 
     // utilities
 
     Route::get('/utilities_borders', function () {
-        return view('admin.utilities_borders');
+        return view('admin.pages.utilities_borders', [
+            'title' => 'Default Menu',
+            'about' => About::all()->first()
+        ]);
     });
 
     Route::get('/utilities_clearfix', function () {
-        return view('admin.utilities_clearfix');
+        return view('admin.pages.utilities_clearfix', [
+            'title' => 'Default Menu',
+            'about' => About::all()->first()
+        ]);
     });
 
     Route::get('/utilities_color_pallet', function () {
-        return view('admin.utilities_color_pallet');
+        return view('admin.pages.utilities_color_pallet', [
+            'title' => 'Default Menu',
+            'about' => About::all()->first()
+        ]);
     });
 
     Route::get('/utilities_display_property', function () {
-        return view('admin.utilities_display_property');
+        return view('admin.pages.utilities_display_property', [
+            'title' => 'Default Menu',
+            'about' => About::all()->first()
+        ]);
     });
 
     Route::get('/utilities_fonts', function () {
-        return view('admin.utilities_fonts');
+        return view('admin.pages.utilities_fonts', [
+            'title' => 'Default Menu',
+            'about' => About::all()->first()
+        ]);
     });
 
     Route::get('/utilities_flexbox', function () {
-        return view('admin.utilities_flexbox');
+        return view('admin.pages.utilities_flexbox', [
+            'title' => 'Default Menu',
+            'about' => About::all()->first()
+        ]);
     });
 
     Route::get('/utilities_helpers', function () {
-        return view('admin.utilities_helpers');
+        return view('admin.pages.utilities_helpers', [
+            'title' => 'Default Menu',
+            'about' => About::all()->first()
+        ]);
     });
 
     Route::get('/utilities_position', function () {
-        return view('admin.utilities_position');
+        return view('admin.pages.utilities_position', [
+            'title' => 'Default Menu',
+            'about' => About::all()->first()
+        ]);
     });
 
     Route::get('/utilities_responsive_grid', function () {
-        return view('admin.utilities_responsive_grid');
+        return view('admin.pages.utilities_responsive_grid', [
+            'title' => 'Default Menu',
+            'about' => About::all()->first()
+        ]);
     });
 
     Route::get('/utilities_sizing', function () {
-        return view('admin.utilities_sizing');
+        return view('admin.pages.utilities_sizing', [
+            'title' => 'Default Menu',
+            'about' => About::all()->first()
+        ]);
     });
 
     Route::get('/utilities_spacing', function () {
-        return view('admin.utilities_spacing');
+        return view('admin.pages.utilities_spacing', [
+            'title' => 'Default Menu',
+            'about' => About::all()->first()
+        ]);
     });
 
     Route::get('/utilities_typography', function () {
-        return view('admin.utilities_typography');
+        return view('admin.pages.utilities_typography', [
+            'title' => 'Default Menu',
+            'about' => About::all()->first()
+        ]);
     });
 
     //font
 
     Route::get('/icons_fontawesome_light', function () {
-        return view('admin.icons_fontawesome_light');
+        return view('admin.pages.icons_fontawesome_light', [
+            'title' => 'Default Menu',
+            'about' => About::all()->first()
+        ]);
     });
 
     Route::get('/icons_fontawesome_regular', function () {
-        return view('admin.icons_fontawesome_regular');
+        return view('admin.pages.icons_fontawesome_regular', [
+            'title' => 'Default Menu',
+            'about' => About::all()->first()
+        ]);
     });
 
     Route::get('/icons_fontawesome_solid', function () {
-        return view('admin.icons_fontawesome_solid');
+        return view('admin.pages.icons_fontawesome_solid', [
+            'title' => 'Default Menu',
+            'about' => About::all()->first()
+        ]);
     });
 
     Route::get('/icons_fontawesome_brand', function () {
-        return view('admin.icons_fontawesome_brand');
+        return view('admin.pages.icons_fontawesome_brand', [
+            'title' => 'Default Menu',
+            'about' => About::all()->first()
+        ]);
     });
 
     Route::get('/icons_nextgen_general', function () {
-        return view('admin.icons_nextgen_general');
+        return view('admin.pages.icons_nextgen_general', [
+            'title' => 'Default Menu',
+            'about' => About::all()->first()
+        ]);
     });
 
     Route::get('/icons_nextgen_base', function () {
-        return view('admin.icons_nextgen_base');
+        return view('admin.pages.icons_nextgen_base', [
+            'title' => 'Default Menu',
+            'about' => About::all()->first()
+        ]);
     });
 
     Route::get('/icons_stack_showcase', function () {
-        return view('admin.icons_stack_showcase');
+        return view('admin.pages.icons_stack_showcase', [
+            'title' => 'Default Menu',
+            'about' => About::all()->first()
+        ]);
     });
 
     Route::get('/icons_stack_generate', function () {
-        return view('admin.icons_stack_generate');
+        return view('admin.pages.icons_stack_generate', [
+            'title' => 'Default Menu',
+            'about' => About::all()->first()
+        ]);
     });
 
 
     //tabel
     Route::get('/tables_basic', function () {
-        return view('admin.tables_basic');
+        return view('admin.pages.tables_basic', [
+            'title' => 'Default Menu',
+            'about' => About::all()->first()
+        ]);
     });
 
     Route::get('/tables_generate_style', function () {
-        return view('admin.tables_generate_style');
+        return view('admin.pages.tables_generate_style', [
+            'title' => 'Default Menu',
+            'about' => About::all()->first()
+        ]);
     });
 
 
     //Form Stuff
     Route::get('/form_basic_inputs', function () {
-        return view('admin.form_basic_inputs');
+        return view('admin.pages.form_basic_inputs', [
+            'title' => 'Default Menu',
+            'about' => About::all()->first()
+        ]);
     });
 
     Route::get('/form_checkbox_radio', function () {
-        return view('admin.form_checkbox_radio');
+        return view('admin.pages.form_checkbox_radio', [
+            'title' => 'Default Menu',
+            'about' => About::all()->first()
+        ]);
     });
 
     Route::get('/form_input_groups', function () {
-        return view('admin.form_input_groups');
+        return view('admin.pages.form_input_groups', [
+            'title' => 'Default Menu',
+            'about' => About::all()->first()
+        ]);
     });
 
     Route::get('/form_validation', function () {
-        return view('admin.form_validation');
+        return view('admin.pages.form_validation', [
+            'title' => 'Default Menu',
+            'about' => About::all()->first()
+        ]);
     });
     Route::get('/form_elements', function () {
-        return view('admin.form_elements');
+        return view('admin.pages.form_elements', [
+            'title' => 'Default Menu',
+            'about' => About::all()->first()
+        ]);
     });
     //Core Plugins
 
     Route::get('/plugin_faq', function () {
-        return view('admin.plugin_faq');
+        return view('admin.pages.plugin_faq', [
+            'title' => 'Default Menu',
+            'about' => About::all()->first()
+        ]);
     });
     Route::get('/plugin_waves', function () {
-        return view('admin.plugin_waves');
+        return view('admin.pages.plugin_waves', [
+            'title' => 'Default Menu',
+            'about' => About::all()->first()
+        ]);
     });
     Route::get('/plugin_pacejs', function () {
-        return view('admin.plugin_pacejs');
+        return view('admin.pages.plugin_pacejs', [
+            'title' => 'Default Menu',
+            'about' => About::all()->first()
+        ]);
     });
     Route::get('/plugin_smartpanels', function () {
-        return view('admin.plugin_smartpanels');
+        return view('admin.pages.plugin_smartpanels', [
+            'title' => 'Default Menu',
+            'about' => About::all()->first()
+        ]);
     });
     Route::get('/plugin_bootbox', function () {
-        return view('admin.plugin_bootbox');
+        return view('admin.pages.plugin_bootbox', [
+            'title' => 'Default Menu',
+            'about' => About::all()->first()
+        ]);
     });
     Route::get('/plugin_slimscroll', function () {
-        return view('admin.plugin_slimscroll');
+        return view('admin.pages.plugin_slimscroll', [
+            'title' => 'Default Menu',
+            'about' => About::all()->first()
+        ]);
     });
     Route::get('/plugin_throttle', function () {
-        return view('admin.plugin_throttle');
+        return view('admin.pages.plugin_throttle', [
+            'title' => 'Default Menu',
+            'about' => About::all()->first()
+        ]);
     });
     Route::get('/plugin_navigation', function () {
-        return view('admin.plugin_navigation');
+        return view('admin.pages.plugin_navigation', [
+            'title' => 'Default Menu',
+            'about' => About::all()->first()
+        ]);
     });
     Route::get('/plugin_i18next', function () {
-        return view('admin.plugin_i18next');
+        return view('admin.pages.plugin_i18next', [
+            'title' => 'Default Menu',
+            'about' => About::all()->first()
+        ]);
     });
     Route::get('/plugin_appcore', function () {
-        return view('admin.plugin_appcore');
+        return view('admin.pages.plugin_appcore', [
+            'title' => 'Default Menu',
+            'about' => About::all()->first()
+        ]);
     });
 
     //datatabel
 
     Route::get('/datatables_basic', function () {
-        return view('admin.datatables_basic');
+        return view('admin.pages.datatables_basic', [
+            'title' => 'Default Menu',
+            'about' => About::all()->first()
+        ]);
     });
     Route::get('/datatables_autofill', function () {
-        return view('admin.datatables_autofill');
+        return view('admin.pages.datatables_autofill', [
+            'title' => 'Default Menu',
+            'about' => About::all()->first()
+        ]);
     });
     Route::get('/datatables_buttons', function () {
-        return view('admin.datatables_buttons');
+        return view('admin.pages.datatables_buttons', [
+            'title' => 'Default Menu',
+            'about' => About::all()->first()
+        ]);
     });
     Route::get('/datatables_export', function () {
-        return view('admin.datatables_export');
+        return view('admin.pages.datatables_export', [
+            'title' => 'Default Menu',
+            'about' => About::all()->first()
+        ]);
     });
     Route::get('/datatables_colreorder', function () {
-        return view('admin.datatables_colreorder');
+        return view('admin.pages.datatables_colreorder', [
+            'title' => 'Default Menu',
+            'about' => About::all()->first()
+        ]);
     });
     Route::get('/datatables_columnfilter', function () {
-        return view('admin.datatables_columnfilter');
+        return view('admin.pages.datatables_columnfilter', [
+            'title' => 'Default Menu',
+            'about' => About::all()->first()
+        ]);
     });
     Route::get('/datatables_fixedcolumns', function () {
-        return view('admin.datatables_fixedcolumns');
+        return view('admin.pages.datatables_fixedcolumns', [
+            'title' => 'Default Menu',
+            'about' => About::all()->first()
+        ]);
     });
     Route::get('/datatables_fixedheader', function () {
-        return view('admin.datatables_fixedheader');
+        return view('admin.pages.datatables_fixedheader', [
+            'title' => 'Default Menu',
+            'about' => About::all()->first()
+        ]);
     });
     Route::get('/datatables_keytable', function () {
-        return view('admin.datatables_keytable');
+        return view('admin.pages.datatables_keytable', [
+            'title' => 'Default Menu',
+            'about' => About::all()->first()
+        ]);
     });
     Route::get('/datatables_responsive', function () {
-        return view('admin.datatables_responsive');
+        return view('admin.pages.datatables_responsive', [
+            'title' => 'Default Menu',
+            'about' => About::all()->first()
+        ]);
     });
 
     Route::get('/datatables_responsive_alt', function () {
-        return view('admin.datatables_responsive_alt');
+        return view('admin.pages.datatables_responsive_alt', [
+            'title' => 'Default Menu',
+            'about' => About::all()->first()
+        ]);
     });
 
     Route::get('/datatables_rowgroup', function () {
-        return view('admin.datatables_rowgroup');
+        return view('admin.pages.datatables_rowgroup', [
+            'title' => 'Default Menu',
+            'about' => About::all()->first()
+        ]);
     });
 
     Route::get('/datatables_rowreorder', function () {
-        return view('admin.datatables_rowreorder');
+        return view('admin.pages.datatables_rowreorder', [
+            'title' => 'Default Menu',
+            'about' => About::all()->first()
+        ]);
     });
     Route::get('/datatables_scroller', function () {
-        return view('admin.datatables_scroller');
+        return view('admin.pages.datatables_scroller', [
+            'title' => 'Default Menu',
+            'about' => About::all()->first()
+        ]);
     });
     Route::get('/datatables_select', function () {
-        return view('admin.datatables_select');
+        return view('admin.pages.datatables_select', [
+            'title' => 'Default Menu',
+            'about' => About::all()->first()
+        ]);
     });
     Route::get('/datatables_alteditor', function () {
-        return view('admin.datatables_alteditor');
+        return view('admin.pages.datatables_alteditor', [
+            'title' => 'Default Menu',
+            'about' => About::all()->first()
+        ]);
     });
 
     // statistik
 
     Route::get('/statistics_flot', function () {
-        return view('admin.statistics_flot');
+        return view('admin.pages.statistics_flot', [
+            'title' => 'Default Menu',
+            'about' => About::all()->first()
+        ]);
     });
     Route::get('/statistics_chartjs', function () {
-        return view('admin.statistics_chartjs');
+        return view('admin.pages.statistics_chartjs', [
+            'title' => 'Default Menu',
+            'about' => About::all()->first()
+        ]);
     });
     Route::get('/statistics_chartist', function () {
-        return view('admin.statistics_chartist');
+        return view('admin.pages.statistics_chartist', [
+            'title' => 'Default Menu',
+            'about' => About::all()->first()
+        ]);
     });
     Route::get('/statistics_c3', function () {
-        return view('admin.statistics_c3');
+        return view('admin.pages.statistics_c3', [
+            'title' => 'Default Menu',
+            'about' => About::all()->first()
+        ]);
     });
     Route::get('/statistics_peity', function () {
-        return view('admin.statistics_peity');
+        return view('admin.pages.statistics_peity', [
+            'title' => 'Default Menu',
+            'about' => About::all()->first()
+        ]);
     });
     Route::get('/statistics_sparkline', function () {
-        return view('admin.statistics_sparkline');
+        return view('admin.pages.statistics_sparkline', [
+            'title' => 'Default Menu',
+            'about' => About::all()->first()
+        ]);
     });
     Route::get('/statistics_easypiechart', function () {
-        return view('admin.statistics_easypiechart');
+        return view('admin.pages.statistics_easypiechart', [
+            'title' => 'Default Menu',
+            'about' => About::all()->first()
+        ]);
     });
     Route::get('/statistics_dygraph', function () {
-        return view('admin.statistics_dygraph');
+        return view('admin.pages.statistics_dygraph', [
+            'title' => 'Default Menu',
+            'about' => About::all()->first()
+        ]);
     });
 
     //notifikasi
 
     Route::get('/notifications_sweetalert2', function () {
-        return view('admin.notifications_sweetalert2');
+        return view('admin.pages.notifications_sweetalert2', [
+            'title' => 'Default Menu',
+            'about' => About::all()->first()
+        ]);
     });
 
     Route::get('/notifications_toastr', function () {
-        return view('admin.notifications_toastr');
+        return view('admin.pages.notifications_toastr', [
+            'title' => 'Default Menu',
+            'about' => About::all()->first()
+        ]);
     });
 
     //form plugins
 
     Route::get('/form_plugins_colorpicker', function () {
-        return view('admin.form_plugins_colorpicker');
+        return view('admin.pages.form_plugins_colorpicker', [
+            'title' => 'Default Menu',
+            'about' => About::all()->first()
+        ]);
     });
     Route::get('/form_plugins_datepicker', function () {
-        return view('admin.form_plugins_datepicker');
+        return view('admin.pages.form_plugins_datepicker', [
+            'title' => 'Default Menu',
+            'about' => About::all()->first()
+        ]);
     });
     Route::get('/form_plugins_daterange_picker', function () {
-        return view('admin.form_plugins_daterange_picker');
+        return view('admin.pages.form_plugins_daterange_picker', [
+            'title' => 'Default Menu',
+            'about' => About::all()->first()
+        ]);
     });
     Route::get('/form_plugins_dropzone', function () {
-        return view('admin.form_plugins_dropzone');
+        return view('admin.pages.form_plugins_dropzone', [
+            'title' => 'Default Menu',
+            'about' => About::all()->first()
+        ]);
     });
     Route::get('/form_plugins_ionrangeslider', function () {
-        return view('admin.form_plugins_ionrangeslider');
+        return view('admin.pages.form_plugins_ionrangeslider', [
+            'title' => 'Default Menu',
+            'about' => About::all()->first()
+        ]);
     });
     Route::get('/form_plugins_inputmask', function () {
-        return view('admin.form_plugins_inputmask');
+        return view('admin.pages.form_plugins_inputmask', [
+            'title' => 'Default Menu',
+            'about' => About::all()->first()
+        ]);
     });
     Route::get('/form_plugin_imagecropper', function () {
-        return view('admin.form_plugin_imagecropper');
+        return view('admin.pages.form_plugin_imagecropper', [
+            'title' => 'Default Menu',
+            'about' => About::all()->first()
+        ]);
     });
     Route::get('/form_plugin_select2', function () {
-        return view('admin.form_plugin_select2');
+        return view('admin.pages.form_plugin_select2', [
+            'title' => 'Default Menu',
+            'about' => About::all()->first()
+        ]);
     });
     Route::get('/form_plugin_summernote', function () {
-        return view('admin.form_plugin_summernote');
+        return view('admin.pages.form_plugin_summernote', [
+            'title' => 'Default Menu',
+            'about' => About::all()->first()
+        ]);
     });
 
     //Miscellaneous
 
     Route::get('/miscellaneous_fullcalendar', function () {
-        return view('admin.miscellaneous_fullcalendar');
+        return view('admin.pages.miscellaneous_fullcalendar', [
+            'title' => 'Default Menu',
+            'about' => About::all()->first()
+        ]);
     });
 
     Route::get('/miscellaneous_lightgallery', function () {
-        return view('admin.miscellaneous_lightgallery');
+        return view('admin.pages.miscellaneous_lightgallery', [
+            'title' => 'Default Menu',
+            'about' => About::all()->first()
+        ]);
     });
 
     //Page Views
 
     Route::get('/page_chat', function () {
-        return view('admin.page_chat');
+        return view('admin.pages.page_chat', [
+            'title' => 'Default Menu',
+            'about' => About::all()->first()
+        ]);
     });
     Route::get('/page_contacts', function () {
-        return view('admin.page_contacts');
+        return view('admin.pages.page_contacts', [
+            'title' => 'Default Menu',
+            'about' => About::all()->first()
+        ]);
     });
 
     // Forum
 
     Route::get('/page_forum_list', function () {
-        return view('admin.page_forum_list');
+        return view('admin.pages.page_forum_list', [
+            'title' => 'Default Menu',
+            'about' => About::all()->first()
+        ]);
     });
     Route::get('/page_forum_threads', function () {
-        return view('admin.page_forum_threads');
+        return view('admin.pages.page_forum_threads', [
+            'title' => 'Default Menu',
+            'about' => About::all()->first()
+        ]);
     });
     Route::get('/page_forum_discussion', function () {
-        return view('admin.page_forum_discussion');
+        return view('admin.pages.page_forum_discussion', [
+            'title' => 'Default Menu',
+            'about' => About::all()->first()
+        ]);
     });
 
     //pages inbox
     Route::get('/page_inbox_general', function () {
-        return view('admin.page_inbox_general');
+        return view('admin.pages.page_inbox_general', [
+            'title' => 'Default Menu',
+            'about' => About::all()->first()
+        ]);
     });
 
     Route::get('/page_inbox_read', function () {
-        return view('admin.page_inbox_read');
+        return view('admin.pages.page_inbox_read', [
+            'title' => 'Default Menu',
+            'about' => About::all()->first()
+        ]);
     });
 
     Route::get('/page_inbox_write', function () {
-        return view('admin.page_inbox_write');
+        return view('admin.pages.page_inbox_write', [
+            'title' => 'Default Menu',
+            'about' => About::all()->first()
+        ]);
     });
 
     //Invoice (printable)
 
     Route::get('/page_invoice', function () {
-        return view('admin.page_invoice');
+        return view('admin.pages.page_invoice', [
+            'title' => 'Default Menu',
+            'about' => About::all()->first()
+        ]);
     });
 
 
     //Authentication
     Route::get('/page_forget', function () {
-        return view('admin.page_forget');
+        return view('admin.pages.page_forget', [
+            'title' => 'Default Menu',
+            'about' => About::all()->first()
+        ]);
     });
 
     Route::get('/page_locked', function () {
-        return view('admin.page_locked');
+        return view('admin.pages.page_locked', [
+            'title' => 'Default Menu',
+            'about' => About::all()->first()
+        ]);
     });
 
     Route::get('/page_login', function () {
-        return view('admin.page_login');
+        return view('admin.pages.page_login', [
+            'title' => 'Default Menu',
+            'about' => About::all()->first()
+        ]);
     });
 
     Route::get('/page_login-alt', function () {
-        return view('admin.page_login-alt');
+        return view('admin.pages.page_login-alt', [
+            'title' => 'Default Menu',
+            'about' => About::all()->first()
+        ]);
     });
 
     Route::get('/page_register', function () {
-        return view('admin.page_register');
+        return view('admin.pages.page_register', [
+            'title' => 'Default Menu',
+            'about' => About::all()->first()
+        ]);
     });
 
     Route::get('/page_confirmation', function () {
-        return view('admin.page_confirmation');
+        return view('admin.pages.page_confirmation', [
+            'title' => 'Default Menu',
+            'about' => About::all()->first()
+        ]);
     });
 
     //Error Pages
 
     Route::get('/page_error', function () {
-        return view('admin.page_error');
+        return view('admin.pages.page_error', [
+            'title' => 'Default Menu',
+            'about' => About::all()->first()
+        ]);
     });
 
     Route::get('/page_error_404', function () {
-        return view('admin.page_error_404');
+        return view('admin.pages.page_error_404', [
+            'title' => 'Default Menu',
+            'about' => About::all()->first()
+        ]);
     });
 
     Route::get('/page_error_announced', function () {
-        return view('admin.page_error_announced');
+        return view('admin.pages.page_error_announced', [
+            'title' => 'Default Menu',
+            'about' => About::all()->first()
+        ]);
     });
 
     //Profile
 
     Route::get('/page_profile', function () {
-        return view('admin.page_profile');
+        return view('admin.pages.page_profile', [
+            'title' => 'Default Menu',
+            'about' => About::all()->first()
+        ]);
     });
 
 
     //search
     Route::get('/page_search', function () {
-        return view('admin.page_search');
+        return view('admin.pages.page_search', [
+            'title' => 'Default Menu',
+            'about' => About::all()->first()
+        ]);
     });
 
     //blank
     Route::get('/blank', function () {
-        return view('admin.blank');
+        return view('admin.pages.blank', [
+            'title' => 'Default Menu',
+            'about' => About::all()->first()
+        ]);
     });
 
 
     //search
     Route::get('/form_samples', function () {
-        return view('admin.form_samples');
+        return view('admin.pages.form_samples', [
+            'title' => 'Default Menu',
+            'about' => About::all()->first()
+        ]);
     });
 
     Route::get('/icons_construct_', function () {
-        return view('admin.icons_construct_');
+        return view('admin.pages.icons_construct_', [
+            'title' => 'Default Menu',
+            'about' => About::all()->first()
+        ]);
     });
 });
