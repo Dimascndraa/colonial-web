@@ -12,6 +12,8 @@
     <!-- Remove Tap Highlight on Windows Phone IE -->
     <meta name="msapplication-tap-highlight" content="no">
     <!-- base css -->
+    {{--
+    <link rel="stylesheet" media="screen, print" href="/css/paper-dashboard.css"> --}}
     <link rel="stylesheet" media="screen, print" href="/css/vendors.bundle.css">
     <link rel="stylesheet" media="screen, print" href="/css/app.bundle.css">
     <link id="mythemes" rel="stylesheet" media="screen, print" href="/css/themes/cust-theme-3.css">
@@ -240,6 +242,7 @@
         + smartpanels.js (extension)
         + src/../jquery-snippets.js (core) -->
 
+    <script src="/js/bootstrap-checkbox-radio-switch-tags.js"></script>
     <script src="/js/vendors.bundle.js"></script>
     <script src="/js/app.bundle.js"></script>
     <script type="text/javascript">

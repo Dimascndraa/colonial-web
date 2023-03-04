@@ -56,6 +56,42 @@
                     </li>
                 </ul>
             </li>
+            <li class="@yield('dashboardFacility')">
+                <a href="javascript:void(0)" title="Fasilitas">
+                    <i class="fal fa-chess-queen"></i>
+                    <span class="nav-link-text">Fasilitas</span>
+                </a>
+                <ul>
+                    <li class="@yield('showFacility')">
+                        <a href="{{ route('dashboardFacility') }}" title="Lihat Fasilitas">
+                            <span class="nav-link-text">Lihat Fasilitas</span>
+                        </a>
+                    </li>
+                    <li class="@yield('createFacility')">
+                        <a href="{{ url('/dashboard/room_types/create') }}" title="Buat Fasilitas Baru">
+                            <span class="nav-link-text">Tambah Fasilitas</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="@yield('dashboardRoomType')">
+                <a href="javascript:void(0)" title="Tipe Kamar">
+                    <i class="fal fa-chess-queen"></i>
+                    <span class="nav-link-text">Tipe Kamar</span>
+                </a>
+                <ul>
+                    <li class="@yield('showRoomType')">
+                        <a href="{{ route('dashboardRoomType') }}" title="Lihat Tipe Kamar">
+                            <span class="nav-link-text">Lihat Tipe Kamar</span>
+                        </a>
+                    </li>
+                    <li class="@yield('createRoomType')">
+                        <a href="{{ url('/dashboard/room_types/create') }}" title="Buat Tipe Kamar Baru">
+                            <span class="nav-link-text">Tambah Tipe Kamar</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
             <li class="@yield('dashboardGallery')">
                 <a href="javascript:void(0)" title="Galeri">
                     <i class="fal fa-images"></i>

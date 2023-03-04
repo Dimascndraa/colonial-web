@@ -2,10 +2,12 @@
 
 namespace Database\Seeders;
 
-use App\Models\About;
-use App\Models\Announcement;
-use App\Models\SocialMedia;
 use App\Models\User;
+use App\Models\About;
+
+use \App\Model\Facility;
+use App\Models\SocialMedia;
+use App\Models\Announcement;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -54,6 +56,7 @@ class DatabaseSeeder extends Seeder
             'whatsapp' => true,
             'password' => bcrypt('password'),
             'level' => 'admin',
+            'status' => 'aktif',
         ]);
     }
 }

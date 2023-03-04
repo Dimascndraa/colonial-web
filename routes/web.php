@@ -1,22 +1,21 @@
 <?php
 
-use App\Http\Controllers\DashboardAboutController;
-use App\Http\Controllers\DashboardAdminController;
-use App\Http\Controllers\DashboardAnnouncementController;
-use App\Http\Controllers\DashboardContactController;
-use App\Http\Controllers\DashboardGalleryController;
-use App\Http\Controllers\DashboardNewsController;
-use App\Http\Controllers\DashboardPostController;
-use App\Http\Controllers\DashboardReviewController;
-use App\Http\Controllers\DashboardSocialMediaController;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\PagesController;
-use App\Http\Controllers\PostController;
 use App\Models\About;
 use App\Models\Category;
-use App\Models\Post;
 use App\Models\SocialMedia;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\PagesController;
+use App\Http\Controllers\DashboardPostController;
+use App\Http\Controllers\DashboardAboutController;
+use App\Http\Controllers\DashboardAdminController;
+use App\Http\Controllers\DashboardReviewController;
+use App\Http\Controllers\DashboardContactController;
+use App\Http\Controllers\DashboardGalleryController;
+use App\Http\Controllers\DashboardFacilityController;
+use App\Http\Controllers\DashboardRoomTypeController;
+use App\Http\Controllers\DashboardAnnouncementController;
 
 /*
 |--------------------------------------------------------------------------
@@ -99,9 +98,33 @@ Route::group(['middleware' => ['auth', 'ceklevel:admin']], function () {
     Route::resource('/dashboard/announcement', DashboardAnnouncementController::class)->name('index', 'dashboardAnnouncement');
     Route::resource('/dashboard/review', DashboardReviewController::class)->name('index', 'dashboardReview');
     Route::resource('/dashboard/users', DashboardAdminController::class)->name('index', 'dashboardAdmin');
+    Route::resource('/dashboard/facility', DashboardFacilityController::class)->name('index', 'dashboardFacility');
+
 
     Route::get('/dashboard/posts/checkSlug', [DashboardPostController::class, 'checkSlug']);
     Route::resource('/dashboard/posts', DashboardPostController::class)->name('index', 'dashboardPosts');
+
+    Route::resource('/dashboard/room_types', DashboardRoomTypeController::class)->name('index', 'dashboardRoomType');
+    // Route for room types
+    Route::group(['prefix' => 'room_types', 'middleware' => 'auth'], function () {
+        // Rutes for Room Type Images
+        Route::get('/{id}/image', 'ImageController@index');
+        Route::get('/{id}/image/create', 'ImageController@create');
+        Route::post('/{id}/image', 'ImageController@store');
+        Route::get('/{id}/image/{image_id}/edit', 'ImageController@edit');
+        Route::put('/{id}/image/{image_id}/edit', 'ImageController@update');
+        Route::get('/{id}/image/create_multiple', 'ImageController@create_multiple');
+        Route::post('/{id}/image/create_multiple', 'ImageController@store_multiple');
+        Route::delete('/{id}/image/{image_id}', 'ImageController@destroy');
+
+        // Routes for Rooms
+        Route::get('/{id}/room', 'RoomController@index');
+        Route::get('/{id}/room/create', 'RoomController@create');
+        Route::post('/{id}/room', 'RoomController@store');
+        Route::get('/{id}/room/{room_id}/edit', 'RoomController@edit');
+        Route::put('/{id}/room/{room_id}/edit', 'RoomController@update');
+        Route::delete('/{id}/room/{image_id}', 'RoomController@destroy');
+    });
 
     Route::get('/intel_marketing_dashboard', function () {
         return view('admin.pages.intel_marketing_dashboard', [

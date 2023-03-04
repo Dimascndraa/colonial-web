@@ -134,8 +134,11 @@ class DashboardAdminController extends Controller
             $validatedData['level'] = $request->level;
         }
 
-        if ($request->image) {
-            $validatedData['image'] = $request->file('image')->store('profile-picture/' . $request->username);
+        if ($request->file('image')) {
+            if ($request->oldImage) {
+                Storage::delete($request->oldImage);
+            }
+            $validatedData['image'] = $request->file('image')->store('post-image');
         }
 
         // return $request;

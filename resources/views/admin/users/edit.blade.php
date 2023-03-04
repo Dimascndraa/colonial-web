@@ -31,6 +31,7 @@
                             <form id="js-login" method="post" action="{{ url("/dashboard/users/$user->username") }}"
                                 enctype="multipart/form-data">
                                 <input type="hidden" name="level" value="{{ $user->level }}">
+                                <input type="hidden" name="oldImage" value="{{ $user->image }}">
                                 @method('put')
                                 @csrf
                                 <div class=" form-group mb-3">

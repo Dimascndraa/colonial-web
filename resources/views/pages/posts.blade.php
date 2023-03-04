@@ -23,7 +23,7 @@
                <div class="user">
                   <img src="https://i.pinimg.com/originals/8b/16/7a/8b167af653c2399dd93b952a48740620.jpg" alt="user" />
                   <div class="user-info">
-                     <h5>{{ $post->user->name }}</h5>
+                     {{-- <h5>{{ $post->user->name }}</h5> --}}
                      <small>{{ $post->created_at->diffForHumans() }}</small>
                   </div>
                </div>
