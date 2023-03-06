@@ -65,6 +65,7 @@ class DashboardRoomTypeController extends Controller
 
         if ($request->has('facility')) {
             $room_type = new RoomType();
+            $room_type->room_type_id = $this;
             $room_type->facilities()->attach(array_keys($request->input('facility')));
         }
 

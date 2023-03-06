@@ -17,6 +17,7 @@ class CreateFacilitiesTable extends Migration
             $table->increments('id');
             $table->string('name', 50)->unique();
             $table->string('icon', 200);
+            $table->text('descript');
             $table->boolean('status')->default(true);
             $table->timestamps();
         });

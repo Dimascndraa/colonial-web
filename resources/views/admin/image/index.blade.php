@@ -1,18 +1,19 @@
 @extends('admin.inc.layout')
-@section('dashboardFacility', 'active open')
-@section('showFacility', 'active')
+@section('dashboardRoomType', 'active open')
+@section('showRoomType', 'active')
 @section('content')
 <main id="js-page-content" role="main" class="page-content">
     <ol class="breadcrumb page-breadcrumb">
         <li class="breadcrumb-item"><a href="javascript:void(0);">{{ $about->name }}</a></li>
-        <li class="breadcrumb-item active">Ulasan</li>
+        <li class="breadcrumb-item"><a href="{{ route('dashboardRoomType') }}">Tipe Kamar</a></li>
+        <li class="breadcrumb-item action">Image</li>
         <li class="position-absolute pos-top pos-right d-none d-sm-block"><span class="js-get-date"></span></li>
     </ol>
     <div class="subheader">
         <h1 class="subheader-title">
-            <i class="fal fa-star"></i> Ulasan
+            <i class="fal fa-images"></i> Image
             <small>
-                Menu Ulasan
+                Menu Image
             </small>
         </h1>
     </div>
@@ -22,12 +23,13 @@
             <div id="panel-1" class="panel">
                 <div class="panel-hdr">
                     <h2>
-                        Ulasan <span class="fw-300"><i>Web</i></span>
+                        Image <span class="fw-300"><i>Web</i></span>
                     </h2>
                 </div>
                 <div class="panel-container show">
                     <div class="row m-3">
-                        <a href="/dashboard/facility/create" class="btn btn-lg btn-outline-primary">
+                        <a href="{{ url('dashboard/room_types/'.$room_type->id.'/image/create') }}"
+                            class="btn btn-lg btn-outline-primary">
                             <span class="fal fa-plus-circle mr-1"></span>
                             Tambah
                         </a>
@@ -39,33 +41,35 @@
                             <thead class="bg-primary-600">
                                 <tr>
                                     <th>#</th>
-                                    <th>Nama</th>
-                                    <th>Ikon</th>
-                                    <th>Deskripsi</th>
+                                    <th>Image</th>
+                                    <th>Caption</th>
+                                    <th>Is Primary</th>
                                     <th>Status</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($facilities as $facility)
+                                @foreach($room_type->images as $index => $image)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $facility->name }}</td>
-                                    <td><img src="{{ asset('storage/'. $facility->icon) }}" width="100" alt=""></td>
-                                    <td>{!! $facility->descript !!}</td>
-                                    <td>{{ $facility->status == 1 ? 'Aktif' : 'Nonaktif' }}</td>
+                                    <td><img src="{{ asset('storage/' . $image->image) }}" width="100" alt="Gambar">
+                                    </td>
+                                    <td>{!! $image->caption !!}</td>
+                                    <td>{{ $image->is_primary == 1 ? 'Aktif' : 'Nonaktif' }}</td>
+                                    <td>{{ $image->status == 1 ? 'Aktif' : 'Nonaktif' }}</td>
                                     <td>
 
-                                        <a title="Ubah Fasilitas" class="badge mx-1 badge-success p-2 border-0"
-                                            href="{{ url('dashboard/facility/'.$facility->id.'/edit') }}">
+                                        <a title="Ubah Gambar" class="badge mx-1 badge-success p-2 border-0"
+                                            href="{{ url('dashboard/room_types/' . $room_type->id . '/image/' . $image->id . '/edit') }}">
                                             <i class="fal fa-edit"></i>
                                         </a>
-                                        <form action="/dashboard/facility/{{ $facility->id }}" method="POST"
-                                            class="d-inline">
+                                        <form
+                                            action="{{ url('dashboard/room_types/' . $room_type->id . '/image/' . $image->id ) }}"
+                                            method="POST" class="d-inline">
                                             @method('delete')
                                             @csrf
-                                            <input type="hidden" name="oldIcon" value="{{ $facility->icon }}">
-                                            <button title="Hapus" title="Hapus Fasilitas"
+                                            <input type="hidden" name="oldIcon" value="{{ $image->icon }}">
+                                            <button title="Hapus" title="Hapus Gambar"
                                                 class="badge mx-1 badge-danger p-2 border-0"
                                                 onclick="return confirm('Anda takin?')">
                                                 <i class="fas fa-trash"></i>

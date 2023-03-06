@@ -1,108 +1,102 @@
 @extends('admin.inc.layout')
-@section('dashboardFacility','active open')
-@section('createFacility','active')
+@section('dashboardRoomType','active open')
+@section('createRoomType','active')
 @section('content')
 
 <main id="js-page-content" role="main" class="page-content">
     <ol class="breadcrumb page-breadcrumb">
         <li class="breadcrumb-item"><a href="javascript:void(0);">{{ $about->name }}</a></li>
-        <li class="breadcrumb-item"><a href="{{ url('dashboardFacility') }}">Fasilitas</a></li>
+        <li class="breadcrumb-item"><a href="{{ url('dashboardRoomType') }}">Tipe Kamar</a></li>
+        <li class="breadcrumb-item active"><a href="javascript:void(0);">Gambar</a></li>
         <li class="breadcrumb-item active"><a href="javascript:void(0);">Tambah</a></li>
         <li class="position-absolute pos-top pos-right d-none d-sm-block"><span class="js-get-date"></span></li>
     </ol>
     <div class="subheader">
         <h1 class="subheader-title">
-            <i class="fal fa-chess-queen"></i> Fasilitas
+            <i class="fal fa-chess-queen"></i> Tipe Kamar
             <small>
-                Menu Tambah Fasilitas
+                Menu Tambah Tipe Kamar
             </small>
         </h1>
     </div>
     <div class="row my-3 ml-1">
-        <a href="/dashboard/facility/" class="btn btn-lg btn-outline-primary">
+        <a href="/dashboard/room_types/" class="btn btn-lg btn-outline-primary">
             <span class="fal fa-arrow-left mr-1"></span>
             Kembali
         </a>
     </div>
     <div class="row">
         <div class="col-xl-12">
-            <form action="/dashboard/facility" method="post" enctype="multipart/form-data">
-                @csrf
-                <div id="panel-1" class="panel">
-                    <div class="panel-hdr">
-                        <h2>
-                            Tambah <span class="fw-300"><i>Fasilitas</i></span>
-                        </h2>
-                    </div>
-                    <div class="panel-container show">
-                        <div class="panel-content">
-                            <div class="row justify-content-center">
-                                <div class="col-lg-10">
-                                    <div class="mb-3">
-                                        <label for="name" class="form-label">Nama</label>
-                                        <input id="name" type="text"
-                                            class="form-control @error('name') is-invalid @enderror" name="name"
-                                            placeholder="Masukan Judul Fasilitas" value="{{ old('name') }}">
-                                        @error('name')
-                                        <p class="text-danger">{{ $message }}</p>
-                                        @enderror
+            {{ Form::open(array('url' => 'dashboard/room_types/'.$room_type->id.'/image', 'id' => 'room_type-add-form',
+            'files' => true)) }}
+            {{ Form::hidden('_method', 'POST') }}
+            @csrf
+            <div id="panel-1" class="panel">
+                <div class="panel-hdr">
+                    <h2>
+                        Tambah Gambar <span class="fw-300"><i>{{ $room_type->name }}</i></span>
+                    </h2>
+                </div>
+                <div class="panel-container show">
+                    <div class="panel-show">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-10">
+                                <div class="form-group my-3">
+                                    <label class="form-label d-block">Gambar</label>
+                                    <img class="image-preview img-fluid mb-3 col-sm-5 d-block">
+                                    <div class="custom-file">
+                                        <input type="file"
+                                            class="custom-file-input @error('image') is-invalid @enderror" id="image"
+                                            name="image" onchange="previewImage()">
+                                        <label class="custom-file-label" for="image">Pilih Gambar Berita</label>
                                     </div>
+                                    @error('image')
+                                    <p class="text-danger">{{ $message }}</p>
+                                    @enderror
                                 </div>
                             </div>
-                            <div class="row justify-content-center">
-                                <div class="col-lg-10">
-                                    <div class="form-group mb-3">
-                                        <label class="form-label d-block">Ikon</label>
-                                        <img class="icon-preview img-fluid mb-3 col-sm-5 d-block">
-                                        <div class="custom-file">
-                                            <input type="file"
-                                                class="custom-file-input @error('icon') is-invalid @enderror" id="icon"
-                                                name="icon" onchange="previewIcon()">
-                                            <label class="custom-file-label" for="icon">Pilih Ikon Fasilitas</label>
-                                        </div>
-                                        @error('icon')
-                                        <p class="text-danger">{{ $message }}</p>
-                                        @enderror
-                                    </div>
+                        </div>
+                        <div class="row justify-content-center">
+                            <div class="col-lg-5">
+                                <div class="mb-3">
+                                    <label for="caption" class="form-label">Caption</label>
+                                    <input id="caption" type="text"
+                                        class="form-control @error('caption') is-invalid @enderror" name="caption"
+                                        placeholder="Masukan Caption" value="{{ old('caption') }}">
                                 </div>
                             </div>
-                            <div class="row justify-content-center">
-                                <div class="col-lg-10">
-                                    <div class="mb-3">
-                                        <label for="descript" class="form-label">Deskripsi</label>
-                                        <input id="descript" type="hidden" value="{{ old('descript') }}"
-                                            name="descript">
-                                        <trix-editor input="descript"></trix-editor>
-                                        @error('descript')
-                                        <p class="text-danger">{{ $message }}</p>
-                                        @enderror
-                                    </div>
-                                </div>
+                            <div class="col-lg-5">
+                                <label for="room_service" class="form-label">Is Primary</label>
+                                <select class="custom-select" name="is_primary">
+                                    <option value="1" {{ old('is_primary')=='1' ?? 'selected' }}>Ya</option>
+                                    <option value="0" {{ old('is_primary')=='0' ?? 'selected' }}>Tidak
+                                    </option>
+                                </select>
                             </div>
-                            <div class="row justify-content-center">
-                                <div class="col-lg-10">
-                                    <div class="my-3">
-                                        <label for="room_service" class="form-label">Status</label>
-                                        <select class="custom-select" name="status">
-                                            <option value="1">Aktif</option>
-                                            <option value="0">Nonaktif</option>
-                                        </select>
-                                    </div>
-                                </div>
+                        </div>
+                        <div class="row justify-content-center">
+                            <div class="col-lg-10">
+                                <label for="room_service" class="form-label">Status</label>
+                                <select class="custom-select" name="status">
+                                    <option value="1" {{ old('status')=='1' ?? 'selected' }}>Aktif</option>
+                                    <option value="0" {{ old('status')=='0' ?? 'selected' }}>Nonaktif
+                                    </option>
+                                </select>
                             </div>
-                            <div class="row justify-content-center my-4">
-                                <div class="col-lg-10">
-                                    <div class="form-group">
-                                        <button type="submit" class="btn btn-success btn-lg"><i
-                                                class="fal fa-plus-circle"></i>
-                                            Tambah</button>
-                                    </div>
+                        </div>
+                        <div class="row justify-content-center my-4">
+                            <div class="col-lg-10">
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-success btn-lg"><i
+                                            class="fal fa-plus-circle"></i>
+                                        Tambah</button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </form>
+            </div>
+            {!! Form::close() !!}
         </div>
     </div>
 </main>
@@ -249,14 +243,14 @@
 </script>
 @endsection
 <script>
-    function previewIcon() {
-        const icon = document.querySelector('#icon');
-        const imgPreview = document.querySelector('.icon-preview')
+    function previewImage() {
+        const image = document.querySelector('#image');
+        const imgPreview = document.querySelector('.image-preview')
 
         imgPreview.style.display = 'block';
 
         const oFReader = new FileReader();
-        oFReader.readAsDataURL(icon.files[0])
+        oFReader.readAsDataURL(image.files[0])
 
         oFReader.onload = function(oFREvent) {
             imgPreview.src = oFREvent.target.result;

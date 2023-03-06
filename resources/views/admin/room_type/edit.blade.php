@@ -1,20 +1,19 @@
 @extends('admin.inc.layout')
 @section('dashboardRoomType','active open')
-@section('createRoomType','active')
 @section('content')
 
 <main id="js-page-content" role="main" class="page-content">
     <ol class="breadcrumb page-breadcrumb">
         <li class="breadcrumb-item"><a href="javascript:void(0);">{{ $about->name }}</a></li>
         <li class="breadcrumb-item"><a href="{{ url('dashboardRoomType') }}">Tipe Kamar</a></li>
-        <li class="breadcrumb-item active"><a href="javascript:void(0);">Tambah</a></li>
+        <li class="breadcrumb-item active"><a href="javascript:void(0);">Ubah</a></li>
         <li class="position-absolute pos-top pos-right d-none d-sm-block"><span class="js-get-date"></span></li>
     </ol>
     <div class="subheader">
         <h1 class="subheader-title">
             <i class="fal fa-chess-queen"></i> Tipe Kamar
             <small>
-                Menu Tambah Tipe Kamar
+                Menu Ubah Tipe Kamar
             </small>
         </h1>
     </div>
@@ -26,12 +25,13 @@
     </div>
     <div class="row">
         <div class="col-xl-12">
-            <form action="/dashboard/room_types" method="post" enctype="multipart/form-data">
+            <form action="/dashboard/room_types/{{ $room_type->id }}" method="post" enctype="multipart/form-data">
+                @method('put')
                 @csrf
                 <div id="panel-1" class="panel">
                     <div class="panel-hdr">
                         <h2>
-                            Tambah <span class="fw-300"><i>Tipe Kamar</i></span>
+                            Ubah <span class="fw-300"><i>Tipe Kamar</i></span>
                         </h2>
                     </div>
                     <div class="panel-container show">
@@ -42,7 +42,8 @@
                                         <label for="name" class="form-label">Nama</label>
                                         <input id="name" type="text"
                                             class="form-control @error('name') is-invalid @enderror" name="name"
-                                            placeholder="Masukan Nama Tipe Kamar" value="{{ old('name') }}">
+                                            placeholder="Masukan Nama Tipe Kamar"
+                                            value="{{ old('name', $room_type->name) }}">
                                     </div>
                                 </div>
                             </div>
@@ -53,7 +54,7 @@
                                         <input id="cost_per_day" type="text"
                                             class="form-control @error('cost_per_day') is-invalid @enderror"
                                             name="cost_per_day" placeholder="Masukan Harga Permalam"
-                                            value="{{ old('cost_per_day') }}">
+                                            value="{{ old('cost_per_day', $room_type->cost_per_day) }}">
                                     </div>
                                 </div>
                                 <div class="col-lg-5">
@@ -61,7 +62,7 @@
                                     <div class="input-group mb-3">
                                         <input id="size" type="number"
                                             class="form-control @error('size') is-invalid @enderror" name="size"
-                                            value="{{ old('size') }}"
+                                            value="{{ old('size', $room_type->size) }}"
                                             placeholder="Masukan Ukuran Kamar dalam satuan Meter">
                                         <div class="input-group-append">
                                             <span class="input-group-text" id="basic-addon2">Meter</span>
@@ -75,14 +76,16 @@
                                         <label class="form-label" for="discount_percentage">Discount:</label>
                                         <div class="input-group mb-3">
                                             <input readonly type="number" class="form-control" placeholder="Diskon (%)"
-                                                name="discount_percentage" id="discount_percentage" min="1" max="100">
+                                                name="discount_percentage" id="discount_percentage" min="1" max="100"
+                                                value="{{ old('discount_percentage', $room_type->discount_percentage) }}">
                                             <div class="input-group-append">
                                                 <span class="input-group-text"
                                                     id="basic-addon2"><strong>%</strong></span>
                                             </div>
                                         </div>
                                         <input type="range" class="form-control-range" id="diskon" min="0" max="100"
-                                            oninput="tampil()" value="0">
+                                            oninput="tampil()"
+                                            value="{{ old('discount_percentage', $room_type->discount_percentage) }}">
                                     </div>
                                 </div>
                             </div>
@@ -91,14 +94,16 @@
                                     <div class="form-group">
                                         <label class="form-label" for="max_adult">Max. Dewasa:</label>
                                         <input type="number" class="form-control" placeholder="Batas Maksimal Dewasa"
-                                            name="max_adult" id="max_adult" min="1">
+                                            name="max_adult" id="max_adult" min="1"
+                                            value="{{ old('max_adult', $room_type->max_adult) }}">
                                     </div>
                                 </div>
                                 <div class="col-lg-5">
                                     <div class="form-group">
                                         <label class="form-label" for="max_child">Max. Anak-Anak:</label>
                                         <input type="number" class="form-control" placeholder="Batas Maksimal Dewasa"
-                                            name="max_child" id="max_child" min="1">
+                                            name="max_child" id="max_child" min="1"
+                                            value="{{ old('max_child', $room_type->max_child) }}">
                                     </div>
                                 </div>
                             </div>
@@ -107,7 +112,8 @@
                                 <div class="col-lg-10">
                                     <div class="mb-3">
                                         <label for="descript" class="form-label">Deskripsi</label>
-                                        <input id="descript" type="hidden" name="descript">
+                                        <input id="descript" type="hidden" name="descript"
+                                            value="{{ old('descript', $room_type->descript) }}">
                                         <trix-editor input="descript"></trix-editor>
                                         @error('descript')
                                         <p class="text-danger">{{ $message }}</p>
@@ -122,9 +128,11 @@
                                         @forelse($facilities as $facility)
                                         <div class="col-sm-4 mt-2">
                                             <div class="custom-control custom-checkbox">
-                                                <input type="checkbox" id="{{$facility->id}}"
-                                                    name="facility[{{$facility->id}}]" class="custom-control-input"
-                                                    value="{{ $facility->name }}">
+                                                <input type="checkbox" id="{{ $facility->id }}"
+                                                    name="facility[{{ $facility->id }}]" class="custom-control-input"
+                                                    value="{{ $facility->name }}"
+                                                    @if($room_type->facilities->contains($facility->id)) checked
+                                                @endif>
                                                 <label class="custom-control-label" for="{{$facility->id}}">{{
                                                     $facility->name
                                                     }}</label>
@@ -144,8 +152,11 @@
                                     <div class="my-3">
                                         <label for="room_service" class="form-label">Layanan Kamar</label>
                                         <select class="custom-select" name="room_service">
-                                            <option value="1">Tersedia</option>
-                                            <option value="0">Tidak Tersedia</option>
+                                            <option value="1" {{ $room_type->room_service == "1" ? "selected" : ''
+                                                }}>Tersedia</option>
+                                            <option value="0" {{ $room_type->room_service == "0" ? "selected" : ''
+                                                }}>Tidak
+                                                Tersedia</option>
                                         </select>
                                     </div>
                                 </div>
@@ -153,10 +164,12 @@
                             <div class="row justify-content-center">
                                 <div class="col-lg-10">
                                     <div class="my-3">
-                                        <label for="room_service" class="form-label">Status</label>
-                                        <select class="custom-select" name="status">
-                                            <option value="1" {{ old('status')=='1' ?? 'selected' }}>Aktif</option>
-                                            <option value="0" {{ old('status')=='0' ?? 'selected' }}>Nonaktif</option>
+                                        <label for="status" class="form-label">Status</label>
+                                        <select class="custom-select" name="status" id>
+                                            <option value="1" {{ $room_type->status == "1" ? "selected" : ''
+                                                }}>Aktif</option>
+                                            <option value="0" {{ $room_type->status == "0" ? "selected" : ''
+                                                }}>Nonaktif</option>
                                         </select>
                                     </div>
                                 </div>
@@ -166,7 +179,7 @@
                                     <div class="form-group">
                                         <button type="submit" class="btn btn-success btn-lg"><i
                                                 class="fal fa-plus-circle"></i>
-                                            Tambah</button>
+                                            Ubah</button>
                                     </div>
                                 </div>
                             </div>

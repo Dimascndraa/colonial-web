@@ -68,7 +68,7 @@
                         </a>
                     </li>
                     <li class="@yield('createFacility')">
-                        <a href="{{ url('/dashboard/room_types/create') }}" title="Buat Fasilitas Baru">
+                        <a href="{{ url('/dashboard/facility/create') }}" title="Buat Fasilitas Baru">
                             <span class="nav-link-text">Tambah Fasilitas</span>
                         </a>
                     </li>

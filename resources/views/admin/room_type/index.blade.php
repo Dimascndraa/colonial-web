@@ -1,3 +1,4 @@
+{{-- @dd($room_types->first()->images) --}}
 @extends('admin.inc.layout')
 @section('dashboardRoomType', 'active')
 @section('content')
@@ -56,7 +57,7 @@
                                     <td>{{ $room_type->discount_percentage }}%</td>
                                     <td>{{ $room_type->max_adult }}</td>
                                     <td>{{ $room_type->max_child }}</td>
-                                    <td>{{ $room_type->status }}</td>
+                                    <td>{{ $room_type->status == "1" ? "Aktif" : "Nonaktif" }}</td>
                                     <td>
                                         <a title="Kelola Gambar" class="badge mx-1 badge-primary p-2 border-0"
                                             href="{{ url('dashboard/room_types/'.$room_type->id.'/image') }}">
@@ -66,15 +67,10 @@
                                             href="{{ url('dashboard/room_types/'.$room_type->id.'/room') }}">
                                             <i class="fal fa-inbox"></i>
                                         </a>
-                                        <form action="/dashboard/room_types/{{ $room_type->id }}" method="POST"
-                                            class="d-inline">
-                                            @method('put')
-                                            @csrf
-                                            <input type="hidden" name="status" value="diterima">
-                                            <button title="Ubah" class="badge mx-1 badge-success p-2 border-0">
-                                                <i class="fas fa-edit"></i>
-                                            </button>
-                                        </form>
+                                        <a title="Kelola Ruang" class="badge mx-1 badge-success p-2 border-0"
+                                            href="{{ url('dashboard/room_types/'.$room_type->id.'/edit') }}">
+                                            <i class="fal fa-edit"></i>
+                                        </a>
                                         <form action="/dashboard/room_types/{{ $room_type->id }}" method="POST"
                                             class="d-inline">
                                             @method('delete')

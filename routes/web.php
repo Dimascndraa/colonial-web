@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\PagesController;
+use App\Http\Controllers\DashboardImageController;
 use App\Http\Controllers\DashboardPostController;
 use App\Http\Controllers\DashboardAboutController;
 use App\Http\Controllers\DashboardAdminController;
@@ -106,16 +107,16 @@ Route::group(['middleware' => ['auth', 'ceklevel:admin']], function () {
 
     Route::resource('/dashboard/room_types', DashboardRoomTypeController::class)->name('index', 'dashboardRoomType');
     // Route for room types
-    Route::group(['prefix' => 'room_types', 'middleware' => 'auth'], function () {
+    Route::group(['prefix' => '/dashboard/room_types', 'middleware' => 'auth'], function () {
         // Rutes for Room Type Images
-        Route::get('/{id}/image', 'ImageController@index');
-        Route::get('/{id}/image/create', 'ImageController@create');
-        Route::post('/{id}/image', 'ImageController@store');
-        Route::get('/{id}/image/{image_id}/edit', 'ImageController@edit');
-        Route::put('/{id}/image/{image_id}/edit', 'ImageController@update');
-        Route::get('/{id}/image/create_multiple', 'ImageController@create_multiple');
-        Route::post('/{id}/image/create_multiple', 'ImageController@store_multiple');
-        Route::delete('/{id}/image/{image_id}', 'ImageController@destroy');
+        Route::get('/{id}/image', [DashboardImageController::class, 'index']);
+        Route::get('/{id}/image/create', [DashboardImageController::class, 'create']);
+        Route::post('/{id}/image', [DashboardImageController::class, 'store']);
+        Route::get('/{id}/image/{image_id}/edit', [DashboardImageController::class, 'edit']);
+        Route::put('/{id}/image/{image_id}/edit', [DashboardImageController::class, 'update']);
+        Route::get('/{id}/image/create_multiple', [DashboardImageController::class, 'create_multiple']);
+        Route::post('/{id}/image/create_multiple', [DashboardImageController::class, 'store_multiple']);
+        Route::delete('/{id}/image/{image_id}', [DashboardImageController::class, 'destroy']);
 
         // Routes for Rooms
         Route::get('/{id}/room', 'RoomController@index');

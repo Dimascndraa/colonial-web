@@ -6,32 +6,33 @@
 <main id="js-page-content" role="main" class="page-content">
     <ol class="breadcrumb page-breadcrumb">
         <li class="breadcrumb-item"><a href="javascript:void(0);">{{ $about->name }}</a></li>
-        <li class="breadcrumb-item"><a href="{{ url('dashboardRoomType') }}">Tipe Kamar</a></li>
-        <li class="breadcrumb-item active"><a href="javascript:void(0);">Tambah</a></li>
+        <li class="breadcrumb-item"><a href="{{ url('dashboardRoomType') }}">Fasilitas</a></li>
+        <li class="breadcrumb-item active"><a href="javascript:void(0);">Ubah</a></li>
         <li class="position-absolute pos-top pos-right d-none d-sm-block"><span class="js-get-date"></span></li>
     </ol>
     <div class="subheader">
         <h1 class="subheader-title">
-            <i class="fal fa-chess-queen"></i> Tipe Kamar
+            <i class="fal fa-chess-queen"></i> Fasilitas
             <small>
-                Menu Tambah Tipe Kamar
+                Menu Ubah Fasilitas
             </small>
         </h1>
     </div>
     <div class="row my-3 ml-1">
-        <a href="/dashboard/room_types/" class="btn btn-lg btn-outline-primary">
+        <a href="/dashboard/facility/" class="btn btn-lg btn-outline-primary">
             <span class="fal fa-arrow-left mr-1"></span>
             Kembali
         </a>
     </div>
     <div class="row">
         <div class="col-xl-12">
-            <form action="/dashboard/room_types" method="post" enctype="multipart/form-data">
+            <form action="/dashboard/facility/{{ $facility->id }}" method="post" enctype="multipart/form-data">
+                @method('put')
                 @csrf
                 <div id="panel-1" class="panel">
                     <div class="panel-hdr">
                         <h2>
-                            Tambah <span class="fw-300"><i>Tipe Kamar</i></span>
+                            Ubah <span class="fw-300"><i>Fasilitas</i></span>
                         </h2>
                     </div>
                     <div class="panel-container show">
@@ -42,72 +43,43 @@
                                         <label for="name" class="form-label">Nama</label>
                                         <input id="name" type="text"
                                             class="form-control @error('name') is-invalid @enderror" name="name"
-                                            placeholder="Masukan Nama Tipe Kamar" value="{{ old('name') }}">
+                                            placeholder="Masukan Judul Fasilitas"
+                                            value="{{ old('name', $facility->name) }}">
+                                        @error('name')
+                                        <p class="text-danger">{{ $message }}</p>
+                                        @enderror
                                     </div>
                                 </div>
                             </div>
                             <div class="row justify-content-center">
-                                <div class="col-lg-5">
-                                    <div class="mb-3">
-                                        <label for="cost_per_day" class="form-label">Harga Per Malam</label>
-                                        <input id="cost_per_day" type="text"
-                                            class="form-control @error('cost_per_day') is-invalid @enderror"
-                                            name="cost_per_day" placeholder="Masukan Harga Permalam"
-                                            value="{{ old('cost_per_day') }}">
-                                    </div>
-                                </div>
-                                <div class="col-lg-5">
-                                    <label for="size" class="form-label">Ukuran Kamar</label>
-                                    <div class="input-group mb-3">
-                                        <input id="size" type="number"
-                                            class="form-control @error('size') is-invalid @enderror" name="size"
-                                            value="{{ old('size') }}"
-                                            placeholder="Masukan Ukuran Kamar dalam satuan Meter">
-                                        <div class="input-group-append">
-                                            <span class="input-group-text" id="basic-addon2">Meter</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row justify-content-center mb-3">
                                 <div class="col-lg-10">
-                                    <div class="form-group">
-                                        <label class="form-label" for="discount_percentage">Discount:</label>
-                                        <div class="input-group mb-3">
-                                            <input readonly type="number" class="form-control" placeholder="Diskon (%)"
-                                                name="discount_percentage" id="discount_percentage" min="1" max="100">
-                                            <div class="input-group-append">
-                                                <span class="input-group-text"
-                                                    id="basic-addon2"><strong>%</strong></span>
-                                            </div>
+                                    <div class="form-group mb-3">
+                                        <label class="form-label d-block">Ikon</label>
+                                        <input type="hidden" name="oldIcon" value="{{ $facility->icon }}">
+                                        @if ($facility->icon)
+                                        <img src="{{ asset('storage/' . $facility->icon) }}"
+                                            class="icon-preview img-fluid mb-3 col-sm-5 d-block">
+                                        @else
+                                        <img class="icon-preview img-fluid mb-3 col-sm-5 d-block">
+                                        @endif
+                                        <div class="custom-file">
+                                            <input type="file"
+                                                class="custom-file-input @error('icon') is-invalid @enderror" id="icon"
+                                                name="icon" onchange="previewIcon()">
+                                            <label class="custom-file-label" for="icon">Pilih Ikon Fasilitas</label>
                                         </div>
-                                        <input type="range" class="form-control-range" id="diskon" min="0" max="100"
-                                            oninput="tampil()" value="0">
+                                        @error('icon')
+                                        <p class="text-danger">{{ $message }}</p>
+                                        @enderror
                                     </div>
                                 </div>
                             </div>
-                            <div class="row justify-content-center mb-3">
-                                <div class="col-lg-5">
-                                    <div class="form-group">
-                                        <label class="form-label" for="max_adult">Max. Dewasa:</label>
-                                        <input type="number" class="form-control" placeholder="Batas Maksimal Dewasa"
-                                            name="max_adult" id="max_adult" min="1">
-                                    </div>
-                                </div>
-                                <div class="col-lg-5">
-                                    <div class="form-group">
-                                        <label class="form-label" for="max_child">Max. Anak-Anak:</label>
-                                        <input type="number" class="form-control" placeholder="Batas Maksimal Dewasa"
-                                            name="max_child" id="max_child" min="1">
-                                    </div>
-                                </div>
-                            </div>
-
                             <div class="row justify-content-center">
                                 <div class="col-lg-10">
                                     <div class="mb-3">
                                         <label for="descript" class="form-label">Deskripsi</label>
-                                        <input id="descript" type="hidden" name="descript">
+                                        <input id="descript" type="hidden" name="descript"
+                                            value="{{ old('descript', $facility->descript) }}">
                                         <trix-editor input="descript"></trix-editor>
                                         @error('descript')
                                         <p class="text-danger">{{ $message }}</p>
@@ -117,46 +89,12 @@
                             </div>
                             <div class="row justify-content-center">
                                 <div class="col-lg-10">
-                                    <label for="facility" class="form-label">Fasilitas</label>
-                                    <div class="row">
-                                        @forelse($facilities as $facility)
-                                        <div class="col-sm-4 mt-2">
-                                            <div class="custom-control custom-checkbox">
-                                                <input type="checkbox" id="{{$facility->id}}"
-                                                    name="facility[{{$facility->id}}]" class="custom-control-input"
-                                                    value="{{ $facility->name }}">
-                                                <label class="custom-control-label" for="{{$facility->id}}">{{
-                                                    $facility->name
-                                                    }}</label>
-                                            </div>
-                                        </div>
-                                        @empty
-                                        <div class="col-lg-12">
-                                            <input type="text" value="Belum ada Fasilitas di Menu Fasilitas" disabled
-                                                class="form-control" />
-                                        </div>
-                                        @endforelse
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row justify-content-center">
-                                <div class="col-lg-10">
                                     <div class="my-3">
-                                        <label for="room_service" class="form-label">Layanan Kamar</label>
-                                        <select class="custom-select" name="room_service">
-                                            <option value="1">Tersedia</option>
-                                            <option value="0">Tidak Tersedia</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row justify-content-center">
-                                <div class="col-lg-10">
-                                    <div class="my-3">
-                                        <label for="room_service" class="form-label">Status</label>
-                                        <select class="custom-select" name="status">
-                                            <option value="1" {{ old('status')=='1' ?? 'selected' }}>Aktif</option>
-                                            <option value="0" {{ old('status')=='0' ?? 'selected' }}>Nonaktif</option>
+                                        <label for="status" class="form-label">Status</label>
+                                        <select class="custom-select" name="status" id="status">
+                                            <option value="1" {{ old('status', $facility->status) == 1 }}>Aktif</option>
+                                            <option value="0" {{ old('status', $facility->status) == 0 }}>Nonaktif
+                                            </option>
                                         </select>
                                     </div>
                                 </div>
@@ -164,9 +102,8 @@
                             <div class="row justify-content-center my-4">
                                 <div class="col-lg-10">
                                     <div class="form-group">
-                                        <button type="submit" class="btn btn-success btn-lg"><i
-                                                class="fal fa-plus-circle"></i>
-                                            Tambah</button>
+                                        <button type="submit" class="btn btn-success btn-lg"><i class="fal fa-edit"></i>
+                                            Ubah</button>
                                     </div>
                                 </div>
                             </div>
@@ -320,23 +257,17 @@
 </script>
 @endsection
 <script>
-    function previewImage() {
-        const image = document.querySelector('#image');
-        const imgPreview = document.querySelector('.image-preview')
+    function previewIcon() {
+        const icon = document.querySelector('#icon');
+        const imgPreview = document.querySelector('.icon-preview')
 
         imgPreview.style.display = 'block';
 
         const oFReader = new FileReader();
-        oFReader.readAsDataURL(image.files[0])
+        oFReader.readAsDataURL(icon.files[0])
 
         oFReader.onload = function(oFREvent) {
             imgPreview.src = oFREvent.target.result;
         }
-    }
-    function tampil() {
-        let diskon = document.getElementById('diskon').value;
-        let input = document.getElementById('discount_percentage').value=diskon;
-        // console.log(diskon)
-        
     }
 </script>
