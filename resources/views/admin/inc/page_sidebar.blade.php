@@ -13,7 +13,8 @@
     <nav id="js-primary-nav" class="primary-nav" role="navigation">
         <div class="nav-filter">
             <div class="position-relative">
-                <input type="text" id="nav_filter_input" placeholder="Filter menu" class="form-control" tabindex="0">
+                <input type="text" id="nav_filter_input" placeholder="Filter menu" class="form-control"
+                    tabindex="0">
                 <a href="#" onclick="return false;" class="btn-primary btn-search-close js-waves-off"
                     data-action="toggle" data-class="list-filter-active" data-target=".page-sidebar">
                     <i class="fal fa-chevron-up"></i>
@@ -50,8 +51,26 @@
                 </a>
                 <ul>
                     <li class="@yield('editAbout')">
-                        <a href="{{  url('/dashboard/about/1/edit') }}" title="Edit Identitas">
+                        <a href="{{ url('/dashboard/about/1/edit') }}" title="Edit Identitas">
                             <span class="nav-link-text">Edit Identitas</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="@yield('dashboardBooking')">
+                <a href="javascript:void(0)" title="Booking">
+                    <i class="fal fa-bed"></i>
+                    <span class="nav-link-text">Booking</span>
+                </a>
+                <ul>
+                    <li class="@yield('RoomBooking')">
+                        <a href="{{ route('dashboardRoomBooking') }}" title="Lihat Booking">
+                            <span class="nav-link-text">Booking Ruangan</span>
+                        </a>
+                    </li>
+                    <li class="@yield('eventBooking')">
+                        <a href="{{ url('/dashboard/booking/create') }}" title="Buat Booking Baru">
+                            <span class="nav-link-text">Event Booking</span>
                         </a>
                     </li>
                 </ul>

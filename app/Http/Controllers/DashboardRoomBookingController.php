@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers;
 
-use App\Model\RoomBooking;
+use App\Models\RoomBooking;
 
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Controller;
+use App\Models\About;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
@@ -13,16 +14,6 @@ use Illuminate\Http\Request;
 
 class DashboardRoomBookingController extends Controller
 {
-
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        parent::__construct();
-    }
     /**
      * Display a listing of the resource.
      *
@@ -30,15 +21,20 @@ class DashboardRoomBookingController extends Controller
      */
     public function index()
     {
-        $room_bookings = RoomBooking::all();
-        return view('admin.room_booking.view')
-            ->with('room_bookings', $room_bookings);
+        return view('admin.room_booking.index', [
+            'title' => 'Booking Ruangan',
+            'about' => About::all()->first(),
+            'room_bookings' => RoomBooking::all()
+        ]);
     }
 
-    public function edit($id)
+    public function edit(RoomBooking $roomBooking)
     {
-        $room_booking = RoomBooking::find($id);
-        return view('admin.room_booking.edit')->with('room_booking', $room_booking);
+        return view('admin.room_booking.edit', [
+            'title' => 'Booking Ruangan',
+            'about' => About::all()->first(),
+            'room_booking' => $roomBooking
+        ]);
     }
 
     public function update(Request $request, $id)
@@ -60,8 +56,6 @@ class DashboardRoomBookingController extends Controller
         $room_booking->payment = $request->input('payment');
         $room_booking->save();
 
-        Session::flash('flash_title', 'Success');
-        Session::flash('flash_message', 'The Room Booking has been updated successfully.');
-        return redirect('/admin/room_booking');
+        return redirect('/dashboard/room_booking/')->with('success', 'Booking berhasil diperbarui!');
     }
 }

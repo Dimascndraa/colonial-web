@@ -2,19 +2,19 @@
 
 namespace App\Models;
 
-use App\Models\Room;
-use App\Models\User;
+use App\Model\User;
+use App\Models\Event;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class RoomBooking extends Model
+class EventBooking extends Model
 {
     /**
      * The table associated with the model.
      *
      * @var string
      */
-    protected $table = 'room_bookings';
+    protected $table = 'event_bookings';
 
     protected $fillable = ['id'];
 
@@ -28,8 +28,11 @@ class RoomBooking extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function room()
+    /**
+     * Get the gallery that owns the image.
+     */
+    public function event()
     {
-        return $this->belongsTo(Room::class);
+        return $this->belongsTo(Event::class);
     }
 }

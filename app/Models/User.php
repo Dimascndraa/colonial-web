@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use App\Models\Post;
-use App\Model\RoomBooking;
+use App\Models\RoomBooking;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -47,5 +47,15 @@ class User extends Authenticatable
     public function getRouteKeyName()
     {
         return 'username';
+    }
+
+    public function room_bookings()
+    {
+        return $this->hasMany(RoomBooking::class);
+    }
+
+    public function event_bookings()
+    {
+        return $this->hasMany(EventBooking::class);
     }
 }

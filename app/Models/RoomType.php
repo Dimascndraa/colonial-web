@@ -27,4 +27,16 @@ class RoomType extends Model
     {
         return $this->hasMany(Room::class);
     }
+
+    public function getDiscountedPriceAttribute()
+    {
+        return $this->cost_per_day - (($this->cost_per_day / 100) * $this->discount_percentage);
+    }
+
+    public function getFinalPriceAttribute()
+    {
+        $after_service_charge = $this->discountedPrice + (($this->discountedPrice / 100) * config('app.service_charge_percentage'));
+        $after_vat = $after_service_charge + (($after_service_charge / 100) * config('app.vat_percentage'));
+        return $after_vat;
+    }
 }

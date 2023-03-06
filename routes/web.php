@@ -18,6 +18,7 @@ use App\Http\Controllers\DashboardFacilityController;
 use App\Http\Controllers\DashboardRoomTypeController;
 use App\Http\Controllers\DashboardRoomController;
 use App\Http\Controllers\DashboardAnnouncementController;
+use App\Http\Controllers\DashboardRoomBookingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -106,6 +107,11 @@ Route::group(['middleware' => ['auth', 'ceklevel:admin']], function () {
     Route::get('/dashboard/posts/checkSlug', [DashboardPostController::class, 'checkSlug']);
     Route::resource('/dashboard/posts', DashboardPostController::class)->name('index', 'dashboardPosts');
 
+    //Routes for RoomBookings
+    Route::get('/room_booking', [DashboardRoomBookingController::class, 'index'])->name('dashboardRoomBooking');
+    Route::get('/room_booking/{id}/edit', [DashboardRoomBookingController::class, 'edit'])->name('editRoomBooking');
+    Route::put('/room_booking/{id}/edit', [DashboardRoomBookingController::class, 'update'])->name('updateRoomBooking');
+
     Route::resource('/dashboard/room_types', DashboardRoomTypeController::class)->name('index', 'dashboardRoomType');
     // Route for room types
     Route::group(['prefix' => '/dashboard/room_types', 'middleware' => 'auth'], function () {
@@ -127,6 +133,7 @@ Route::group(['middleware' => ['auth', 'ceklevel:admin']], function () {
         Route::put('/{id}/room/{room_id}/edit', [DashboardRoomController::class, 'update']);
         Route::delete('/{id}/room/{image_id}', [DashboardRoomController::class, 'destroy']);
     });
+
 
     Route::get('/intel_marketing_dashboard', function () {
         return view('admin.pages.intel_marketing_dashboard', [
