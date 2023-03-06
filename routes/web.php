@@ -16,6 +16,7 @@ use App\Http\Controllers\DashboardContactController;
 use App\Http\Controllers\DashboardGalleryController;
 use App\Http\Controllers\DashboardFacilityController;
 use App\Http\Controllers\DashboardRoomTypeController;
+use App\Http\Controllers\DashboardRoomController;
 use App\Http\Controllers\DashboardAnnouncementController;
 
 /*
@@ -119,12 +120,12 @@ Route::group(['middleware' => ['auth', 'ceklevel:admin']], function () {
         Route::delete('/{id}/image/{image_id}', [DashboardImageController::class, 'destroy']);
 
         // Routes for Rooms
-        Route::get('/{id}/room', 'RoomController@index');
-        Route::get('/{id}/room/create', 'RoomController@create');
-        Route::post('/{id}/room', 'RoomController@store');
-        Route::get('/{id}/room/{room_id}/edit', 'RoomController@edit');
-        Route::put('/{id}/room/{room_id}/edit', 'RoomController@update');
-        Route::delete('/{id}/room/{image_id}', 'RoomController@destroy');
+        Route::get('/{id}/room', [DashboardRoomController::class, 'index']);
+        Route::get('/{id}/room/create', [DashboardRoomController::class, 'create']);
+        Route::post('/{id}/room', [DashboardRoomController::class, 'store']);
+        Route::get('/{id}/room/{room_id}/edit', [DashboardRoomController::class, 'edit']);
+        Route::put('/{id}/room/{room_id}/edit', [DashboardRoomController::class, 'update']);
+        Route::delete('/{id}/room/{image_id}', [DashboardRoomController::class, 'destroy']);
     });
 
     Route::get('/intel_marketing_dashboard', function () {

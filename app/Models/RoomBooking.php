@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Model;
+namespace App\Models;
 
-use App\Model\Room;
+use App\Models\Room;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 
@@ -15,7 +15,7 @@ class RoomBooking extends Model
      */
     protected $table = 'room_bookings';
 
-    protected $fillable = ['arrival_date', 'departure_date', 'room_cost', 'status', 'payment', 'room_id', 'user_id'];
+    protected $fillable = ['id'];
 
     /**
      * Get the gallery that owns the image.

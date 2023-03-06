@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Model;
+namespace App\Models;
 
-use App\Model\RoomType;
-use App\Model\RoomBooking;
+use App\Models\RoomType;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Room extends Model
 {
@@ -15,8 +15,9 @@ class Room extends Model
      */
     protected $table = 'rooms';
 
-    protected $fillable = ['room_number', 'description', 'available', 'status', 'room_type_id'];
+    protected $guarded = ['id'];
 
+    use HasFactory;
 
     public function room_type()
     {

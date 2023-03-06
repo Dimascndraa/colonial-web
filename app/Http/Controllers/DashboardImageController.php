@@ -62,7 +62,6 @@ class DashboardImageController extends Controller
         $validatedData['image'] = $request->file('image')->store('room_type');
         $validatedData['room_type_id'] = $id;
 
-
         if ($validatedData['is_primary'] == true) {
             $this->set_is_primary_false($id);
         }
@@ -70,7 +69,7 @@ class DashboardImageController extends Controller
         // return $validatedData;
 
         Image::create($validatedData);
-        return redirect('/dashboard/room_types')->with('success', 'Gambar berhasil ditambahkan!');
+        return redirect('/dashboard/room_types/' . $id . '/image')->with('success', 'Gambar berhasil ditambahkan!');
     }
 
     /**
@@ -133,7 +132,7 @@ class DashboardImageController extends Controller
         }
 
         Image::where('id', $id)->update($validatedData);
-        return redirect('/dashboard/room_types')->with('success', 'Gambar berhasil diubah!');
+        return redirect('/dashboard/room_types/' . $id . '/image')->with('success', 'Gambar berhasil diubah!');
     }
 
     /**
@@ -142,14 +141,14 @@ class DashboardImageController extends Controller
      * @param  \App\Models\Image  $image
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Image $image)
+    public function destroy($id, $image_id, Image $image)
     {
         if ($image->image) {
             Storage::delete($image->image);
         }
 
         Image::destroy($image->id);
-        return redirect('/dashboard/room_types')->with('success', 'Gambar berhasil dihapus!');
+        return redirect('/dashboard/room_types/' . $id . '/image')->with('success', 'Gambar berhasil dihapus!');
     }
 
     public function set_is_primary_false($room_type_id)
