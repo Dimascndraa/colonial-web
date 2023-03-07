@@ -1,9 +1,10 @@
 <!-- BEGIN Left Aside -->
 <aside class="page-sidebar">
-    <div class="page-logo">
+    <div class="page-logo" style="margin-left: -1rem">
         <a href="#" class="page-logo-link press-scale-down d-flex align-items-center position-relative"
             data-toggle="modal" data-target="#modal-shortcut">
-            <img src="/img/logo.png" alt="{{ $about->name }}" aria-roledescription="logo">
+            <img src="{{ asset('storage/' . $about->icon) }}" style="width: 50px;" alt="{{ $about->name }}"
+                aria-roledescription="logo">
             <span class="page-logo-text mr-1">{{ $about->name }}</span>
             <span class="position-absolute text-white opacity-50 small pos-top pos-right mr-2 mt-n2"></span>
             <i class="fal fa-angle-down d-inline-block ml-1 fs-lg color-primary-300"></i>
@@ -13,8 +14,7 @@
     <nav id="js-primary-nav" class="primary-nav" role="navigation">
         <div class="nav-filter">
             <div class="position-relative">
-                <input type="text" id="nav_filter_input" placeholder="Filter menu" class="form-control"
-                    tabindex="0">
+                <input type="text" id="nav_filter_input" placeholder="Filter menu" class="form-control" tabindex="0">
                 <a href="#" onclick="return false;" class="btn-primary btn-search-close js-waves-off"
                     data-action="toggle" data-class="list-filter-active" data-target=".page-sidebar">
                     <i class="fal fa-chevron-up"></i>
@@ -147,6 +147,25 @@
                     <i class="fal fa-star"></i>
                     <span class="nav-link-text" data-i18n="nav.review">Ulasan</span>
                 </a>
+            </li>
+
+            <li class="@yield('dashboardCategory')">
+                <a href="javascript:void(0)" title="Kategori Berita">
+                    <i class="fal fa-list-ol"></i>
+                    <span class="nav-link-text">Kategori Berita</span>
+                </a>
+                <ul>
+                    <li class="@yield('showCategory')">
+                        <a href="{{ route('dashboardCategory') }}" title="Lihat Kategori Berita">
+                            <span class="nav-link-text">Lihat Kategori Berita</span>
+                        </a>
+                    </li>
+                    <li class="@yield('createCategory')">
+                        <a href="{{ url('/dashboard/category/create') }}" title="Buat Kategori Berita Baru">
+                            <span class="nav-link-text">Tambah Kategori Berita</span>
+                        </a>
+                    </li>
+                </ul>
             </li>
 
             <li class="@yield('dashboardNews')">

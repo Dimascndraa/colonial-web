@@ -19,18 +19,21 @@
         font-size: 100px;
     }
 
-    .search-box {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-wrap: wrap;
-    }
-
     .guest {
         width: 143px;
     }
 
     #about {
         margin-top: 10rem;
+    }
+}
+
+/* Custom */
+@media only screen and (min-width: 1364px) {
+    .search-box {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
     }
 }

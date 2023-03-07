@@ -151,7 +151,7 @@
                                                         Lama:</label>
                                                     <input type="password" placeholder="Masukkan Password Lama"
                                                         class="form-control" name="old_password" id="old_password"
-                                                        value="{{ old }}">
+                                                        value="{{ old('old_password') }}">
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="password" class="col-form-label">{{ __('Password

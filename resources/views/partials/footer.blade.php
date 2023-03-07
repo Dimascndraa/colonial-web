@@ -1,7 +1,8 @@
 <!-- Footer Section -->
 <style>
    #deskripsi div {
-      color: red;
+      color: white;
+      opacity: .6;
    }
 </style>
 
@@ -35,9 +36,9 @@
             </div>
             <div class="bscol-md-6 item text">
                <h3>{{ $about->name }}</h3>
-               <p id="deskripsi">{!! $about->short_descript !!}</p>
+               <div id="deskripsi" style="text-align: justify;">{!! $about->short_descript !!}</div>
             </div>
-            <div class="social_links">
+            <div class=" social_links">
                <a href="{{ $socialMedia->instagram }}">
                   <span class="fa-stack fa-lg ig combo">
                      <i class="fa fa-circle fa-stack-2x circle"></i>

@@ -18,7 +18,9 @@ use App\Http\Controllers\DashboardFacilityController;
 use App\Http\Controllers\DashboardRoomTypeController;
 use App\Http\Controllers\DashboardRoomController;
 use App\Http\Controllers\DashboardAnnouncementController;
+use App\Http\Controllers\DashboardCategoryController;
 use App\Http\Controllers\DashboardRoomBookingController;
+use App\Http\Controllers\RoomBookingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -103,9 +105,19 @@ Route::group(['middleware' => ['auth', 'ceklevel:admin']], function () {
     Route::resource('/dashboard/users', DashboardAdminController::class)->name('index', 'dashboardAdmin');
     Route::resource('/dashboard/facility', DashboardFacilityController::class)->name('index', 'dashboardFacility');
 
+    Route::get('/dashboard/category/checkSlug', [DashboardCategoryController::class, 'checkSlug']);
+    Route::resource('/dashboard/category', DashboardCategoryController::class)->name('index', 'dashboardCategory');
 
     Route::get('/dashboard/posts/checkSlug', [DashboardPostController::class, 'checkSlug']);
     Route::resource('/dashboard/posts', DashboardPostController::class)->name('index', 'dashboardPosts');
+
+    // Routes for Front
+    Route::get('/pages/book/{id}', [PagesController::class, 'book']);
+    Route::get('/room_type', 'DashboardRoomTypeController@index');
+    Route::get('/room_type/{id}', 'DashboardRoomTypeController@show');
+    Route::get('/event/{id}', 'DashboardEventController@show');
+    Route::post('/room_type/{id}/book', [RoomBookingController::class, 'book']);
+    Route::post('/event/{id}/book', 'DashboardEventBookingController@book');
 
     //Routes for RoomBookings
     Route::get('/room_booking', [DashboardRoomBookingController::class, 'index'])->name('dashboardRoomBooking');

@@ -3,14 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Models\About;
+use App\Models\Facility;
 use App\Models\Post;
+use App\Models\RoomType;
 use App\Models\SocialMedia;
 use Illuminate\Http\Request;
 
 class PagesController extends Controller
 {
-    public function book()
+    public function book($id)
     {
+
+        $room_type = RoomType::find($id);
         $about = About::all()->first();
         $socialMedia = SocialMedia::all()->first();
 
@@ -19,7 +23,8 @@ class PagesController extends Controller
             'socialMedia' => $socialMedia,
             'name' => "$about->name",
             'about' => $about,
-            'posts' => Post::all()
+            'posts' => Post::all(),
+            'room_type' => $room_type
         ]);
     }
 
@@ -84,7 +89,9 @@ class PagesController extends Controller
             'title' => "Our Facility",
             'socialMedia' => $socialMedia,
             'name' => "$about->name",
-            'about' => $about
+            'about' => $about,
+            'room_types' => RoomType::all(),
+            'facilities' => Facility::all()
         ]);
     }
 

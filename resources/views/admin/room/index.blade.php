@@ -2,96 +2,96 @@
 @section('dashboardRoomType', 'active open')
 @section('showRoomType', 'active')
 @section('content')
-    <main id="js-page-content" role="main" class="page-content">
-        <ol class="breadcrumb page-breadcrumb">
-            <li class="breadcrumb-item"><a href="javascript:void(0);">{{ $about->name }}</a></li>
-            <li class="breadcrumb-item"><a href="{{ route('dashboardRoomType') }}">Tipe Kamar</a></li>
-            <li class="breadcrumb-item action">Ruangan</li>
-            <li class="position-absolute pos-top pos-right d-none d-sm-block"><span class="js-get-date"></span></li>
-        </ol>
-        <div class="subheader">
-            <h1 class="subheader-title">
-                <i class="fal fa-inbox"></i> Ruangan
-                <small>
-                    Menu Ruangan
-                </small>
-            </h1>
-        </div>
+<main id="js-page-content" role="main" class="page-content">
+    <ol class="breadcrumb page-breadcrumb">
+        <li class="breadcrumb-item"><a href="javascript:void(0);">{{ $about->name }}</a></li>
+        <li class="breadcrumb-item"><a href="{{ route('dashboardRoomType') }}">Tipe Kamar</a></li>
+        <li class="breadcrumb-item action">Ruangan</li>
+        <li class="position-absolute pos-top pos-right d-none d-sm-block"><span class="js-get-date"></span></li>
+    </ol>
+    <div class="subheader">
+        <h1 class="subheader-title">
+            <i class="fal fa-inbox"></i> Ruangan
+            <small>
+                Menu Ruangan
+            </small>
+        </h1>
+    </div>
 
-        <div class="row">
-            <div class="col-xl-12">
-                <div id="panel-1" class="panel">
-                    <div class="panel-hdr">
-                        <h2>
-                            Ruangan <span class="fw-300"><i>{{ $room_type->name }}</i></span>
-                        </h2>
+    <div class="row">
+        <div class="col-xl-12">
+            <div id="panel-1" class="panel">
+                <div class="panel-hdr">
+                    <h2>
+                        Ruangan <span class="fw-300"><i>{{ $room_type->name }}</i></span>
+                    </h2>
+                </div>
+                <div class="panel-container show">
+                    <div class="row m-3">
+                        <a href="{{ url('dashboard/room_types/' . $room_type->id . '/room/create') }}"
+                            class="btn btn-lg btn-outline-primary">
+                            <span class="fal fa-plus-circle mr-1"></span>
+                            Tambah
+                        </a>
                     </div>
-                    <div class="panel-container show">
-                        <div class="row m-3">
-                            <a href="{{ url('dashboard/room_types/' . $room_type->id . '/room/create') }}"
-                                class="btn btn-lg btn-outline-primary">
-                                <span class="fal fa-plus-circle mr-1"></span>
-                                Tambah
-                            </a>
-                        </div>
-                        <div class="panel-content">
-                            <!-- datatable start -->
-                            <table id="dt-basic-example"
-                                class="table table-bordered table-hover table-striped w-100 align-items-center">
-                                <thead class="bg-primary-600">
-                                    <tr>
-                                        <th>#</th>
-                                        <th>Nomor Ruang</th>
-                                        <th>Ketersediaan</th>
-                                        <th>Status</th>
-                                        <th>Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($room_type->rooms as $index => $room)
-                                        <tr>
-                                            <td>{{ $loop->iteration }}</td>
-                                            <td>{{ $room->room_number }}</td>
-                                            <td>{{ $room->available == 1 ? 'Tersedia' : 'Dibooking' }}</td>
-                                            <td>{{ $room->status == 1 ? 'Aktif' : 'Nonaktif' }}</td>
-                                            <td>
+                    <div class="panel-content">
+                        <!-- datatable start -->
+                        <table id="dt-basic-example"
+                            class="table table-bordered table-hover table-striped w-100 align-items-center">
+                            <thead class="bg-primary-600">
+                                <tr>
+                                    <th>#</th>
+                                    <th>Nomor Ruang</th>
+                                    <th>Ketersediaan</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($room_type->rooms as $index => $room)
+                                <tr>
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $room->room_number }}</td>
+                                    <td>{{ $room->available == 1 ? 'Tersedia' : 'Dibooking' }}</td>
+                                    <td>{{ $room->status == 1 ? 'Aktif' : 'Nonaktif' }}</td>
+                                    <td style="white-space: nowrap">
 
-                                                <a title="Ubah Gambar" class="badge mx-1 badge-success p-2 border-0"
-                                                    href="{{ url('dashboard/room_types/' . $room_type->id . '/room/' . $room->id . '/edit') }}">
-                                                    <i class="fal fa-edit"></i>
-                                                </a>
-                                                <form
-                                                    action="{{ url('dashboard/room_types/' . $room_type->id . '/room/' . $room->id) }}"
-                                                    method="POST" class="d-inline">
-                                                    @method('delete')
-                                                    @csrf
-                                                    <input type="hidden" name="oldIcon" value="{{ $room->icon }}">
-                                                    <button title="Hapus" title="Hapus Gambar"
-                                                        class="badge mx-1 badge-danger p-2 border-0"
-                                                        onclick="return confirm('Anda takin?')">
-                                                        <i class="fas fa-trash"></i>
-                                                    </button>
-                                                </form>
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                            <!-- datatable end -->
+                                        <a title="Ubah Gambar" class="badge mx-1 badge-success p-2 border-0"
+                                            href="{{ url('dashboard/room_types/' . $room_type->id . '/room/' . $room->id . '/edit') }}">
+                                            <i class="fal fa-edit"></i>
+                                        </a>
+                                        <form
+                                            action="{{ url('dashboard/room_types/' . $room_type->id . '/room/' . $room->id) }}"
+                                            method="POST" class="d-inline">
+                                            @method('delete')
+                                            @csrf
+                                            <input type="hidden" name="oldIcon" value="{{ $room->icon }}">
+                                            <button title="Hapus" title="Hapus Gambar"
+                                                class="badge mx-1 badge-danger p-2 border-0"
+                                                onclick="return confirm('Anda takin?')">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                        <!-- datatable end -->
 
-                        </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 
-    </main>
+</main>
 @endsection
 @section('plugin')
-    <script src="/js/datagrid/datatables/datatables.bundle.js"></script>
-    <script src="/js/datagrid/datatables/datatables.export.js"></script>
-    <script>
-        $(document).ready(function() {
+<script src="/js/datagrid/datatables/datatables.bundle.js"></script>
+<script src="/js/datagrid/datatables/datatables.export.js"></script>
+<script>
+    $(document).ready(function() {
             $('#dt-basic-example').dataTable({
                 responsive: true,
                 lengthChange: false,
@@ -138,6 +138,6 @@
             });
 
         });
-    </script>
+</script>
 
 @endsection
