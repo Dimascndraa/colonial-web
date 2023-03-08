@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\About;
 use App\Models\Facility;
 use App\Models\Post;
+use App\Models\Room;
 use App\Models\RoomType;
 use App\Models\SocialMedia;
 use Illuminate\Http\Request;
@@ -15,8 +16,11 @@ class PagesController extends Controller
     {
 
         $room_type = RoomType::find($id);
+        $rooms = Room::all();
         $about = About::all()->first();
         $socialMedia = SocialMedia::all()->first();
+
+        // return $room_type;
 
         return view('pages.book', [
             'title' => "Book Now",
@@ -24,7 +28,8 @@ class PagesController extends Controller
             'name' => "$about->name",
             'about' => $about,
             'posts' => Post::all(),
-            'room_type' => $room_type
+            'room_type' => $room_type,
+            'rooms' => $rooms
         ]);
     }
 

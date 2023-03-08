@@ -28,7 +28,7 @@ class DashboardRoomBookingController extends Controller
         ]);
     }
 
-    public function edit(RoomBooking $roomBooking)
+    public function edit($id, RoomBooking $roomBooking)
     {
         return view('admin.room_booking.edit', [
             'title' => 'Booking Ruangan',
@@ -39,6 +39,7 @@ class DashboardRoomBookingController extends Controller
 
     public function update(Request $request, $id)
     {
+        // return $request;
         $room_booking = RoomBooking::findOrFail($id);
 
         $rules = [

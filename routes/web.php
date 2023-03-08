@@ -73,6 +73,13 @@ Route::get('/pages/posts/{post:slug}', [PostController::class, 'show'])->name('d
 //     ]);
 // });
 
+// Routes for Front
+Route::get('/pages/book/{id}', [PagesController::class, 'book'])->middleware('auth');
+Route::post('/room_type/{id}/book', [RoomBookingController::class, 'book'])->middleware('auth');
+Route::get('/room_type', 'DashboardRoomTypeController@index');
+Route::get('/room_type/{id}', 'DashboardRoomTypeController@show');
+Route::get('/event/{id}', 'DashboardEventController@show');
+Route::post('/event/{id}/book', 'DashboardEventBookingController@book');
 
 Route::get('/admin', function () {
     return view('auth.register');
@@ -111,18 +118,11 @@ Route::group(['middleware' => ['auth', 'ceklevel:admin']], function () {
     Route::get('/dashboard/posts/checkSlug', [DashboardPostController::class, 'checkSlug']);
     Route::resource('/dashboard/posts', DashboardPostController::class)->name('index', 'dashboardPosts');
 
-    // Routes for Front
-    Route::get('/pages/book/{id}', [PagesController::class, 'book']);
-    Route::get('/room_type', 'DashboardRoomTypeController@index');
-    Route::get('/room_type/{id}', 'DashboardRoomTypeController@show');
-    Route::get('/event/{id}', 'DashboardEventController@show');
-    Route::post('/room_type/{id}/book', [RoomBookingController::class, 'book']);
-    Route::post('/event/{id}/book', 'DashboardEventBookingController@book');
 
     //Routes for RoomBookings
-    Route::get('/room_booking', [DashboardRoomBookingController::class, 'index'])->name('dashboardRoomBooking');
-    Route::get('/room_booking/{id}/edit', [DashboardRoomBookingController::class, 'edit'])->name('editRoomBooking');
-    Route::put('/room_booking/{id}/edit', [DashboardRoomBookingController::class, 'update'])->name('updateRoomBooking');
+    Route::get('/dashboard/room_booking', [DashboardRoomBookingController::class, 'index'])->name('dashboardRoomBooking');
+    Route::get('/dashboard/room_booking/{id}/edit', [DashboardRoomBookingController::class, 'edit'])->name('editRoomBooking');
+    Route::put('/dashboard/room_booking/{id}/edit', [DashboardRoomBookingController::class, 'update'])->name('updateRoomBooking');
 
     Route::resource('/dashboard/room_types', DashboardRoomTypeController::class)->name('index', 'dashboardRoomType');
     // Route for room types

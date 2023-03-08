@@ -2,116 +2,172 @@
 @section('dashboardBooking', 'active open')
 @section('roomBooking', 'active')
 @section('content')
-    <main id="js-page-content" role="main" class="page-content">
-        <ol class="breadcrumb page-breadcrumb">
-            <li class="breadcrumb-item"><a href="javascript:void(0);">{{ $about->name }}</a></li>
-            <li class="breadcrumb-item"><a href="javascript:void(0);">Booking Ruangan</a></li>
-            <li class="position-absolute pos-top pos-right d-none d-sm-block"><span class="js-get-date"></span></li>
-        </ol>
-        <div class="subheader">
-            <h1 class="subheader-title">
-                <i class="fal fa-inbox"></i> Booking Ruangan
-                <small>
-                    Menu Booking Ruangan
-                </small>
-            </h1>
-        </div>
+<main id="js-page-content" role="main" class="page-content">
+    <ol class="breadcrumb page-breadcrumb">
+        <li class="breadcrumb-item"><a href="javascript:void(0);">{{ $about->name }}</a></li>
+        <li class="breadcrumb-item"><a href="javascript:void(0);">Booking Ruangan</a></li>
+        <li class="position-absolute pos-top pos-right d-none d-sm-block"><span class="js-get-date"></span></li>
+    </ol>
+    <div class="subheader">
+        <h1 class="subheader-title">
+            <i class="fal fa-inbox"></i> Booking Ruangan
+            <small>
+                Menu Booking Ruangan
+            </small>
+        </h1>
+    </div>
+    <div class="row">
+        <div class="col-xl-12">
+            <div id="panel-1" class="panel">
+                <div class="panel-hdr">
+                    <h2>
+                        Booking <span class="fw-300"><i>Ruangan</i></span>
+                    </h2>
+                </div>
+                <div class="panel-container show">
+                    <div class="panel-content">
+                        <!-- datatable start -->
+                        <table id="dt-basic-example"
+                            class="table table-bordered table-hover table-striped w-100 align-items-center">
+                            <thead class="bg-primary-600">
+                                <tr>
+                                    <th>#</th>
+                                    <th>Nomor Ruang</th>
+                                    <th>Tipe Kamar</th>
+                                    <th>Dibooking oleh</th>
+                                    <th>Status</th>
+                                    <th>Pembayaran</th>
+                                    <th>Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($room_bookings as $room_booking)
+                                <tr>
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $room_booking->room->room_number }}</td>
+                                    <td>{{ $room_booking->room->room_type->name }}</td>
+                                    <td>{{ $room_booking->user->name }} <br /> {{ $room_booking->user->email }}</td>
+                                    <td>
+                                        @if ($room_booking->status == 'pending')
+                                        <button class="btn btn-success btn-xs btn-fill">Pending</button>
+                                        @elseif($room_booking->status == 'checked_in')
+                                        <button class="btn btn-info btn-xs btn-fill">Checked In
+                                        </button>
+                                        @elseif($room_booking->status == 'checked_out')
+                                        <button class="btn btn-primary btn-xs btn-fill">Checked Out
+                                        </button>
+                                        @elseif($room_booking->status == 'canceled')
+                                        <button class="btn btn-danger btn-xs btn-fill">Canceled
+                                        </button>
+                                        @endif
+                                    </td>
+                                    <td>
+                                        @if ($room_booking->payment == 1)
+                                        <button class="btn btn-success btn-xs btn-fill">Paid</button>
+                                        @else
+                                        <button class="btn btn-default btn-xs btn-fill">Not Paid
+                                        </button>
+                                        @endif
+                                    </td>
+                                    <td>
+                                        <div class="col-md-4 text-right">
+                                            <button type="button" id="js-login-btn"
+                                                class="badge mx-1 badge-success p-2 border-0" data-toggle="modal"
+                                                data-target="#chagePassword">
+                                                <i class="fal fa-edit"></i>
+                                            </button>
+                                        </div>
+                                        <div class="collapse">
+                                            {!! Form::open(['id' => 'delete-room-booking', 'url' =>
+                                            'dashboard/room_booking/' . $room_booking->id]) !!}
+                                            {{ Form::hidden('_method', 'DELETE') }}
+                                            @csrf
+                                            <button title="Hapus" title="Hapus"
+                                                class="badge mx-1 badge-danger p-2 border-0"
+                                                onclick="return confirm('Anda takin?')">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                            {!! Form::close() !!}
+                                        </div>
+                                    </td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
 
-        <div class="row">
-            <div class="col-xl-12">
-                <div id="panel-1" class="panel">
-                    <div class="panel-hdr">
-                        <h2>
-                            Booking <span class="fw-300"><i>Ruangan</i></span>
-                        </h2>
-                    </div>
-                    <div class="panel-container show">
-                        <div class="row m-3">
-                            <a href="{{ url('dashboard/room_booking/create') }}" class="btn btn-lg btn-outline-primary">
-                                <span class="fal fa-plus-circle mr-1"></span>
-                                Tambah
-                            </a>
+                        @isset ($room_booking)
+                        <!-- datatable end -->
+                        <div class="modal fade" id="chagePassword" tabindex="-1" role="dialog" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">Ubah Password</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <form method="post" action="{{ route('updateRoomBooking', $room_booking->id) }}">
+                                        @method('put')
+                                        @csrf
+                                        <div class="modal-body">
+                                            <div class="form-group">
+                                                <label for="password" class="col-form-label">{{ __('Status Booking:')
+                                                    }}</label>
+                                                <select class="custom-select @error('password') is-invalid @enderror"
+                                                    name="status">
+                                                    <option selected disabled>Status Booking</option>
+                                                    <option value="pending" {{ $room_booking->status == 'pending'
+                                                        ? 'selected' : '' }}>Pending</option>
+                                                    <option value="checked_in" {{ $room_booking->status ==
+                                                        'checked_in' ? 'selected' : '' }}>Checked In</option>
+                                                    <option value="checked_out" {{ $room_booking->status ==
+                                                        'checked_out' ? 'selected' : '' }}>Checked Out</option>
+                                                    <option value="cancelled" {{ $room_booking->status == 'cancelled'
+                                                        ? 'selected' : '' }}>Cancelled</option>
+                                                </select>
+                                                @error('status')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                                @enderror
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="password" class="col-form-label">{{ __('Status Pembayaran:')
+                                                    }}</label>
+                                                <select class="custom-select @error('password') is-invalid @enderror"
+                                                    name="payment">
+                                                    <option selected disabled>Status Pembayaran</option>
+                                                    <option value="1" {{ $room_booking->payment == '1'
+                                                        ? 'selected' : '' }}>Dibayar</option>
+                                                    <option value="0" {{ $room_booking->payment ==
+                                                        '0' ? 'selected' : '' }}>Belum dibayar</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                data-dismiss="modal">Close</button>
+                                            <button type="submit" class="btn btn-primary"> <i class="fa fa-edit"></i>
+                                                Ubah</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
                         </div>
-                        <div class="panel-content">
-                            <!-- datatable start -->
-                            <table id="dt-basic-example"
-                                class="table table-bordered table-hover table-striped w-100 align-items-center">
-                                <thead class="bg-primary-600">
-                                    <tr>
-                                        <th>#</th>
-                                        <th>Nomor Ruang</th>
-                                        <th>Tipe Kamar</th>
-                                        <th>Dibooking oleh</th>
-                                        <th>Status</th>
-                                        <th>Pembayaran</th>
-                                        <th>Aksi</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($room_bookings as $room_booking)
-                                        <tr>
-                                            <td>{{ $loop->iteration }}</td>
-                                            <td>{{ $room_booking->room->room_number }}</td>
-                                            <td>{{ $room_booking->room->room_type->name }}</td>
-                                            <td>{{ $room_booking->user->name }} <br /> {{ $room_booking->user->email }}</td>
-                                            <td>
-                                                @if ($room_booking->status == 'pending')
-                                                    <button class="btn btn-success btn-xs btn-fill">Pending</button>
-                                                @elseif($room_booking->status == 'checked_in')
-                                                    <button class="btn btn-info btn-xs btn-fill">Checked In
-                                                    </button>
-                                                @elseif($room_booking->status == 'checked_out')
-                                                    <button class="btn btn-primary btn-xs btn-fill">Checked Out
-                                                    </button>
-                                                @elseif($room_booking->status == 'canceled')
-                                                    <button class="btn btn-danger btn-xs btn-fill">Canceled
-                                                    </button>
-                                                @endif
-                                            </td>
-                                            <td>
-                                                @if ($room_booking->payment == 1)
-                                                    <button class="btn btn-success btn-xs btn-fill">Paid</button>
-                                                @else
-                                                    <button class="btn btn-default btn-xs btn-fill">Not Paid
-                                                    </button>
-                                                @endif
-                                            </td>
-                                            <td>
-                                                <a title="Ubah" class="badge mx-1 badge-success p-2 border-0"
-                                                    href="{{ url('admin/room_booking/' . $room_booking->id . '/edit') }}">
-                                                    <i class="fal fa-edit"></i>
-                                                </a>
-                                                <div class="collapse">
-                                                    {!! Form::open(['id' => 'delete-room-booking', 'url' => 'admin/room_booking/' . $room_booking->id]) !!}
-                                                    {{ Form::hidden('_method', 'DELETE') }}
-                                                    @csrf
-                                                    <button title="Hapus" title="Hapus"
-                                                        class="badge mx-1 badge-danger p-2 border-0"
-                                                        onclick="return confirm('Anda takin?')">
-                                                        <i class="fas fa-trash"></i>
-                                                    </button>
-                                                    {!! Form::close() !!}
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                            <!-- datatable end -->
+                        @endisset
 
-                        </div>
                     </div>
                 </div>
             </div>
         </div>
-
-    </main>
+    </div>
+</main>
 @endsection
 @section('plugin')
-    <script src="/js/datagrid/datatables/datatables.bundle.js"></script>
-    <script src="/js/datagrid/datatables/datatables.export.js"></script>
-    <script>
-        $(document).ready(function() {
+<script src="/js/datagrid/datatables/datatables.bundle.js"></script>
+<script src="/js/datagrid/datatables/datatables.export.js"></script>
+<script>
+    $(document).ready(function() {
             $('#dt-basic-example').dataTable({
                 responsive: true,
                 lengthChange: false,
@@ -158,6 +214,6 @@
             });
 
         });
-    </script>
+</script>
 
 @endsection

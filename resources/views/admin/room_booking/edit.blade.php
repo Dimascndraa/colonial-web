@@ -4,107 +4,59 @@
 @section('createRoomType', 'active')
 @section('content')
 
-    <main id="js-page-content" role="main" class="page-content">
-        <ol class="breadcrumb page-breadcrumb">
-            <li class="breadcrumb-item"><a href="javascript:void(0);">{{ $about->name }}</a></li>
-            <li class="breadcrumb-item"><a href="{{ url('dashboardRoomType') }}">Tipe Kamar</a></li>
-            <li class="breadcrumb-item active"><a href="javascript:void(0);">Ruangan</a></li>
-            <li class="breadcrumb-item active"><a href="javascript:void(0);">Ubah</a></li>
-            <li class="position-absolute pos-top pos-right d-none d-sm-block"><span class="js-get-date"></span></li>
-        </ol>
-        <div class="subheader">
-            <h1 class="subheader-title">
-                <i class="fal fa-chess-queen"></i> Tipe Kamar
-                <small>
-                    Menu Ubah Tipe Kamar
-                </small>
-            </h1>
-        </div>
-        <div class="row my-3 ml-1">
-            <a href="/dashboard/room_types/" class="btn btn-lg btn-outline-primary">
-                <span class="fal fa-arrow-left mr-1"></span>
-                Kembali
-            </a>
-        </div>
-        <div class="row">
-            <div class="col-xl-12">
-                {{ Form::open([
-                    'url' => 'dashboard/room_types/' . $room_type->id . '/room/' . $room->id . '/edit',
-                    'id' => 'room_type-add-form',
-                    'files' => true,
-                ]) }}
-                {{ Form::hidden('_method', 'PUT') }}
-                @csrf
-                <div id="panel-1" class="panel">
-                    <div class="panel-hdr">
-                        <h2>
-                            Ubah Gambar <span class="fw-300"><i>{{ $room_type->name }}</i></span>
-                        </h2>
-                    </div>
-                    <div class="panel-container show">
-                        <div class="panel-show">
-                            <div class="row justify-content-center">
-                                <div class="col-lg-10">
-                                    <div class="form-group my-3">
-                                        <div class="form-group">
-                                            <label for="room_number">Nomor Kamar</label>
-                                            <input type="number" class="form-control" id="room_number"
-                                                placeholder="Masukan Nomor Kamar" name="room_number" min="01"
-                                                value="{{ old('room_number', $room->room_number) }}">
-                                        </div>
-                                        @error('room_number')
-                                            <p class="text-danger">{{ $message }}</p>
-                                        @enderror
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row justify-content-center">
-                                <div class="col-lg-10">
-                                    <div class="mb-3">
-                                        <label for="description" class="form-label">Deskripsi</label>
-                                        <input id="description" type="hidden" name="description"
-                                            value="{{ old('description', $room->description) }}">
-                                        <trix-editor input="description"></trix-editor>
-                                        @error('description')
-                                            <p class="text-danger">{{ $message }}</p>
-                                        @enderror
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row justify-content-center">
-                                <div class="col-lg-10">
-                                    <label for="room_service" class="form-label">Status</label>
-                                    <select class="custom-select" name="status">
-                                        <option value="1" {{ old('status', $room->status) == '1' ?? 'selected' }}>Aktif
-                                        </option>
-                                        <option value="0" {{ old('status', $room->status) == '0' ?? 'selected' }}>
-                                            Nonaktif
-                                        </option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="row justify-content-center my-4">
-                                <div class="col-lg-10">
-                                    <div class="form-group">
-                                        <button type="submit" class="btn btn-success btn-lg"><i
-                                                class="fal fa-plus-circle"></i>
-                                            Tambah</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+<main id="js-page-content" role="main" class="page-content">
+    <ol class="breadcrumb page-breadcrumb">
+        <li class="breadcrumb-item"><a href="javascript:void(0);">{{ $about->name }}</a></li>
+        <li class="breadcrumb-item"><a href="{{ url('dashboardRoomType') }}">Tipe Kamar</a></li>
+        <li class="breadcrumb-item active"><a href="javascript:void(0);">Ruangan</a></li>
+        <li class="breadcrumb-item active"><a href="javascript:void(0);">Ubah</a></li>
+        <li class="position-absolute pos-top pos-right d-none d-sm-block"><span class="js-get-date"></span></li>
+    </ol>
+    <div class="subheader">
+        <h1 class="subheader-title">
+            <i class="fal fa-chess-queen"></i> Tipe Kamar
+            <small>
+                Menu Ubah Tipe Kamar
+            </small>
+        </h1>
+    </div>
+    <div class="row my-3 ml-1">
+        <a href="/dashboard/room_types/" class="btn btn-lg btn-outline-primary">
+            <span class="fal fa-arrow-left mr-1"></span>
+            Kembali
+        </a>
+    </div>
+    <div class="row">
+        <div class="col-xl-12">
+            {{ Form::open([
+            'url' => 'dashboard/room_booking/' . $room_booking->id . '/edit',
+            'id' => 'room_type-add-form',
+            'files' => true,
+            ]) }}
+            {{ Form::hidden('_method', 'PUT') }}
+            @csrf
+            <div id="panel-1" class="panel">
+                <div class="panel-hdr">
+                    <h2>
+                        Booking Ruangan
+                    </h2>
+                </div>
+                <div class="panel-container show">
+                    <div class="panel-show">
+
                     </div>
                 </div>
-                {!! Form::close() !!}
             </div>
+            {!! Form::close() !!}
         </div>
-    </main>
+    </div>
+</main>
 
 @endsection
 @section('plugin')
-    <script src="/js/formplugins/summernote/summernote.js"></script>
-    <script>
-        var autoSave = $('#autoSave');
+<script src="/js/formplugins/summernote/summernote.js"></script>
+<script>
+    var autoSave = $('#autoSave');
         var interval;
         var timer = function() {
             interval = setInterval(function() {
@@ -215,7 +167,7 @@
             });
 
         });
-    </script>
+</script>
 @endsection
 <script>
     function previewImage() {

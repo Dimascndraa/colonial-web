@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Model\Event;
+use App\Http\Controllers\Controller;
+use App\Models\Event;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\ImageManagerStatic as ImageManager;
 
@@ -10,7 +11,7 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 
-class EventController extends AdminController
+class EventController extends Controller
 {
 
     public function __construct()
@@ -86,7 +87,6 @@ class EventController extends AdminController
         Session::flash('flash_title', 'Success');
         Session::flash('flash_message', 'The event has been added successfully');
         return redirect('admin/event');
-
     }
 
     /**
@@ -113,8 +113,8 @@ class EventController extends AdminController
         $event = Event::find($id);
 
         $rules = [
-            'name' => 'required|max:50|unique:events,name,'.$id,
-            'date' => 'required|date|date_format:Y/m/d|after_or_equal:'.$event->date,
+            'name' => 'required|max:50|unique:events,name,' . $id,
+            'date' => 'required|date|date_format:Y/m/d|after_or_equal:' . $event->date,
             'venue' => 'required|max:50',
             'price' => 'required|numeric|min:0',
             'description' => 'max:200',
@@ -142,7 +142,7 @@ class EventController extends AdminController
         $event->status = $request->input('status');
 
         if ($request->hasFile('image')) {
-            Storage::delete('public/events/'.$event->image);
+            Storage::delete('public/events/' . $event->image);
 
             $path = $request->file('image')->store('', 'event');
             $event_image = ImageManager::make('storage/events/' . $path);
@@ -173,8 +173,8 @@ class EventController extends AdminController
             $booking->delete();
         }
 
-        if($event->delete()){
-            Storage::delete('public/events/'.$event->image);
+        if ($event->delete()) {
+            Storage::delete('public/events/' . $event->image);
 
             Session::flash('flash_title', 'Success');
             Session::flash('flash_message', 'Image has been deleted');
@@ -183,6 +183,5 @@ class EventController extends AdminController
         Session::flash('flash_title', 'Success');
         Session::flash('flash_message', 'The event has been deleted successfully');
         return redirect('admin/event');
-
     }
 }

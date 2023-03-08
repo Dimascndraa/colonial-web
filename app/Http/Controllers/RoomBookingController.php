@@ -26,16 +26,28 @@ class RoomBookingController extends FrontController
             return Redirect::to("/login");
         }
 
+        $arrivaldate = str_replace("/", "-", "$request->arrival_date");
+        $arrival_boom = explode("-", $arrivaldate);
+        $arrival_date = $arrival_boom[2] . '-' . $arrival_boom[1] . '-' . $arrival_boom[0];
+
+        $departuredate = str_replace("/", "-", "$request->departure_date");
+        $departure_boom = explode("-", $departuredate);
+        $departure_date = $departure_boom[2] . '-' . $departure_boom[1] . '-' . $departure_boom[0];
+
+        $rules['arrival_date'] = $arrival_date;
+        $rules['departure_date'] = $departure_date;
+
         $rules = [
-            'adults' => 'required|numeric|min:1',
-            'childs' => 'required|numeric|min:0',
+            'number_of_adult' => 'required|numeric|min:1',
+            'number_of_child' => 'required|numeric|min:0',
             'arrival_date' => 'required|date|after_or_equal:today',
-            'departure_date' => 'required|date|after_or_equal:' . $request->input('arrival_date'),
+            'departure_date' => 'required|date|after_or_equal:' . $arrival_date,
         ];
 
+
         $room_type = RoomType::findOrFail($room_type_id);
-        $new_arrival_date = $request->input('arrival_date');
-        $new_departure_date = $request->input('departure_date');
+        $new_arrival_date = $arrival_date;
+        $new_departure_date = $departure_date;
         $rules['booking_validation'] = [new RoomAvailableRule($room_type, $new_arrival_date, $new_departure_date)];
 
         $validator = Validator::make($request->all(), $rules);
@@ -48,8 +60,8 @@ class RoomBookingController extends FrontController
         $room_booking = new RoomBooking();
         $user = Auth::user();
 
-        $room_booking->arrival_date = $request->input('arrival_date');
-        $room_booking->departure_date = $request->input('departure_date');
+        $room_booking->arrival_date = $arrival_date;
+        $room_booking->departure_date = $departure_date;
         /**
          * Find total cost by counting number of days and multiplying it with cost of rooms.
          */
@@ -70,7 +82,7 @@ class RoomBookingController extends FrontController
 
         $this->send_email(Auth::user()->email);
 
-        return redirect('/dashboard/room/booking');
+        return redirect('/');
     }
 
     private function send_email($email)

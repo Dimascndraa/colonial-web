@@ -60,6 +60,7 @@ class RegisteredUserController extends Controller
             $validatedData['level'] = $request->level;
         }
 
+        $validatedData['status'] = 'aktif';
         $validatedData['password'] = bcrypt($request->password);
 
         // return $validatedData;
