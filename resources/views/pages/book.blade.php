@@ -11,18 +11,6 @@
                src="{{ asset('storage/' . $about->about_img) }}" alt="" style="background-position: center" />
             <div class="flex flex-col justify-start p-6">
                <h5 class="fw-bold fs-1 d-inline-block">{{ $room_type->name }}</h5>
-               {{-- <div class="flex flex-wrap justify-center">
-                  <div class="relative mb-3 xl:w-96">
-                     <select data-te-select-init data-te-select-size="lg" name="room_id">
-                        @foreach ($room_type->rooms as $room)
-                        @if ($room->status == 1)
-                        <option value="{{ $room->id }}">{{ $room->room_number }}</option>
-                        @endif
-                        @endforeach
-                     </select>
-                     <label data-te-select-label-ref>Room Number</label>
-                  </div>
-               </div> --}}
                <div class="flex flex-wrap justify-center mt-5">
                   <div class="relative mb-3 xl:w-96" data-te-input-wrapper-init>
                      <input type="number"

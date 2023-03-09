@@ -2,6 +2,33 @@
 @section('dashboardBooking', 'active open')
 @section('roomBooking', 'active')
 @section('content')
+@php
+function tgl_indo($tanggal)
+{
+$bulan = array(
+1 => 'Januari',
+'Februari',
+'Maret',
+'April',
+'Mei',
+'Juni',
+'Juli',
+'Agustus',
+'September',
+'Oktober',
+'November',
+'Desember'
+);
+$pecahkan = explode('-', $tanggal);
+
+// variabel pecahkan 0 = tanggal
+// variabel pecahkan 1 = bulan
+// variabel pecahkan 2 = tahun
+
+return $pecahkan[2] . ' ' . $bulan[(int)$pecahkan[1]] . ' ' . $pecahkan[0];
+}
+@endphp
+
 <main id="js-page-content" role="main" class="page-content">
     <ol class="breadcrumb page-breadcrumb">
         <li class="breadcrumb-item"><a href="javascript:void(0);">{{ $about->name }}</a></li>
@@ -35,6 +62,8 @@
                                     <th>Nomor Ruang</th>
                                     <th>Tipe Kamar</th>
                                     <th>Dibooking oleh</th>
+                                    <th>Tanggal Check in</th>
+                                    <th>Tanggal Check out</th>
                                     <th>Status</th>
                                     <th>Pembayaran</th>
                                     <th>Aksi</th>
@@ -46,7 +75,10 @@
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $room_booking->room->room_number }}</td>
                                     <td>{{ $room_booking->room->room_type->name }}</td>
-                                    <td>{{ $room_booking->user->name }} <br /> {{ $room_booking->user->email }}</td>
+                                    <td>{{ $room_booking->user->name }} <br /> <strong>Email:</strong> {{
+                                        $room_booking->user->email }}</td>
+                                    <td>{{ tgl_indo($room_booking->arrival_date) }}</td>
+                                    <td>{{ tgl_indo($room_booking->departure_date) }}</td>
                                     <td>
                                         @if ($room_booking->status == 'pending')
                                         <button class="btn btn-success btn-xs btn-fill">Pending</button>
@@ -69,25 +101,23 @@
                                         </button>
                                         @endif
                                     </td>
-                                    <td>
+                                    <td style="white-space: nowrap">
                                         <div class="col-md-4 text-right">
                                             <button type="button" id="js-login-btn"
                                                 class="badge mx-1 badge-success p-2 border-0" data-toggle="modal"
                                                 data-target="#chagePassword">
                                                 <i class="fal fa-edit"></i>
                                             </button>
-                                        </div>
-                                        <div class="collapse">
-                                            {!! Form::open(['id' => 'delete-room-booking', 'url' =>
-                                            'dashboard/room_booking/' . $room_booking->id]) !!}
-                                            {{ Form::hidden('_method', 'DELETE') }}
-                                            @csrf
-                                            <button title="Hapus" title="Hapus"
-                                                class="badge mx-1 badge-danger p-2 border-0"
-                                                onclick="return confirm('Anda takin?')">
-                                                <i class="fas fa-trash"></i>
-                                            </button>
-                                            {!! Form::close() !!}
+                                            <form action="/dashboard/room_booking/{{ $room_booking->id }}"
+                                                class="d-inline" method="post">
+                                                @method('delete')
+                                                @csrf
+                                                <button title="Hapus" title="Hapus"
+                                                    class="badge mx-1 badge-danger p-2 border-0"
+                                                    onclick="return confirm('Anda takin?')">
+                                                    <i class="fas fa-trash"></i>
+                                                </button>
+                                            </form>
                                         </div>
                                     </td>
                                 </tr>

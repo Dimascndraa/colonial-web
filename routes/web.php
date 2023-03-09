@@ -123,6 +123,7 @@ Route::group(['middleware' => ['auth', 'ceklevel:admin']], function () {
     Route::get('/dashboard/room_booking', [DashboardRoomBookingController::class, 'index'])->name('dashboardRoomBooking');
     Route::get('/dashboard/room_booking/{id}/edit', [DashboardRoomBookingController::class, 'edit'])->name('editRoomBooking');
     Route::put('/dashboard/room_booking/{id}/edit', [DashboardRoomBookingController::class, 'update'])->name('updateRoomBooking');
+    Route::delete('/dashboard/room_booking/{id}/', [DashboardRoomBookingController::class, 'destroy'])->name('deleteRoomBooking');
 
     Route::resource('/dashboard/room_types', DashboardRoomTypeController::class)->name('index', 'dashboardRoomType');
     // Route for room types

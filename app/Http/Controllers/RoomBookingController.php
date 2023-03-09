@@ -26,6 +26,7 @@ class RoomBookingController extends FrontController
             return Redirect::to("/login");
         }
 
+
         $arrivaldate = str_replace("/", "-", "$request->arrival_date");
         $arrival_boom = explode("-", $arrivaldate);
         $arrival_date = $arrival_boom[2] . '-' . $arrival_boom[1] . '-' . $arrival_boom[0];
@@ -33,6 +34,13 @@ class RoomBookingController extends FrontController
         $departuredate = str_replace("/", "-", "$request->departure_date");
         $departure_boom = explode("-", $departuredate);
         $departure_date = $departure_boom[2] . '-' . $departure_boom[1] . '-' . $departure_boom[0];
+
+        $book = RoomBooking::where('user_id', auth()->user()->id)->get('arrival_date')->last()->arrival_date === $arrival_date;
+
+
+        if ($book) {
+            return redirect('/')->with('failed', 'Anda telah pesan kamar di tanggal ini!');
+        };
 
         $rules['arrival_date'] = $arrival_date;
         $rules['departure_date'] = $departure_date;

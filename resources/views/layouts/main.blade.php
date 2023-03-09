@@ -85,8 +85,6 @@
   <script src="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-star-rating@4.1.2/js/locales/LANG.js"></script>
 
 
-  {{-- SweetAlert2 --}}
-  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   {{-- Datepicker --}}
   <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
   <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
@@ -96,6 +94,9 @@
       $( "#datepicker" ).datepicker();
     } );
   </script>
+
+  {{-- SweetAlert2 --}}
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('storage/' . $about->logo_secondary) }}">
@@ -189,28 +190,50 @@
       title: '{{ session('success') }}'
   })
   </script>
+  @endif
+
+  @if (session()->has('failed'))
   <script>
-    function konfirmasi() {
-        Swal.fire({
-            title: 'Are you sure?',
-            text: "You won't be able to revert this!",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, delete it!'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                Swal.fire(
-                    'Deleted!',
-                    'Your file has been deleted.',
-                    'success'
-                )
-            }
-        })
-    }
+    const Toast = Swal.mixin({
+      toast: true,
+      position: 'top-end',
+      showConfirmButton: false,
+      timer: 3000,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+          toast.addEventListener('mouseenter', Swal.stopTimer)
+          toast.addEventListener('mouseleave', Swal.resumeTimer)
+      }
+  })
+
+  Toast.fire({
+      icon: 'error',
+      title: '{{ session('failed') }}'
+  })
   </script>
   @endif
+
+  <script>
+    function konfirmasi() {
+          Swal.fire({
+              title: 'Are you sure?',
+              text: "You won't be able to revert this!",
+              icon: 'warning',
+              showCancelButton: true,
+              confirmButtonColor: '#3085d6',
+              cancelButtonColor: '#d33',
+              confirmButtonText: 'Yes, delete it!'
+          }).then((result) => {
+              if (result.isConfirmed) {
+                  Swal.fire(
+                      'Deleted!',
+                      'Your file has been deleted.',
+                      'success'
+                  )
+              }
+          })
+      }
+  </script>
 
   <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js"></script>
 
