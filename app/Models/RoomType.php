@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Facility;
+use App\Models\RoomBooking;
 use App\Models\Image;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -21,6 +22,11 @@ class RoomType extends Model
     public function images()
     {
         return $this->hasMany(Image::class);
+    }
+
+    public function room_booking()
+    {
+        return $this->hasMany(RoomBooking::class);
     }
 
     public function rooms()

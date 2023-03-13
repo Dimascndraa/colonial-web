@@ -15,8 +15,9 @@ class CreateRoomBookingsTable extends Migration
     {
         Schema::create('room_bookings', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('room_id');
+            $table->foreignId('room_id')->nullable();
             $table->foreignId('user_id');
+            $table->foreignId('room_type_id');
             $table->date('arrival_date');
             $table->date('departure_date')->nullable();
             $table->integer('room_cost');

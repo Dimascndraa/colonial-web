@@ -16,7 +16,8 @@
                   {{-- <p class="text-gray-600">13-20 stays</p> --}}
                </div>
                <div class=" bg-blue-100 p-6 transition-colors duration-300">
-                  <div class=""><span class="text-4xl font-semibold">Rp. {{ $room_type->cost_per_day }}</span> /night
+                  <div class=""><span class="text-4xl font-semibold">Rp. {{ $room_type->getFinalPriceAttribute()
+                        }}</span> /night
                   </div>
                </div>
                <div class="p-6">

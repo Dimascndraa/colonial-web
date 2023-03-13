@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\RoomBooking;
+use App\Models\Room;
 
 use App\Http\Controllers\Controller;
 use App\Models\About;
-use App\Models\Room;
 use App\Models\RoomType;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
@@ -23,48 +23,48 @@ class DashboardRoomBookingController extends Controller
         return view('admin.room_booking.index', [
             'title' => 'Booking Ruangan',
             'about' => About::all()->first(),
-            'room_bookings' => RoomBooking::all()
-        ]);
-    }
-
-    public function edit($id, RoomBooking $roomBooking)
-    {
-        return view('admin.room_booking.edit', [
-            'title' => 'Booking Ruangan',
-            'about' => About::all()->first(),
-            'room_booking' => $roomBooking
+            'room_bookings' => RoomBooking::all(),
+            'room' => Room::all()
         ]);
     }
 
     public function update(Request $request, $id)
     {
-
-        $room_booking = RoomBooking::findOrFail($id);
-        $room_type = RoomType::findOrFail($room_booking->room_id);
         $rules = [
             'status' => 'in:pending,checked_in,checked_out,cancelled',
             'payment' => 'boolean'
         ];
 
-        // Room Status Chekedin == Not Availabel(0)
+        $room_booking = RoomBooking::findOrFail($id);
+        $room_type = RoomType::findOrFail($room_booking->room_type_id);
+
+        // Room Status Chekedin == Not available(0)
         if ($request['status'] == "checked_in") {
             // return true;
             $status = [];
-            $status['availabel'] = 0;
+            $status['available'] = 0;
 
-            Room::where('id', $room_type)->update($status);
+            Room::where('id', $room_type->id)->update($status);
         }
 
-
-        // Room Status Chekedout || Cancelled == Availabel(1)
+        // Room Status Chekedout || Cancelled == available(1)
         if (
             $request['status'] == "checked_out" ||
-            $request['status'] == "cancelled"
+            $request['status'] == "cancelled" ||
+            $request['status'] == "pending"
         ) {
             $status = [];
-            $status['availabel'] = 1;
+            $status['available'] = 1;
 
-            Room::where('id', $room_type)->update($status);
+            Room::where('id', $room_type->id)->update($status);
+        }
+
+        // Select Room Number
+        if ($request->room_id) {
+            $room_id = [];
+            $room_id['room_id'] = $request->room_id;
+
+            RoomBooking::where('id', $room_booking->id)->update($room_id);
         }
 
         $validator = Validator::make($request->all(), $rules);
@@ -81,9 +81,9 @@ class DashboardRoomBookingController extends Controller
         return redirect('/dashboard/room_booking/')->with('success', 'Booking berhasil diperbarui!');
     }
 
-    public function destroy(RoomBooking $room_booking)
+    public function destroy($id)
     {
-        return $room_booking;
+        $room_booking = RoomBooking::find($id);
         RoomBooking::destroy($room_booking->id);
         return redirect('/dashboard/room_booking/')->with('success', 'Booking berhasil dihapus!');
     }

@@ -43,6 +43,9 @@
                                         <input id="name" type="text"
                                             class="form-control @error('name') is-invalid @enderror" name="name"
                                             placeholder="Masukan Nama Tipe Kamar" value="{{ old('name') }}">
+                                        @error('name')
+                                        <p class="text-danger">{{ $message }}</p>
+                                        @enderror
                                     </div>
                                 </div>
                             </div>
@@ -54,6 +57,9 @@
                                             class="form-control @error('cost_per_day') is-invalid @enderror"
                                             name="cost_per_day" placeholder="Masukan Harga Permalam"
                                             value="{{ old('cost_per_day') }}">
+                                        @error('cost_per_day')
+                                        <p class="text-danger">{{ $message }}</p>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-lg-5">
@@ -67,6 +73,9 @@
                                             <span class="input-group-text" id="basic-addon2">Meter</span>
                                         </div>
                                     </div>
+                                    @error('size')
+                                    <p class="text-danger">{{ $message }}</p>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="row justify-content-center mb-3">
@@ -75,14 +84,18 @@
                                         <label class="form-label" for="discount_percentage">Discount:</label>
                                         <div class="input-group mb-3">
                                             <input readonly type="number" class="form-control" placeholder="Diskon (%)"
-                                                name="discount_percentage" id="discount_percentage" min="1" max="100">
+                                                name="discount_percentage" id="discount_percentage"
+                                                value="{{ old('discount_percentage') }}" min="1" max="100">
                                             <div class="input-group-append">
                                                 <span class="input-group-text"
                                                     id="basic-addon2"><strong>%</strong></span>
                                             </div>
                                         </div>
+                                        @error('discount_percentage')
+                                        <p class="text-danger">{{ $message }}</p>
+                                        @enderror
                                         <input type="range" class="form-control-range" id="diskon" min="0" max="100"
-                                            oninput="tampil()" value="0">
+                                            oninput="tampil()" value="{{ old('discount_percentage', 0) }}">
                                     </div>
                                 </div>
                             </div>
@@ -92,6 +105,9 @@
                                         <label class="form-label" for="max_adult">Max. Dewasa:</label>
                                         <input type="number" class="form-control" placeholder="Batas Maksimal Dewasa"
                                             name="max_adult" id="max_adult" min="1">
+                                        @error('max_adult')
+                                        <p class="text-danger">{{ $message }}</p>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-lg-5">
@@ -99,6 +115,9 @@
                                         <label class="form-label" for="max_child">Max. Anak-Anak:</label>
                                         <input type="number" class="form-control" placeholder="Batas Maksimal Dewasa"
                                             name="max_child" id="max_child" min="1">
+                                        @error('max_child')
+                                        <p class="text-danger">{{ $message }}</p>
+                                        @enderror
                                     </div>
                                 </div>
                             </div>

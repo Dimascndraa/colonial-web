@@ -1,4 +1,4 @@
-{{-- @dd($room_types->first()->images) --}}
+{{-- @dd($room_types) --}}
 @extends('admin.inc.layout')
 @section('dashboardRoomType', 'active')
 @section('content')

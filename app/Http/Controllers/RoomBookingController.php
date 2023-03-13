@@ -21,29 +21,32 @@ class RoomBookingController extends FrontController
 {
     public function book(Request $request, $room_type_id)
     {
-        //check here if the user is authenticated
         if (!Auth::check()) {
             return Redirect::to("/login");
         }
 
-
         $arrivaldate = str_replace("/", "-", "$request->arrival_date");
         $arrival_boom = explode("-", $arrivaldate);
         $arrival_date = $arrival_boom[2] . '-' . $arrival_boom[1] . '-' . $arrival_boom[0];
+        // return $arrival_date;
 
         $departuredate = str_replace("/", "-", "$request->departure_date");
         $departure_boom = explode("-", $departuredate);
         $departure_date = $departure_boom[2] . '-' . $departure_boom[1] . '-' . $departure_boom[0];
+        // return $departure_date;
 
-        $book = RoomBooking::where('user_id', auth()->user()->id)->get('arrival_date')->last()->arrival_date === $arrival_date;
+        // return auth()->user()->room_bookings->count();
+        if (auth()->user()->room_bookings->count() > 0) {
+            $book = RoomBooking::where('user_id', auth()->user()->id)->get('arrival_date')->last()->arrival_date === $arrival_date;
+            $pending = RoomBooking::where('user_id', auth()->user()->id)->get('status')->last()->status == 'pending';
+            $checked_in = RoomBooking::where('user_id', auth()->user()->id)->get('status')->last()->status == 'checked_in';
 
-
-        if ($book) {
-            return redirect('/')->with('failed', 'Anda telah pesan kamar di tanggal ini!');
-        };
-
-        $rules['arrival_date'] = $arrival_date;
-        $rules['departure_date'] = $departure_date;
+            if ($book) {
+                if ($checked_in || $pending) {
+                    return redirect('/pages/facility')->with('failed', 'Anda telah pesan kamar di tanggal ini!');
+                }
+            };
+        }
 
         $rules = [
             'number_of_adult' => 'required|numeric|min:1',
@@ -51,19 +54,30 @@ class RoomBookingController extends FrontController
             'arrival_date' => 'required|date|after_or_equal:today',
             'departure_date' => 'required|date|after_or_equal:' . $arrival_date,
         ];
-
+        $rules['arrival_date'] = $arrival_date;
+        $rules['departure_date'] = $departure_date;
+        $rules['number_of_adult'] = $request->number_of_adult;
+        $rules['number_of_child'] = $request->number_of_child;
+        // return $rules;
 
         $room_type = RoomType::findOrFail($room_type_id);
+        // return $room_type;
+
         $new_arrival_date = $arrival_date;
+        // return $new_arrival_date;
+
         $new_departure_date = $departure_date;
+        // return $new_departure_date;
+
         $rules['booking_validation'] = [new RoomAvailableRule($room_type, $new_arrival_date, $new_departure_date)];
 
-        $validator = Validator::make($request->all(), $rules);
-        if ($validator->fails()) {
-            return redirect()->back()
-                ->withInput($request->all())
-                ->withErrors($validator);
-        }
+        // $validator = Validator::make($request->all(), $rules);
+        // return $validator;
+        // if ($validator->fails()) {
+        //     return redirect()->back()
+        //         ->withInput($request->all())
+        //         ->withErrors($validator);
+        // }
 
         $room_booking = new RoomBooking();
         $user = Auth::user();
@@ -83,14 +97,14 @@ class RoomBookingController extends FrontController
          */
 
         $booking = new Booking($room_type, $new_arrival_date, $new_departure_date);
-        //dd($booking->available_room_number());
-        $room_booking->room_id = $booking->available_room_number();
+        // $room_booking->room_id = $booking->available_room_number();
+        $room_booking->room_type_id = $request->room_type_id;
         $room_booking->user_id = $user->id;
         $room_booking->save();
 
         $this->send_email(Auth::user()->email);
 
-        return redirect('/');
+        return redirect('/')->with('success', 'Anda berhasil memesan kamar!');
     }
 
     private function send_email($email)

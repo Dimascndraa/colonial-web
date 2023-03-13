@@ -50,11 +50,12 @@ class DashboardRoomTypeController extends Controller
      */
     public function store(Request $request)
     {
+
         $rules = [
             'name' => 'required|max:50|unique:room_types,name',
             'cost_per_day' => 'required|numeric|min:0',
             'size' => 'numeric|min:0',
-            'discount_percentage' => 'integer|between:0,100',
+            'discount_percentage' => 'max:255',
             'max_adult' => 'integer|min:1',
             'max_child' => 'numeric',
             'descript' => 'max:800',
@@ -62,6 +63,12 @@ class DashboardRoomTypeController extends Controller
             'room_service' => 'boolean',
             'status' => 'required|boolean'
         ];
+
+        if (!$request->discount_percentage) {
+            $diskon = 0;
+        } else {
+            $diskon = $request->input('discount_percentage');
+        }
 
         $validator = Validator::make($request->all(), $rules);
         if ($validator->fails()) {
@@ -74,7 +81,7 @@ class DashboardRoomTypeController extends Controller
         $room_type->name = $request->input('name');
         $room_type->cost_per_day = $request->input('cost_per_day');
         $room_type->size = $request->input('size');
-        $room_type->discount_percentage = $request->input('discount_percentage');
+        $room_type->discount_percentage = $diskon;
         $room_type->max_adult = $request->input('max_adult');
         $room_type->max_child = $request->input('max_child');
         $room_type->descript = $request->input('descript');

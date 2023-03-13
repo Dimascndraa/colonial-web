@@ -27,6 +27,7 @@ $pecahkan = explode('-', $tanggal);
 
 return $pecahkan[2] . ' ' . $bulan[(int)$pecahkan[1]] . ' ' . $pecahkan[0];
 }
+
 @endphp
 
 <main id="js-page-content" role="main" class="page-content">
@@ -59,7 +60,7 @@ return $pecahkan[2] . ' ' . $bulan[(int)$pecahkan[1]] . ' ' . $pecahkan[0];
                             <thead class="bg-primary-600">
                                 <tr>
                                     <th>#</th>
-                                    <th>Nomor Ruang</th>
+                                    <th>Kamar Nomor</th>
                                     <th>Tipe Kamar</th>
                                     <th>Dibooking oleh</th>
                                     <th>Tanggal Check in</th>
@@ -73,8 +74,12 @@ return $pecahkan[2] . ' ' . $bulan[(int)$pecahkan[1]] . ' ' . $pecahkan[0];
                                 @foreach ($room_bookings as $room_booking)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
+                                    @isset($room_booking->room_id)
                                     <td>{{ $room_booking->room->room_number }}</td>
-                                    <td>{{ $room_booking->room->room_type->name }}</td>
+                                    @else
+                                    <td>*Silahkan pilih ubah untuk mengisi nomor kamar</td>
+                                    @endisset
+                                    <td>{{ $room_booking->room_type->name }}</td>
                                     <td>{{ $room_booking->user->name }} <br /> <strong>Email:</strong> {{
                                         $room_booking->user->email }}</td>
                                     <td>{{ tgl_indo($room_booking->arrival_date) }}</td>
@@ -105,7 +110,7 @@ return $pecahkan[2] . ' ' . $bulan[(int)$pecahkan[1]] . ' ' . $pecahkan[0];
                                         <div class="col-md-4 text-right">
                                             <button type="button" id="js-login-btn"
                                                 class="badge mx-1 badge-success p-2 border-0" data-toggle="modal"
-                                                data-target="#chagePassword">
+                                                data-target="#{{ 'a'.$room_booking->id }}">
                                                 <i class="fal fa-edit"></i>
                                             </button>
                                             <form action="/dashboard/room_booking/{{ $room_booking->id }}"
@@ -121,71 +126,109 @@ return $pecahkan[2] . ' ' . $bulan[(int)$pecahkan[1]] . ' ' . $pecahkan[0];
                                         </div>
                                     </td>
                                 </tr>
+                                <!-- datatable end -->
+                                @isset ($room_booking)
+
+                                <div class="modal fade" id="{{ 'a'.$room_booking->id }}" tabindex="-1" role="dialog"
+                                    aria-hidden="true">
+                                    @php $rooms=$room->where('available', 1)->where('room_type_id',
+                                    $room_booking->room_type_id);
+                                    @endphp
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title">Ubah Booking</h5>
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                    aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <form method="post"
+                                                action="{{ route('updateRoomBooking', $room_booking->id) }}">
+                                                @method('put')
+                                                @csrf
+                                                <div class="modal-body">
+                                                    <div class="form-group">
+                                                        <label for="room_id" class="col-form-label">{{ __('Nomor
+                                                            Kamar:')
+                                                            }}</label>
+                                                        <select
+                                                            class="custom-select @error('room_id') is-invalid @enderror"
+                                                            name="room_id">
+                                                            @if ($room_booking->status !== 'pending')
+                                                            <option value="{{ $room_booking->room_id }}">{{
+                                                                $room_booking->room->room_number
+                                                                }}</option>
+                                                            @else
+                                                            <option selected disabled>Kamar Nomor</option>
+                                                            @foreach ($rooms as $room)
+                                                            <option value="{{ $room->id }}">{{
+                                                                $room->room_number }}</option>
+                                                            @endforeach
+                                                            @endif
+                                                        </select>
+                                                        @error('status')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                        @enderror
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="password" class="col-form-label">{{ __('Status
+                                                            Booking:')
+                                                            }}</label>
+                                                        <select
+                                                            class="custom-select @error('password') is-invalid @enderror"
+                                                            name="status">
+                                                            <option selected disabled>Status Booking</option>
+                                                            <option value="pending" {{ $room_booking->status ==
+                                                                'pending'
+                                                                ? 'selected' : '' }}>Pending</option>
+                                                            <option value="checked_in" {{ $room_booking->status ==
+                                                                'checked_in' ? 'selected' : '' }}>Checked In</option>
+                                                            <option value="checked_out" {{ $room_booking->status ==
+                                                                'checked_out' ? 'selected' : '' }}>Checked Out</option>
+                                                            <option value="cancelled" {{ $room_booking->status ==
+                                                                'cancelled'
+                                                                ? 'selected' : '' }}>Cancelled</option>
+                                                        </select>
+                                                        @error('status')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                        @enderror
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="password" class="col-form-label">{{ __('Status
+                                                            Pembayaran:')
+                                                            }}</label>
+                                                        <select
+                                                            class="custom-select @error('password') is-invalid @enderror"
+                                                            name="payment">
+                                                            <option selected disabled>Status Pembayaran</option>
+                                                            <option value="1" {{ $room_booking->payment == '1'
+                                                                ? 'selected' : '' }}>Dibayar</option>
+                                                            <option value="0" {{ $room_booking->payment ==
+                                                                '0' ? 'selected' : '' }}>Belum dibayar</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-dismiss="modal">Close</button>
+                                                    <button type="submit" class="btn btn-primary"> <i
+                                                            class="fa fa-edit"></i>
+                                                        Ubah</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                @endisset
+
                                 @endforeach
                             </tbody>
                         </table>
-
-                        @isset ($room_booking)
-                        <!-- datatable end -->
-                        <div class="modal fade" id="chagePassword" tabindex="-1" role="dialog" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title">Ubah Password</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <form method="post" action="{{ route('updateRoomBooking', $room_booking->id) }}">
-                                        @method('put')
-                                        @csrf
-                                        <div class="modal-body">
-                                            <div class="form-group">
-                                                <label for="password" class="col-form-label">{{ __('Status Booking:')
-                                                    }}</label>
-                                                <select class="custom-select @error('password') is-invalid @enderror"
-                                                    name="status">
-                                                    <option selected disabled>Status Booking</option>
-                                                    <option value="pending" {{ $room_booking->status == 'pending'
-                                                        ? 'selected' : '' }}>Pending</option>
-                                                    <option value="checked_in" {{ $room_booking->status ==
-                                                        'checked_in' ? 'selected' : '' }}>Checked In</option>
-                                                    <option value="checked_out" {{ $room_booking->status ==
-                                                        'checked_out' ? 'selected' : '' }}>Checked Out</option>
-                                                    <option value="cancelled" {{ $room_booking->status == 'cancelled'
-                                                        ? 'selected' : '' }}>Cancelled</option>
-                                                </select>
-                                                @error('status')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                                @enderror
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="password" class="col-form-label">{{ __('Status Pembayaran:')
-                                                    }}</label>
-                                                <select class="custom-select @error('password') is-invalid @enderror"
-                                                    name="payment">
-                                                    <option selected disabled>Status Pembayaran</option>
-                                                    <option value="1" {{ $room_booking->payment == '1'
-                                                        ? 'selected' : '' }}>Dibayar</option>
-                                                    <option value="0" {{ $room_booking->payment ==
-                                                        '0' ? 'selected' : '' }}>Belum dibayar</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary"
-                                                data-dismiss="modal">Close</button>
-                                            <button type="submit" class="btn btn-primary"> <i class="fa fa-edit"></i>
-                                                Ubah</button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                        @endisset
-
                     </div>
                 </div>
             </div>
