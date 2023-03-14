@@ -15,7 +15,7 @@
             <img src="/assets/img/contact.svg" style="margin-top: 50px; padding-right: 50px;" alt="">
          </div>
       </div>
-      <form method="post" action="/dashboard/review">
+      <form method="post" action="{{ route('dashboardReview') }}">
          @csrf
          <div class="contact">
             <div>
@@ -47,7 +47,7 @@
             <div class="mt-8">
                <button type="submit"
                   class="uppercase text-sm font-bold tracking-wide bg-indigo-500 text-gray-100 p-3 rounded-lg w-full focus:outline-none focus:shadow-outline">
-                  Send Message
+                  Send Review
                </button>
             </div>
          </div>

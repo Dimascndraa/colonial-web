@@ -125,4 +125,56 @@ class PagesController extends Controller
             'about' => $about
         ]);
     }
+
+    public function home()
+    {
+        $about = About::all()->first();
+        $socialMedia = SocialMedia::all()->first();
+
+        return view('dashboard.index', [
+            'title' => "Home",
+            'socialMedia' => $socialMedia,
+            'name' => "$about->name",
+            'about' => $about
+        ]);
+    }
+
+    public function profile()
+    {
+        $about = About::all()->first();
+        $socialMedia = SocialMedia::all()->first();
+
+        return view('dashboard.profile', [
+            'title' => "Profile",
+            'socialMedia' => $socialMedia,
+            'name' => "$about->name",
+            'about' => $about
+        ]);
+    }
+
+    public function room()
+    {
+        $about = About::all()->first();
+        $socialMedia = SocialMedia::all()->first();
+
+        return view('dashboard.room', [
+            'title' => "Room",
+            'socialMedia' => $socialMedia,
+            'name' => "$about->name",
+            'about' => $about
+        ]);
+    }
+
+    public function review_user()
+    {
+        $about = About::all()->first();
+        $socialMedia = SocialMedia::all()->first();
+
+        return view('dashboard.review', [
+            'title' => "Review",
+            'socialMedia' => $socialMedia,
+            'name' => "$about->name",
+            'about' => $about
+        ]);
+    }
 }

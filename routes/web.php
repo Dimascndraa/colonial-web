@@ -47,31 +47,10 @@ Route::get('/pages/review', [PagesController::class, 'review'])->name('review');
 Route::get('/pages/posts', [PostController::class, 'index'])->name('posts');
 Route::get('/pages/posts/{post:slug}', [PostController::class, 'show'])->name('detail_posts');
 
-// Route::get('/pages/categories/{category:slug}', function (Category $category) {
-//     $about = About::all()->first();
-//     $socialMedia = SocialMedia::all()->first();
-
-//     return view('pages.category', [
-//         'title' => "Latest News",
-//         'socialMedia' => $socialMedia,
-//         'name' => "$about->name",
-//         'about' => $about,
-//         'category' => Category::all()
-//     ]);
-// });
-
-// Route::get('/pages/authors/{user:username}', function (User $user) {
-//     $about = About::all()->first();
-//     $socialMedia = SocialMedia::all()->first();
-
-//     return view('pages.posts', [
-//         'title' => "Latest News",
-//         'socialMedia' => $socialMedia,
-//         'name' => "$about->name",
-//         'about' => $about,
-//         'posts' => $user->posts
-//     ]);
-// });
+Route::get('/pages/home', [PagesController::class, 'home'])->name('home');
+Route::get('/pages/profile', [PagesController::class, 'profile'])->name('profile');
+Route::get('/pages/room', [PagesController::class, 'room'])->name('room');
+Route::get('/pages/review_user', [PagesController::class, 'review_user'])->name('review_user');
 
 // Routes for Front
 Route::get('/pages/book/{id}', [PagesController::class, 'book'])->middleware('auth');

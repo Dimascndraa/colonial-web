@@ -40,7 +40,7 @@ class DashboardReviewController extends Controller
      */
     public function store(Request $request)
     {
-        // return $request;
+        return $request;
         $validatedData = $request->validate([
             'name' => 'required|max:255',
             'body' => 'required|max:255',
