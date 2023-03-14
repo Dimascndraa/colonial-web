@@ -1,3 +1,4 @@
+{{-- @dd($galleries) --}}
 @extends('layouts.main')
 
 @section('container')
@@ -8,6 +9,15 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+   }
+
+   .glide__arrow {
+      position: absolute;
+      display: block;
+      top: 50%;
+      z-index: 2;
+      opacity: 1;
+      transform: translateY(-50%);
    }
 </style>
 
@@ -107,7 +117,7 @@
 </section>
 
 <!-- Annoucment Section -->
-@if ($announcement->status === "aktif")
+@if ($announcement->status === 'aktif')
 <div class='vision'>
    <div class='row'>
       <div class='column'>
@@ -120,18 +130,45 @@
 </div>
 @endif
 
-<!-- Hotels Section -->
+<!-- Gallery Section -->
 <section class="hotels" id="hotels">
    <h1 class="sec-head" id="hotels-head">Gallery</h1>
 </section>
 <div class="wrapper">
-   <div class="carousel owl-carousel">
-      @foreach($galleries as $gallery)
-      <div class="card card-gallery"
-         style="background-image: url({{ asset('storage/' . $gallery->image) }}); background-size: cover; background-position: center;">
-      </div>
-      @endforeach
+   <div class="bg-cover flex justify-center items-center">
+      <div class="glide xl:w-[54rem] lg:w-[42rem] md:w-[30rem] sm:w-[18rem] px-16 py-8 rounded-3xl">
+         <div class="glide__track" data-glide-el="track">
+            <ul class="glide__slides">
 
+               @foreach ($galleries as $gallery)
+               <li class="glide__slide">
+                  <a href="{{ asset('storage/' . $gallery->image) }}" data-fancybox="gallery"
+                     data-caption="{{ $gallery->caption }}">
+                     <div
+                        style="background-image: url({{ asset('storage/' . $gallery->image) }}); background-size: cover; background-position: center;"
+                        class="relative flex flex-col text-center h-40 items-center justify-center rounded-3xl duration-300 ease-in-out">
+                        <span class="absolute w-4 h-4 rounded-full bg-gray-800 right-4 top-4"></span>
+                     </div>
+                  </a>
+               </li>
+               @endforeach
+            </ul>
+         </div>
+         <div class="glide__arrows" data-glide-el="controls">
+            <button class="glide__arrow glide__arrow--left left-4" data-glide-dir="<">
+               <div
+                  class="h-9 w-9 bg-gray-800 rounded-xl flex justify-center items-center my-auto hover:bg-red-200 duration-300 ease-in-out">
+                  <i class="fa fa-angle-left text-red-200 text-2xl"></i>
+               </div>
+            </button>
+            <button class="glide__arrow glide__arrow--right right-4" data-glide-dir=">">
+               <div
+                  class="h-9 w-9 bg-gray-800 rounded-xl flex justify-center items-center my-auto hover:bg-red-200 duration-300 ease-in-out">
+                  <i class="fa fa-angle-right text-red-200 text-2xl"></i>
+               </div>
+            </button>
+         </div>
+      </div>
    </div>
 </div>
 
@@ -139,7 +176,7 @@
 <h1 class="sec-head" style="text-align: center; margin: 40px; margin-top: 100px;">Testimonials</h1>
 <div class="wrapper-rev">
    <div class="carousel owl-carousel">
-      @foreach($reviews as $review)
+      @foreach ($reviews as $review)
       <div class="box">
          <p>
             <i class='bx bxs-quote-left quote'></i>
@@ -178,7 +215,6 @@
             <h2 class="sec-head">Contact Us</h2>
             <img src="assets/img/contact.svg" style="margin-top: 50px; padding-right: 50px;" alt="">
          </div>
-
       </div>
       <form method="post" action="/dashboard/contact">
          @csrf

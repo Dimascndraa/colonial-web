@@ -7,8 +7,10 @@ use App\Models\About;
 
 use App\Models\SocialMedia;
 use App\Models\Announcement;
+use App\Models\Category;
 use App\Models\Facility;
 use App\Models\FacilityRoomType;
+use App\Models\Gallery;
 use App\Models\Room;
 use App\Models\RoomType;
 use Illuminate\Database\Seeder;
@@ -82,28 +84,24 @@ class DatabaseSeeder extends Seeder
             'descript' => '<div>&nbsp;Air Conditioner&nbsp;</div>',
             'status' => '1',
         ]);
-
         Facility::create([
             'name' => 'Bathtub',
             'icon' => 'facility-icon/p3xUhPvh3xN6bs0VHrzwmYMqBwIGGRMMIPlbPn7n.png',
             'descript' => '<div>Bathtub</div>',
             'status' => '1',
         ]);
-
         Facility::create([
             'name' => 'Breakfast',
             'icon' => 'facility-icon/gLEcRkn6YjPDHgSZBdCOKyHTJuu95POONNl3Ow4x.png',
             'descript' => '<div>&nbsp;Breakfast&nbsp;</div>',
             'status' => '1',
         ]);
-
         Facility::create([
             'name' => 'Computer',
             'icon' => 'facility-icon/zJjX2ZWYC4kNqBIg7C6Br3kQwpcqQZWMDmazfp5b.png',
             'descript' => '<div>&nbsp;Computer&nbsp;</div>',
             'status' => '1',
         ]);
-
         Facility::create([
             'name' => 'First Aid Kit',
             'icon' => 'facility-icon/19vxwBxwWBAX1WCT6vdu8tzApKP8MtRlwatq9DoB.png',
@@ -120,7 +118,6 @@ class DatabaseSeeder extends Seeder
             'max_child' => 1,
             'descript' => "<div> Superior </div>",
         ]);
-
         RoomType::create([
             'name' => "Deluxe",
             'cost_per_day' => 450000,
@@ -231,6 +228,36 @@ class DatabaseSeeder extends Seeder
             'description' => 'Kamar Deluxe Nomor 10',
             'status' => 1,
             'room_type_id' => 2,
+        ]);
+
+        Gallery::create([
+            'image' => 'gallery/dzejdEmuRSgYT1dKDa0i2rSv3LrIy4y2BDtuEaku.jpg',
+            'caption' => '<div>Depan Kolonial</div>'
+        ]);
+        Gallery::create([
+            'image' => 'gallery/f5qITEDoaPBxfM915oY8O81SbQnzGFYYSGu7wPFD.jpg',
+            'caption' => '<div>Kolonial Guest House</div>'
+        ]);
+        Gallery::create([
+            'image' => 'gallery/hkl943dmDqHbvGibZQIYxiklC06EuMXHGobnd2Pb.jpg',
+            'caption' => '<div>Galeri Ir. Soekarno</div>'
+        ]);
+        Gallery::create([
+            'image' => 'gallery/QIdbMlr3q098fwKIN5hzXeUmrCmvrUntz6VcuHI4.jpg',
+            'caption' => '<div>Tempat Berteduh</div>'
+        ]);
+        Gallery::create([
+            'image' => 'gallery/r4HRZuxA62g5lkwmrQu3jqsI7kLb6mKMvN9DM6LF.jpg',
+            'caption' => '<div>Lorong Belakang</div>'
+        ]);
+
+        Category::create([
+            'name' => 'Hotel',
+            'slug' => 'hotel',
+        ]);
+        Category::create([
+            'name' => 'Lainnya',
+            'slug' => 'lainnya',
         ]);
     }
 }

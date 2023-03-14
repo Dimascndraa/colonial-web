@@ -2,15 +2,15 @@
 
 @section('container')
 <!-- Component Code -->
-<div class="relative mt-5">
+<div class="relative container mt-5">
     <div class="max-w-3xl mb-10 rounded overflow-hidden flex flex-col mx-auto text-center">
         <a href="#"
-            class="max-w-3xl mx-auto text-xl sm:text-4xl font-semibold inline-block hover:text-indigo-600 transition duration-500 ease-in-out inline-block mb-2">{{
+            class="max-w-3xl mt-24 mx-auto text-xl sm:text-4xl font-semibold inline-block hover:text-indigo-600 transition duration-500 ease-in-out inline-block mb-2">{{
             $post->title }}</a>
 
-        <a href="#">
+        <a href="{{ asset('storage/' . $post->image) }}" data-fancybox="gallery" data-caption="{{ $post->title }}">
             <div class="w-full my-4"
-                style="height: 20rem;background: url({{ asset('storage/'. $post->image) }}); background-size: cover"
+                style="border-radius: 15px; height: 25rem; background: url({{ asset('storage/'. $post->image) }}); background-size: cover; background-position: top center;"
                 alt="Sunset in the mountains"></div>
         </a>
         <div class="py-5 text-sm font-regular text-gray-900 flex items-center justify-center">
@@ -50,9 +50,8 @@
     </div>
 
     <div class="max-w-3xl mx-auto">
-        <div
-            class="mt-3 bg-white rounded-b lg:rounded-b-none lg:rounded-r flex flex-col justify-between leading-normal">
-            <div class="">
+        <div class="mt-3 rounded-b lg:rounded-b-none lg:rounded-r flex flex-col justify-between leading-normal">
+            <div class="text-justify">
                 {!! $post->body !!}
             </div>
 

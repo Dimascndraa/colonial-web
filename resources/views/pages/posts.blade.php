@@ -17,7 +17,7 @@
                <h4 class="text-decoration-none">
                   {{ $post->title }}
                </h4>
-               <p>
+               <p class="text-justify">
                   {{ $post->excerpt }}
                </p>
                <div class="user">

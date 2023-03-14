@@ -18,5 +18,9 @@
         "lodash": "^4.17.19",
         "postcss": "^8.4.6",
         "tailwindcss": "^3.0.18"
+    },
+    "dependencies": {
+        "@glidejs/glide": "^3.6.0",
+        "lightbox2": "^2.11.4"
     }
 }
